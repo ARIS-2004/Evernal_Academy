@@ -14,7 +14,7 @@ import ProgrammesSection from '@/components/ProgrammesSection';
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
-      <Navbar />
+     
       <HeroSection />
       <AchievementsSection />
       {/* <PopularCoursesSection /> */}
@@ -25,7 +25,7 @@ export default function Home() {
       <TestimonialsSection />
       <TrainersSection />
       <CTASection />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
 import { CheckCircle, Users, Zap, Shield, TrendingUp, Award, Briefcase, Globe, PlayCircle, Clock, BookOpen, Headphones, DollarSign, Calendar, GraduationCap, Target, Star, ArrowRight, ChevronRight, Sparkles, Heart, Home, Sun, Music, Palette, Book, Gamepad } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -20,7 +18,7 @@ export default function WhyUsPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-[#B2C6BD]/20">
-      <Navbar />
+     
 
       {/* Hero with Background Image */}
       <section className="relative py-20 md:py-24 px-4 overflow-hidden">
@@ -612,7 +610,7 @@ export default function WhyUsPage() {
         </div>
       </section>
 
-      <Footer />
+   
 
       {/* Animation styles */}
       <style jsx>{`

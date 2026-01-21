@@ -1,8 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+import { useState } from 'react';;
 import { Calendar, User, ArrowRight, Clock, Tag, Search, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { blogPosts, categories, BlogPost } from '@/lib/data/blog';
@@ -31,7 +29,7 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
+
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#08472C] via-[#0A5C3A] to-[#08472C] text-white py-16 md:py-24 px-4 overflow-hidden">
@@ -268,8 +266,6 @@ export default function BlogPage() {
           <p className="text-white/70 text-sm mt-4">Join thousands of parents. Unsubscribe anytime.</p>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

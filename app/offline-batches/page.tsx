@@ -1,12 +1,10 @@
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+
 import { MapPin, Users, Clock, Award, CheckCircle, BookOpen, Heart, Home, Palette, Music, Gamepad, Sparkles, Calendar, Phone, Mail, ChevronRight, ChevronDown, Star, Play, Shield, Target, GraduationCap, Gamepad2, Palette as Art, Music as MusicIcon, Utensils, TreePine } from 'lucide-react';
 import Image from 'next/image';
 
 export default function OfflineBatchesPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-[#B2C6BD]/20">
-      <Navbar />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#08472C] via-[#0F172A] to-[#08472C] text-white py-16 md:py-20 px-4">
@@ -743,7 +741,7 @@ export default function OfflineBatchesPage() {
         </div>
       </section> */}
 
-      <Footer />
+   
     </main>
   );
 }

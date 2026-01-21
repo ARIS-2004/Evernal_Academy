@@ -53,7 +53,7 @@ export default function CleanHeroSection() {
   };
 
   return (
-    <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[90vh] sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
       {/* Background Images Only - No Color Overlay */}
       <div className="absolute inset-0 w-full h-full">
         {backgroundImages.map((img, index) => (
@@ -116,10 +116,53 @@ export default function CleanHeroSection() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+        {/* Mobile: Content Order */}
+        <div className="block md:hidden mb-8">
+          {/* Mobile: Academy Tag */}
+          <div className="inline-block animate-fade-in mb-6">
+            <div className="flex items-center gap-2 bg-gradient-to-r from-[#08472C]/20 to-[#08472C]/10 backdrop-blur-sm px-3 py-2 rounded-full border border-[#08472C]/30">
+              <div className="w-2 h-2 rounded-full bg-[#08472C] animate-pulse"></div>
+              <span className="text-white font-semibold text-xs">Evernal - Nurturing Young Minds Since 2010</span>
+            </div>
+          </div>
+
+          {/* Mobile: Main Heading */}
+          <div className="space-y-3 mb-6">
+            <h1 className="text-3xl font-bold text-white leading-tight">
+              Where Every Child's 
+              <span className="block text-[#08472C] mt-2 relative">
+                Journey Begins
+                <span className="absolute -bottom-1 left-0 w-20 h-0.5 bg-[#FCAB17] rounded-full"></span>
+              </span>
+            </h1>
+            
+            <p className="text-white/95 text-sm leading-relaxed max-w-xl font-light">
+              We provide a nurturing environment for early childhood education, focusing on holistic development through play-based learning and personalized care.
+            </p>
+          </div>
+
+          {/* Mobile: Features */}
+          <div className="grid grid-cols-2 gap-2 mb-6">
+            {features.map((feature, index) => (
+              <div 
+                key={index}
+                className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30"
+              >
+                <div className="w-6 h-6 bg-gradient-to-br from-[#08472C] to-[#0F5C3C] rounded flex items-center justify-center flex-shrink-0">
+                  <div className="text-white text-xs">
+                    {feature.icon}
+                  </div>
+                </div>
+                <span className="text-white font-medium text-xs">{feature.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 xl:gap-16 items-center">
           
-          {/* Left Content */}
-          <div className="space-y-6 md:space-y-8">
+          {/* Left Content - Desktop Only */}
+          <div className="hidden md:block space-y-6 md:space-y-8">
             {/* Academy Tag */}
             <div className="inline-block animate-fade-in">
               <div className="flex items-center gap-2 md:gap-3 bg-gradient-to-r from-[#08472C]/20 to-[#08472C]/10 backdrop-blur-sm px-3 md:px-4 py-2 md:py-2.5 rounded-full border border-[#08472C]/30">
@@ -180,8 +223,8 @@ export default function CleanHeroSection() {
             </div>
           </div>
 
-          {/* Right Side - Stats Card */}
-          <div className="order-first lg:order-last bg-gradient-to-br from-[#08472C]/95 to-[#0F5C3C]/90 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl border border-white/30 p-4 md:p-6 lg:p-8 transform hover:scale-[1.02] transition-all duration-500">
+          {/* Right Side - Stats Card - Mobile First */}
+          <div className="bg-gradient-to-br from-[#08472C]/95 to-[#0F5C3C]/90 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl border border-white/30 p-4 md:p-6 lg:p-8 transform hover:scale-[1.02] transition-all duration-500">
             
             {/* Academy Info */}
             <div className="text-center mb-6 md:mb-8">
@@ -255,10 +298,31 @@ export default function CleanHeroSection() {
               </div>
             </div>
           </div>
+
+          {/* Mobile: CTA Buttons - Below Card */}
+          <div className="md:hidden mt-6">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/admissions"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-[#FCAB17]/30 hover:scale-105 transition-all duration-300 group text-sm"
+              >
+                <span>Admission Inquiry</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              <Link
+                href="/virtual-tour"
+                className="inline-flex items-center justify-center gap-2 bg-white/25 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-bold hover:bg-white/35 transition-all duration-300 group border border-white/40 text-sm mt-3 sm:mt-0"
+              >
+                <Play className="w-4 h-4" />
+                <span>Virtual Tour</span>
+              </Link>
+            </div>
+          </div>
         </div>
 
-        {/* Trust Indicators at Bottom */}
-        <div className="mt-8 md:mt-12 lg:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {/* Trust Indicators at Bottom - Only show on Desktop */}
+        <div className="hidden md:grid mt-8 md:mt-12 lg:mt-16 grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           <div className="flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/30">
             <Award className="w-5 h-5 md:w-6 md:h-6 text-white" />
             <div>
@@ -288,6 +352,41 @@ export default function CleanHeroSection() {
             <div>
               <div className="text-white font-semibold text-sm md:text-base">Progressive</div>
               <div className="text-white/80 text-xs md:text-sm">Learning</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile: Trust Indicators - Show at bottom in grid */}
+        <div className="md:hidden grid grid-cols-2 gap-2 mt-6">
+          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+            <Award className="w-4 h-4 text-white" />
+            <div>
+              <div className="text-white font-semibold text-xs">Certified</div>
+              <div className="text-white/80 text-xs">Teachers</div>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+            <Users className="w-4 h-4 text-white" />
+            <div>
+              <div className="text-white font-semibold text-xs">Small</div>
+              <div className="text-white/80 text-xs">Class Sizes</div>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+            <BookOpen className="w-4 h-4 text-white" />
+            <div>
+              <div className="text-white font-semibold text-xs">Modern</div>
+              <div className="text-white/80 text-xs">Curriculum</div>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+            <TrendingUp className="w-4 h-4 text-white" />
+            <div>
+              <div className="text-white font-semibold text-xs">Progressive</div>
+              <div className="text-white/80 text-xs">Learning</div>
             </div>
           </div>
         </div>

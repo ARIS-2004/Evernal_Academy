@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+
 import { Play, X, ChevronLeft, ChevronRight, Heart, Share2, Download, Calendar, MapPin, Users, Image as ImageIcon, Video, Grid, List, Search, Filter, Sparkles, Star, Award, Music, Palette, Gamepad, BookOpen, Home } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -246,7 +245,7 @@ export default function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-[#B2C6BD]/20">
-      <Navbar />
+     
 
       {/* Hero Section */}
       <section className="relative py-16 md:py-20 px-4 overflow-hidden">
@@ -816,7 +815,7 @@ export default function GalleryPage() {
         </div>
       )}
 
-      <Footer />
+
 
       {/* Animation styles */}
       <style jsx>{`

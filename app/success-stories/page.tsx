@@ -1,7 +1,6 @@
 'use client';
 
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+
 import { Heart, TrendingUp, Award, Star, Quote, Calendar, MapPin, ArrowRight, ChevronLeft, ChevronRight, GraduationCap, Target, Rocket, CheckCircle, Users, Home, School, BookOpen, Palette, Music, Gamepad, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -165,7 +164,7 @@ export default function SuccessStoriesPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-[#B2C6BD]/20">
-      <Navbar />
+    
 
       {/* Hero Section */}
       <section className="relative py-16 md:py-20 px-4 overflow-hidden">
@@ -514,7 +513,7 @@ export default function SuccessStoriesPage() {
         </div>
       </section>
 
-      <Footer />
+    
 
       {/* Animation styles */}
       <style jsx>{`

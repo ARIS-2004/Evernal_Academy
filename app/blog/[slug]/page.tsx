@@ -1,5 +1,4 @@
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+
 import { Calendar, User, ArrowRight, Clock, Tag, Share2, Bookmark, ChevronLeft, Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { blogPosts } from '@/lib/data/blog';
@@ -25,7 +24,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
+
 
       {/* Back Navigation */}
       <div className="bg-gradient-to-b from-white to-[#B2C6BD]/20 border-b border-[#B2C6BD]/30">
@@ -273,7 +272,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         </div>
       </section>
 
-      <Footer />
+
 
       {/* Client-side Script */}
       <script

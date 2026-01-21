@@ -1,7 +1,5 @@
 'use client';
 
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
 import { Phone, Mail, MapPin, Clock, Send, Loader2, MessageSquare, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 
@@ -70,7 +68,7 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-[#FFFFFF]">
-      <Navbar />
+    
 
       {/* Hero Section */}
       <section 
@@ -556,7 +554,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
+
     </main>
   );
 }

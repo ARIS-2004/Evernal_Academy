@@ -1,7 +1,5 @@
 'use client';
 
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
 import { CheckCircle, Clock, Award, BookOpen, Users, Shield, Send, Loader2, Phone, Mail } from 'lucide-react';
 import { useState } from 'react';
 
@@ -117,7 +115,7 @@ export default function EnrollPage() {
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
-      <Navbar />
+
 
       {/* Hero Section */}
       <section 
@@ -796,7 +794,6 @@ export default function EnrollPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

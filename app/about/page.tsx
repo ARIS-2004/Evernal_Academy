@@ -1,5 +1,4 @@
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+
 import { 
   Heart, Target, Eye, Users, Zap, Globe, BookOpen, Award, 
   Briefcase, GraduationCap, Calendar, CheckCircle, ChevronRight, 
@@ -12,7 +11,7 @@ import Image from 'next/image';
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-[#B2C6BD]/20">
-      <Navbar />
+      
 
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 px-4 overflow-hidden">
@@ -759,7 +758,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
+      
     </main>
   );
 }

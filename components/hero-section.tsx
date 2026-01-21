@@ -229,7 +229,7 @@ export default function CleanHeroSection() {
             {/* Academy Info */}
             <div className="text-center mb-6 md:mb-8">
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br from-white to-[#B2C6BD] flex items-center justify-center mb-3 md:mb-4 mx-auto shadow-lg">
-                <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#08472C] to-[#0F5C3C] bg-clip-text text-transparent">JA</span>
+                <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#08472C] to-[#0F5C3C] bg-clip-text text-transparent">EA</span>
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white">Evernal Academy</h3>
               <p className="text-white/90 text-xs md:text-sm font-medium mt-1">Nurturing Future Leaders</p>

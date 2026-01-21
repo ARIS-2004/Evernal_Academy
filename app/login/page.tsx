@@ -24,7 +24,7 @@ export default function LoginPage() {
               <span className="text-2xl font-bold text-primary">EA</span>
             </div>
             <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
-            <p className="text-white/80">Sign in to your Elite Academy account</p>
+            <p className="text-white/80">Sign in to your EvernalAcademy account</p>
           </div>
 
           {/* Form */}

@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
 
     // Admin email content
     const adminMailOptions = {
-      from: `"Elite Academy" <${process.env.EMAIL_USER}>`,
+      from: `"EvernalAcademy" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       replyTo: email,
       subject: `📧 New Contact Form: ${name}`,
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         <body>
             <div class="header">
                 <h1 style="margin: 0; color: #FCAB17;">New Contact Form Submission</h1>
-                <p style="opacity: 0.9;">From Elite Academy Website</p>
+                <p style="opacity: 0.9;">From EvernalAcademy Website</p>
             </div>
             
             <div class="content">
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
             </div>
             
             <div class="footer">
-                <p style="margin: 0;">© ${new Date().getFullYear()} Elite Academy. All rights reserved.</p>
+                <p style="margin: 0;">© ${new Date().getFullYear()} EvernalAcademy. All rights reserved.</p>
                 <p style="margin: 5px 0; font-size: 12px; opacity: 0.8;">This email was generated automatically from the contact form.</p>
             </div>
         </body>
@@ -98,9 +98,9 @@ export async function POST(request: NextRequest) {
 
     // User email content
     const userMailOptions = {
-      from: `"Elite Academy" <${process.env.EMAIL_USER}>`,
+      from: `"EvernalAcademy" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: '✅ Thank You for Contacting Elite Academy',
+      subject: '✅ Thank You for Contacting EvernalAcademy',
       html: `
         <!DOCTYPE html>
         <html>
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
             <div class="content">
                 <p style="font-size: 16px; color: #0F172A;">Dear <strong>${name}</strong>,</p>
                 
-                <p style="color: #08472C;">Thank you for reaching out to <strong>Elite Academy</strong>. Your message has been successfully delivered to our team.</p>
+                <p style="color: #08472C;">Thank you for reaching out to <strong>EvernalAcademy</strong>. Your message has been successfully delivered to our team.</p>
                 
                 <div class="highlight-box">
                     ⏰ We'll respond within <span style="font-size: 1.2em;">24 hours</span>
@@ -183,9 +183,9 @@ export async function POST(request: NextRequest) {
             </div>
             
             <div class="footer">
-                <p style="margin: 0; color: #FCAB17; font-weight: bold;">Elite Academy</p>
+                <p style="margin: 0; color: #FCAB17; font-weight: bold;">EvernalAcademy</p>
                 <p style="margin: 10px 0; font-size: 14px;">Transforming Education, Empowering Futures</p>
-                <p style="margin: 5px 0; font-size: 12px; opacity: 0.8;">© ${new Date().getFullYear()} Elite Academy. All rights reserved.</p>
+                <p style="margin: 5px 0; font-size: 12px; opacity: 0.8;">© ${new Date().getFullYear()} EvernalAcademy. All rights reserved.</p>
             </div>
         </body>
         </html>

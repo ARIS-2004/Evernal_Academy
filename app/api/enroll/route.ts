@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     // Email to admin
     const adminMailOptions = {
-      from: `"Elite Academy Admissions" <${process.env.EMAIL_USER}>`,
+      from: `"EvernalAcademy Admissions" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       subject: `🎓 New Enrollment: ${childName} - ${selectedCourse}`,
       html: `
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
         <body>
           <div class="header">
             <h1 style="margin: 0; color: #FCAB17;">🎓 New Enrollment Received</h1>
-            <p>Elite Academy Admissions</p>
+            <p>EvernalAcademy Admissions</p>
           </div>
           
           <div class="content">
@@ -113,7 +113,7 @@ export async function POST(request: NextRequest) {
 
     // Email to parent (confirmation)
     const parentMailOptions = {
-      from: `"Elite Academy Admissions" <${process.env.EMAIL_USER}>`,
+      from: `"EvernalAcademy Admissions" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: `✅ Enrollment Confirmation - ${childName}`,
       html: `
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
         <body>
           <div class="header">
             <h1 style="margin: 0; color: #FCAB17;">Enrollment Confirmation</h1>
-            <p>Thank you for choosing Elite Academy</p>
+            <p>Thank you for choosing EvernalAcademy</p>
           </div>
           
           <div class="content">

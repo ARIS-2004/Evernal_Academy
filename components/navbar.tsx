@@ -53,7 +53,7 @@ export default function EnhancedNavbar() {
       ]
     },
     { href: '/admissions', label: 'Admissions', icon: <UserPlus className="w-4 h-4" /> },
-   { href: '/gallery', label: 'Gallery', icon: <Images className="w-4 h-4" /> },
+    { href: '/gallery', label: 'Gallery', icon: <Images className="w-4 h-4" /> },
     { href: '/success-stories', label: 'Success Stories', icon: <Star className="w-4 h-4" /> },
     { href: '/offline-batches', label: 'Offline Batches', icon: <Building className="w-4 h-4" /> },
     { href: '/blog', label: 'Blog', icon: <FileText className="w-4 h-4" /> },
@@ -77,7 +77,7 @@ export default function EnhancedNavbar() {
     }`}>
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo - কম গ্যাপ সহ */}
+          {/* Logo */}
           <Link 
             href="/" 
             className="flex items-center gap-2 group"
@@ -142,7 +142,7 @@ export default function EnhancedNavbar() {
               </div>
             ))}
 
-            {/* Enroll Now Button - Desktop (এক লাইনে) */}
+            {/* Enroll Now Button - Desktop */}
             <Link
               href="/enroll"
               className="ml-2 relative px-4 py-2.5 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 transform overflow-hidden group flex items-center gap-1.5 whitespace-nowrap"
@@ -155,16 +155,15 @@ export default function EnhancedNavbar() {
 
           {/* Mobile/Tablet Navigation */}
           <div className="flex lg:hidden items-center gap-1">
-            {/* Enroll Now Button - Mobile (এক লাইনে) */}
+            {/* Enroll Now Button - Mobile (Shorter text for mobile) */}
             <Link
               href="/enroll"
-              className="px-3 py-2 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-sm font-semibold rounded-lg shadow hover:shadow-md transition-all duration-300 flex items-center gap-1 whitespace-nowrap"
+              className="px-3 py-2 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-sm font-semibold rounded-lg shadow hover:shadow-md transition-all duration-300 whitespace-nowrap"
             >
-              <span className="hidden sm:inline">Enroll Now</span>
-              <span className="sm:hidden">Enroll</span>
+              Enroll
             </Link>
 
-            {/* Mobile Menu Button - 3 lines icon */}
+            {/* Mobile Menu Button - Simple 3 lines icon */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-white hover:text-[#FCAB17] rounded-lg transition-all duration-300"
@@ -173,31 +172,25 @@ export default function EnhancedNavbar() {
               {isOpen ? (
                 <X className="w-6 h-6" />
               ) : (
-                <div className="flex flex-col gap-1">
-                  <div className="w-6 h-0.5 bg-white"></div>
-                  <div className="w-6 h-0.5 bg-white"></div>
-                  <div className="w-6 h-0.5 bg-white"></div>
-                </div>
+                <Menu className="w-6 h-6" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Slide-out Menu - ডানদিক থেকে আসবে */}
-      <div className={`lg:hidden fixed inset-0 z-50 transition-all duration-300 ease-in-out ${
-        isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+      {/* Mobile Slide-out Menu */}
+      <div className={`lg:hidden fixed inset-0 z-50 ${
+        isOpen ? 'block' : 'hidden'
       }`}>
         {/* Overlay */}
         <div 
-          className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${
-            isOpen ? 'opacity-100' : 'opacity-0'
-          }`}
+          className="fixed inset-0 bg-black/50"
           onClick={() => setIsOpen(false)}
         />
         
-        {/* Menu Panel - ডানদিক থেকে স্লাইড */}
-        <div className={`absolute right-0 top-0 h-full w-80 sm:w-96 bg-white shadow-2xl transition-transform duration-300 ease-out ${
+        {/* Menu Panel - Right side slide */}
+        <div className={`fixed right-0 top-0 h-full w-4/5 max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           {/* Header */}
@@ -213,8 +206,8 @@ export default function EnhancedNavbar() {
                 />
               </div>
               <div>
-                <div className="font-bold text-white">Evernal</div>
-                <div className="text-xs text-white/70">Navigation Menu</div>
+                <div className="font-bold text-white text-sm">Evernal</div>
+                <div className="text-xs text-white/70">Menu</div>
               </div>
             </div>
             <button
@@ -226,18 +219,10 @@ export default function EnhancedNavbar() {
           </div>
 
           {/* Menu Content */}
-          <div className="h-[calc(100%-73px)] overflow-y-auto bg-gradient-to-b from-white to-[#B2C6BD]/10">
+          <div className="h-[calc(100vh-73px)] overflow-y-auto bg-gradient-to-b from-white to-[#B2C6BD]/10">
             <div className="p-4">
-              {/* Enroll Now Button - Top */}
-              <Link
-                href="/enroll"
-                className="flex items-center justify-center gap-2 p-4 mb-4 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                <ArrowRight className="w-5 h-5" />
-                Enroll Now
-              </Link>
-
+              {/* Enroll Now Button - Top (Removed from mobile menu) */}
+              
               {/* Main Links List */}
               <div className="space-y-1">
                 {allNavLinks.map((link) => (
@@ -246,12 +231,16 @@ export default function EnhancedNavbar() {
                       <Link
                         href={link.href}
                         className="flex items-center gap-3 px-4 py-3 text-[#0F172A] hover:text-[#08472C] hover:bg-[#B2C6BD]/20 rounded-lg transition-all duration-200 font-medium w-full"
-                        onClick={() => !link.dropdown && setIsOpen(false)}
+                        onClick={() => {
+                          if (!link.dropdown) {
+                            setIsOpen(false);
+                          }
+                        }}
                       >
                         <div className="w-8 h-8 flex items-center justify-center bg-[#08472C]/10 rounded-lg">
                           {link.icon}
                         </div>
-                        <span>{link.label}</span>
+                        <span className="text-sm">{link.label}</span>
                       </Link>
                       
                       {link.dropdown && (
@@ -268,21 +257,16 @@ export default function EnhancedNavbar() {
                     
                     {/* Mobile Dropdown */}
                     {link.dropdown && activeDropdown === link.label && (
-                      <div className="ml-12 my-2 pl-4 border-l-2 border-[#08472C] animate-in fade-in slide-in-left duration-200">
+                      <div className="ml-12 my-1 pl-4 border-l-2 border-[#08472C]">
                         {link.dropdown.map((item, idx) => (
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="flex items-center gap-3 px-4 py-2.5 text-[#0F172A] hover:text-[#08472C] rounded-lg transition-all duration-200 text-sm"
+                            className="flex items-center gap-3 px-4 py-2 text-[#0F172A] hover:text-[#08472C] rounded-lg transition-all duration-200 text-sm"
                             onClick={() => setIsOpen(false)}
                           >
                             <div className={`w-2 h-2 rounded-full ${idx === 0 ? 'bg-[#FCAB17]' : idx === 1 ? 'bg-[#08472C]' : idx === 2 ? 'bg-[#0F172A]' : idx === 3 ? 'bg-[#FF6B6B]' : 'bg-[#4ECDC4]'}`}></div>
-                            <div>
-                              <div className="font-medium">{item.label}</div>
-                              {item.label === 'Teacher Training Programme' && (
-                                <div className="text-xs text-[#08472C]/70 mt-0.5">Professional Development</div>
-                              )}
-                            </div>
+                            <span className="font-medium text-xs">{item.label}</span>
                           </Link>
                         ))}
                       </div>
@@ -291,119 +275,45 @@ export default function EnhancedNavbar() {
                 ))}
               </div>
 
-              {/* Programmes Section */}
-              <div className="mt-6">
-                <div className="bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/20 rounded-xl p-4 border border-[#B2C6BD]/30">
-                  <h4 className="text-sm font-semibold text-[#0F172A] mb-3 flex items-center gap-2">
-                    <Book className="w-4 h-4 text-[#08472C]" />
-                    Our Programmes
-                  </h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Link
-                      href="/programmes/playgroup"
-                      className="px-3 py-2 text-sm text-[#0F172A] hover:text-[#08472C] hover:bg-white rounded-lg transition-colors duration-200 border border-[#B2C6BD]/30 bg-white/50"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#FCAB17]"></div>
-                        <span className="font-medium">Playgroup</span>
-                      </div>
-                    </Link>
-                    <Link
-                      href="/programmes/nursery"
-                      className="px-3 py-2 text-sm text-[#0F172A] hover:text-[#08472C] hover:bg-white rounded-lg transition-colors duration-200 border border-[#B2C6BD]/30 bg-white/50"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#08472C]"></div>
-                        <span className="font-medium">Nursery</span>
-                      </div>
-                    </Link>
-                    <Link
-                      href="/programmes/kindergarten"
-                      className="px-3 py-2 text-sm text-[#0F172A] hover:text-[#08472C] hover:bg-white rounded-lg transition-colors duration-200 border border-[#B2C6BD]/30 bg-white/50"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#0F172A]"></div>
-                        <span className="font-medium">Kindergarten</span>
-                      </div>
-                    </Link>
-                    <Link
-                      href="/programmes/daycare"
-                      className="px-3 py-2 text-sm text-[#0F172A] hover:text-[#08472C] hover:bg-white rounded-lg transition-colors duration-200 border border-[#B2C6BD]/30 bg-white/50"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#4ECDC4]"></div>
-                        <span className="font-medium">Daycare</span>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="mt-2">
-                    <Link
-                      href="/programmes/teacher-training"
-                      className="block px-3 py-2 text-sm text-[#0F172A] hover:text-[#08472C] hover:bg-white rounded-lg transition-colors duration-200 border border-[#B2C6BD]/30 bg-white/50"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#FF6B6B]"></div>
-                        <span className="font-medium">Teacher Training Programme</span>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Admissions Highlight */}
-              <div className="mt-6">
-                <Link
-                  href="/admissions"
-                  className="block p-4 bg-gradient-to-r from-[#08472C] to-[#0F172A] text-white rounded-xl shadow hover:shadow-lg transition-all duration-300"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-                      <UserPlus className="w-5 h-5 text-white" />
+              {/* Quick Contact Section */}
+              <div className="mt-8 pt-4 border-t border-[#B2C6BD]/30">
+                <h4 className="text-sm font-semibold text-[#0F172A] mb-3">Quick Contact</h4>
+                <div className="space-y-3">
+                  <a href="tel:+919876543210" className="flex items-center gap-3 text-[#08472C] text-sm hover:underline" onClick={() => setIsOpen(false)}>
+                    <div className="w-10 h-10 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="font-bold text-lg">Admissions Open</div>
-                      <div className="text-sm opacity-90">2024-25 Session</div>
+                      <div className="font-medium">Call Us</div>
+                      <div className="text-xs">+91 98765 43210</div>
                     </div>
-                  </div>
-                </Link>
-              </div>
-
-              {/* Contact Info */}
-              <div className="mt-6 pt-4 border-t border-[#B2C6BD]/30">
-                <h4 className="text-sm font-semibold text-[#0F172A] mb-3">Quick Contact</h4>
-                <div className="space-y-2">
-                  <a href="tel:+919876543210" className="flex items-center gap-2 text-[#08472C] text-sm hover:underline">
-                    <div className="w-8 h-8 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center">
-                      📞
-                    </div>
-                    <span>+91 98765 43210</span>
                   </a>
-                  <a href="mailto:info@evernal.com" className="flex items-center gap-2 text-[#08472C] text-sm hover:underline">
-                    <div className="w-8 h-8 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center">
-                      ✉️
+                  <a href="mailto:info@evernal.com" className="flex items-center gap-3 text-[#08472C] text-sm hover:underline" onClick={() => setIsOpen(false)}>
+                    <div className="w-10 h-10 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <FileText className="w-5 h-5" />
                     </div>
-                    <span>info@evernal.com</span>
+                    <div>
+                      <div className="font-medium">Email Us</div>
+                      <div className="text-xs">info@evernal.com</div>
+                    </div>
                   </a>
                 </div>
               </div>
 
-              {/* Social/Extra Links */}
+              {/* Quick Links */}
               <div className="mt-6 pt-4 border-t border-[#B2C6BD]/30">
-                <div className="flex justify-around">
-                  <Link href="/demo" className="text-sm text-[#08472C] font-medium hover:underline" onClick={() => setIsOpen(false)}>
+                <div className="grid grid-cols-2 gap-3">
+                  <Link href="/demo" className="text-center px-3 py-2 bg-[#08472C]/5 text-[#08472C] text-xs font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
                     Demo Class
                   </Link>
-                  <Link href="/brochure" className="text-sm text-[#08472C] font-medium hover:underline" onClick={() => setIsOpen(false)}>
-                    Download Brochure
+                  <Link href="/brochure" className="text-center px-3 py-2 bg-[#08472C]/5 text-[#08472C] text-xs font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
+                    Brochure
                   </Link>
-                  <Link href="/faq" className="text-sm text-[#0F172A] font-medium hover:underline" onClick={() => setIsOpen(false)}>
+                  <Link href="/faq" className="text-center px-3 py-2 bg-[#08472C]/5 text-[#08472C] text-xs font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
                     FAQ
+                  </Link>
+                  <Link href="/enroll" className="text-center px-3 py-2 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-xs font-semibold rounded-lg shadow transition-all" onClick={() => setIsOpen(false)}>
+                    Enroll Now
                   </Link>
                 </div>
               </div>

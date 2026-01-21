@@ -123,7 +123,7 @@ export default function AdmissionsPage() {
     },
     {
       number: '04',
-      title: 'Join the Elite Family',
+      title: 'Join the EvernalFamily',
       description: 'Complete admission formalities and welcome your child to our nurturing community.',
       icon: <Heart className="w-8 h-8 text-white" />,
       color: 'bg-gradient-to-br from-[#FCAB17] to-[#FFD700]'
@@ -139,23 +139,23 @@ export default function AdmissionsPage() {
 
   const faqs = [
     {
-      question: 'What sets Elite Academy curriculum apart from other preschools?',
+      question: 'What sets EvernalAcademy curriculum apart from other preschools?',
       answer: 'Our curriculum is based on the NEP 2020 framework, a scientifically designed approach that focuses on holistic development through play-based learning, creativity, and life skills development tailored for early childhood education.'
     },
     {
-      question: 'Can I tour the Elite Academy facility before enrolling my child?',
+      question: 'Can I tour the EvernalAcademy facility before enrolling my child?',
       answer: 'Absolutely! We encourage all parents to schedule a campus tour. You can visit our facilities, meet our educators, and experience our learning environment firsthand before making a decision.'
     },
     {
-      question: 'What educational philosophy does Elite Academy follow?',
+      question: 'What educational philosophy does EvernalAcademy follow?',
       answer: 'We follow a child-centered approach combining Montessori principles with modern pedagogical methods. Our focus is on nurturing each child\'s unique potential through experiential learning and creative exploration.'
     },
     {
-      question: 'What is the teacher-to-child ratio at Elite Academy?',
+      question: 'What is the teacher-to-child ratio at EvernalAcademy?',
       answer: 'We maintain an optimal 1:8 teacher-child ratio to ensure personalized attention and care for every child, allowing our educators to focus on individual learning needs and development.'
     },
     {
-      question: 'What safety measures are in place at Elite Academy?',
+      question: 'What safety measures are in place at EvernalAcademy?',
       answer: 'We have comprehensive safety protocols including CCTV surveillance, secure entry systems, trained staff, regular health check-ups, and child-friendly facilities with soft play areas and hygienic practices.'
     }
   ];
@@ -201,7 +201,7 @@ export default function AdmissionsPage() {
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Elite <span className="text-[#FCAB17]">Academy</span> Admissions
+            Evernal<span className="text-[#FCAB17]">Academy</span> Admissions
           </h1>
           <p className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto font-medium mb-10">
             Begin Your Child's Journey of Discovery, Learning, and Growth
@@ -667,16 +667,16 @@ export default function AdmissionsPage() {
         </div>
       </section>
 
-      {/* Elite Academy Advantage */}
+      {/* EvernalAcademy Advantage */}
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6" style={{ color: '#0F172A' }}>
-              The <span style={{ color: '#08472C' }}>Elite Academy Advantage</span>
+              The <span style={{ color: '#08472C' }}>EvernalAcademy Advantage</span>
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#08472C] to-[#FCAB17] mx-auto mb-8 rounded-full"></div>
             <p className="text-lg max-w-3xl mx-auto" style={{ color: '#0F172A' }}>
-              Elite Academy is a leader in Early Childhood Care and Education (ECCE). 
+              EvernalAcademy is a leader in Early Childhood Care and Education (ECCE). 
               Our proven pedagogy, comprehensive support, and innovative approaches make us the preferred choice.
             </p>
           </div>
@@ -704,11 +704,11 @@ export default function AdmissionsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
                 <h4 className="text-2xl font-bold mb-4" style={{ color: '#0F172A' }}>
-                  Why Choose Elite Academy?
+                  Why Choose EvernalAcademy?
                 </h4>
                 <p className="mb-4" style={{ color: '#0F172A' }}>
-                  Elite Academy is your trusted partner in providing exceptional early education for your child. 
-                  Here's why Elite Academy stands out as the preferred choice for parents seeking the best for their little ones.
+                  EvernalAcademy is your trusted partner in providing exceptional early education for your child. 
+                  Here's why EvernalAcademy stands out as the preferred choice for parents seeking the best for their little ones.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
@@ -820,7 +820,7 @@ export default function AdmissionsPage() {
             Ready to Begin Your Child's <span className="text-[#FCAB17]">Learning Journey</span>?
           </h2>
           <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of happy parents who have chosen Elite Academy for their child's early education
+            Join hundreds of happy parents who have chosen EvernalAcademy for their child's early education
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a 

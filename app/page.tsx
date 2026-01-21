@@ -1,5 +1,4 @@
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+
 import HeroSection from '@/components/hero-section';
 import PopularCoursesSection from '@/components/popular-courses-section';
 import WhyUsSection from '@/components/why-us-section';
@@ -25,7 +24,7 @@ export default function Home() {
       <TestimonialsSection />
       <TrainersSection />
       <CTASection />
-      {/* <Footer /> */}
+    
     </main>
   );
 }

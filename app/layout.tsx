@@ -44,7 +44,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased pb-20 sm:pb-24`}>
         
         {/* Header / Navbar */}
-        {/* <Navbar /> */}
+        <Navbar />
 
         {/* Page Content */}
         <main>{children}</main>
@@ -53,7 +53,7 @@ export default function RootLayout({
         <Footer />
 
         {/* Fixed Bottom CTA */}
-        {/* <CallToActionBanner /> */}
+        <CallToActionBanner />
 
         <Analytics />
       </body>

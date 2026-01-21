@@ -18,14 +18,14 @@ const CallToActionBanner = () => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
-              href="/enrol"
+              href="/eurokids-enroll"
               className="px-6 py-3 bg-white text-[#08472C] font-bold rounded-lg hover:bg-gray-100 hover:shadow-lg transition-all duration-300 text-center"
             >
               Enroll Your Child
             </Link>
             
             <Link
-              href="/partner"
+              href="/franchise"
               className="px-6 py-3 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 hover:shadow-lg transition-all duration-300 text-center"
             >
               Become a Partner

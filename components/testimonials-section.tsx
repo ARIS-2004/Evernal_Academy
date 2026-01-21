@@ -145,10 +145,10 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-5 py-2.5 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+          {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-5 py-2.5 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
             <Heart className="w-4 h-4 text-[#FCAB17]" />
             Parent & Student Stories
-          </div>
+          </div> */}
            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-4">
             Happy Families, <span className="text-[#08472C]">Happy Children</span>
           </h2>
@@ -157,26 +157,6 @@ export default function TestimonialsSection() {
           <p className="text-[#0F172A]/70 text-lg max-w-2xl mx-auto">
             Hear from our parents and educators about their wonderful experiences at Evernal Academy
           </p>
-        </div>
-
-        {/* Stats Bar */}
-        <div className={`mb-16 grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-center p-4 bg-gradient-to-br from-[#08472C]/5 to-[#B2C6BD]/5 rounded-xl border border-[#B2C6BD]/30">
-            <div className="text-3xl font-bold text-[#08472C] mb-1">500+</div>
-            <div className="text-sm text-[#0F172A]/70">Happy Parents</div>
-          </div>
-          <div className="text-center p-4 bg-gradient-to-br from-[#FCAB17]/5 to-[#FFD700]/5 rounded-xl border border-[#B2C6BD]/30">
-            <div className="text-3xl font-bold text-[#08472C] mb-1">95%</div>
-            <div className="text-sm text-[#0F172A]/70">Satisfaction Rate</div>
-          </div>
-          <div className="text-center p-4 bg-gradient-to-br from-[#08472C]/5 to-[#B2C6BD]/5 rounded-xl border border-[#B2C6BD]/30">
-            <div className="text-3xl font-bold text-[#08472C] mb-1">4.9/5</div>
-            <div className="text-sm text-[#0F172A]/70">Average Rating</div>
-          </div>
-          <div className="text-center p-4 bg-gradient-to-br from-[#FCAB17]/5 to-[#FFD700]/5 rounded-xl border border-[#B2C6BD]/30">
-            <div className="text-3xl font-bold text-[#08472C] mb-1">12+</div>
-            <div className="text-sm text-[#0F172A]/70">Years Trusted</div>
-          </div>
         </div>
 
         {/* Testimonials Container */}
@@ -353,39 +333,6 @@ export default function TestimonialsSection() {
               <span className="text-sm text-[#0F172A]/70">
                 {isAutoPlaying ? 'Auto-slide enabled' : 'Manual control'}
               </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Additional Testimonials */}
-        <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-center">
-            <div className="mb-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-2">
-                <Users className="w-6 h-6 text-[#08472C]" />
-              </div>
-              <h4 className="text-lg font-semibold text-[#0F172A]">Community Trust</h4>
-              <p className="text-sm text-[#0F172A]/70 mt-1">Recommended by 98% of our parents</p>
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <div className="mb-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#FCAB17]/10 to-[#FFD700]/10 rounded-full mb-2">
-                <Award className="w-6 h-6 text-[#FCAB17]" />
-              </div>
-              <h4 className="text-lg font-semibold text-[#0F172A]">Award Winning</h4>
-              <p className="text-sm text-[#0F172A]/70 mt-1">Recognized for excellence in early education</p>
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <div className="mb-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-2">
-                <Sparkles className="w-6 h-6 text-[#08472C]" />
-              </div>
-              <h4 className="text-lg font-semibold text-[#0F172A]">Continuous Improvement</h4>
-              <p className="text-sm text-[#0F172A]/70 mt-1">Regular feedback incorporated into our programmes</p>
             </div>
           </div>
         </div>

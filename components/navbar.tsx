@@ -58,7 +58,7 @@ export default function EnhancedNavbar() {
     { href: '/offline-batches', label: 'Offline Batches', icon: <Building className="w-4 h-4" /> },
     { href: '/blog', label: 'Blog', icon: <FileText className="w-4 h-4" /> },
     { href: '/contact', label: 'Contact', icon: <Phone className="w-4 h-4" /> },
-    { href: '/login', label: 'Login', icon: <LogIn className="w-4 h-4" /> },
+    // { href: '/login', label: 'Login', icon: <LogIn className="w-4 h-4" /> },
   ];
 
   const toggleDropdown = (label) => {
@@ -77,19 +77,20 @@ export default function EnhancedNavbar() {
     }`}>
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+          {/* Logo - Updated with larger size and adjusted gap */}
           <Link 
             href="/" 
-            className="flex items-center gap-2 group"
+            className="flex items-center group ml-[-8px] lg:ml-0"
             onClick={() => setIsOpen(false)}
           >
-            <div className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-xl group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <div className="w-28 h-28 lg:w-32 lg:h-32 flex items-center justify-center rounded-2xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
               <Image 
-                src="/logo_1.png" 
-                alt="Evernal Logo" 
-                width={80} 
-                height={80} 
-                className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
+                src="/logo_2-removebg-preview.png" 
+                alt="Evernal Academy Logo" 
+                width={250} 
+                height={250} 
+                className="w-28 h-28 lg:w-32 lg:h-32 object-contain"
+                priority
               />
             </div>
           </Link>
@@ -193,21 +194,21 @@ export default function EnhancedNavbar() {
         <div className={`fixed right-0 top-0 h-full w-4/5 max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
-          {/* Header */}
+          {/* Header - Updated with larger logo */}
           <div className="flex items-center justify-between p-4 border-b border-[#B2C6BD]/30 bg-gradient-to-r from-[#08472C] to-[#0F172A]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 flex items-center justify-center rounded-lg">
+              <div className="w-16 h-16 flex items-center justify-center rounded-lg">
                 <Image 
                   src="/logo_1.png" 
                   alt="Evernal Logo" 
-                  width={40} 
-                  height={40} 
-                  className="w-10 h-10 object-contain"
+                  width={64} 
+                  height={64} 
+                  className="w-16 h-16 object-contain"
                 />
               </div>
               <div>
-                <div className="font-bold text-white text-sm">Evernal</div>
-                <div className="text-xs text-white/70">Menu</div>
+                <div className="font-bold text-white text-lg">Evernal Academy</div>
+                <div className="text-xs text-white/70">Preschool & Daycare</div>
               </div>
             </div>
             <button
@@ -219,10 +220,8 @@ export default function EnhancedNavbar() {
           </div>
 
           {/* Menu Content */}
-          <div className="h-[calc(100vh-73px)] overflow-y-auto bg-gradient-to-b from-white to-[#B2C6BD]/10">
+          <div className="h-[calc(100vh-89px)] overflow-y-auto bg-gradient-to-b from-white to-[#B2C6BD]/10">
             <div className="p-4">
-              {/* Enroll Now Button - Top (Removed from mobile menu) */}
-              
               {/* Main Links List */}
               <div className="space-y-1">
                 {allNavLinks.map((link) => (
@@ -230,17 +229,17 @@ export default function EnhancedNavbar() {
                     <div className="flex items-center justify-between">
                       <Link
                         href={link.href}
-                        className="flex items-center gap-3 px-4 py-3 text-[#0F172A] hover:text-[#08472C] hover:bg-[#B2C6BD]/20 rounded-lg transition-all duration-200 font-medium w-full"
+                        className="flex items-center gap-3 px-4 py-4 text-[#0F172A] hover:text-[#08472C] hover:bg-[#B2C6BD]/20 rounded-lg transition-all duration-200 font-medium w-full"
                         onClick={() => {
                           if (!link.dropdown) {
                             setIsOpen(false);
                           }
                         }}
                       >
-                        <div className="w-8 h-8 flex items-center justify-center bg-[#08472C]/10 rounded-lg">
+                        <div className="w-10 h-10 flex items-center justify-center bg-[#08472C]/10 rounded-lg">
                           {link.icon}
                         </div>
-                        <span className="text-sm">{link.label}</span>
+                        <span className="text-base">{link.label}</span>
                       </Link>
                       
                       {link.dropdown && (
@@ -257,16 +256,16 @@ export default function EnhancedNavbar() {
                     
                     {/* Mobile Dropdown */}
                     {link.dropdown && activeDropdown === link.label && (
-                      <div className="ml-12 my-1 pl-4 border-l-2 border-[#08472C]">
+                      <div className="ml-14 my-1 pl-4 border-l-2 border-[#08472C]">
                         {link.dropdown.map((item, idx) => (
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="flex items-center gap-3 px-4 py-2 text-[#0F172A] hover:text-[#08472C] rounded-lg transition-all duration-200 text-sm"
+                            className="flex items-center gap-3 px-4 py-3 text-[#0F172A] hover:text-[#08472C] rounded-lg transition-all duration-200 text-sm"
                             onClick={() => setIsOpen(false)}
                           >
-                            <div className={`w-2 h-2 rounded-full ${idx === 0 ? 'bg-[#FCAB17]' : idx === 1 ? 'bg-[#08472C]' : idx === 2 ? 'bg-[#0F172A]' : idx === 3 ? 'bg-[#FF6B6B]' : 'bg-[#4ECDC4]'}`}></div>
-                            <span className="font-medium text-xs">{item.label}</span>
+                            <div className={`w-2.5 h-2.5 rounded-full ${idx === 0 ? 'bg-[#FCAB17]' : idx === 1 ? 'bg-[#08472C]' : idx === 2 ? 'bg-[#0F172A]' : idx === 3 ? 'bg-[#FF6B6B]' : 'bg-[#4ECDC4]'}`}></div>
+                            <span className="font-medium text-sm">{item.label}</span>
                           </Link>
                         ))}
                       </div>
@@ -277,42 +276,42 @@ export default function EnhancedNavbar() {
 
               {/* Quick Contact Section */}
               <div className="mt-8 pt-4 border-t border-[#B2C6BD]/30">
-                <h4 className="text-sm font-semibold text-[#0F172A] mb-3">Quick Contact</h4>
-                <div className="space-y-3">
-                  <a href="tel:+919876543210" className="flex items-center gap-3 text-[#08472C] text-sm hover:underline" onClick={() => setIsOpen(false)}>
-                    <div className="w-10 h-10 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5" />
+                <h4 className="text-base font-semibold text-[#0F172A] mb-4">Quick Contact</h4>
+                <div className="space-y-4">
+                  <a href="tel:+919876543210" className="flex items-center gap-4 text-[#08472C] text-base hover:underline" onClick={() => setIsOpen(false)}>
+                    <div className="w-12 h-12 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-medium">Call Us</div>
-                      <div className="text-xs">+91 98765 43210</div>
+                      <div className="font-semibold">Call Us</div>
+                      <div className="text-sm">+91 98765 43210</div>
                     </div>
                   </a>
-                  <a href="mailto:info@evernal.com" className="flex items-center gap-3 text-[#08472C] text-sm hover:underline" onClick={() => setIsOpen(false)}>
-                    <div className="w-10 h-10 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <FileText className="w-5 h-5" />
+                  <a href="mailto:info@evernal.com" className="flex items-center gap-4 text-[#08472C] text-base hover:underline" onClick={() => setIsOpen(false)}>
+                    <div className="w-12 h-12 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <FileText className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-medium">Email Us</div>
-                      <div className="text-xs">info@evernal.com</div>
+                      <div className="font-semibold">Email Us</div>
+                      <div className="text-sm">info@evernal.com</div>
                     </div>
                   </a>
                 </div>
               </div>
 
               {/* Quick Links */}
-              <div className="mt-6 pt-4 border-t border-[#B2C6BD]/30">
-                <div className="grid grid-cols-2 gap-3">
-                  <Link href="/demo" className="text-center px-3 py-2 bg-[#08472C]/5 text-[#08472C] text-xs font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
+              <div className="mt-8 pt-4 border-t border-[#B2C6BD]/30">
+                <div className="grid grid-cols-2 gap-4">
+                  <Link href="/demo" className="text-center px-4 py-3 bg-[#08472C]/5 text-[#08472C] text-sm font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
                     Demo Class
                   </Link>
-                  <Link href="/brochure" className="text-center px-3 py-2 bg-[#08472C]/5 text-[#08472C] text-xs font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
+                  <Link href="/brochure" className="text-center px-4 py-3 bg-[#08472C]/5 text-[#08472C] text-sm font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
                     Brochure
                   </Link>
-                  <Link href="/faq" className="text-center px-3 py-2 bg-[#08472C]/5 text-[#08472C] text-xs font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
+                  <Link href="/faq" className="text-center px-4 py-3 bg-[#08472C]/5 text-[#08472C] text-sm font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
                     FAQ
                   </Link>
-                  <Link href="/enroll" className="text-center px-3 py-2 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-xs font-semibold rounded-lg shadow transition-all" onClick={() => setIsOpen(false)}>
+                  <Link href="/enroll" className="text-center px-4 py-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-sm font-semibold rounded-lg shadow transition-all" onClick={() => setIsOpen(false)}>
                     Enroll Now
                   </Link>
                 </div>

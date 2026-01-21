@@ -25,9 +25,9 @@ export default function CleanHeroSection() {
   }, [isMounted]);
 
   const backgroundImages = [
-    '/landing_img/hero_img_1.jpg',
-    '/landing_img/hero_img_2.jpg',
-    '/landing_img/hero_img_3.jpg'
+    '/landing_img/hero_img_7.png',
+    '/landing_img/hero_img_4.jpg',
+    '/landing_img/hero_img_6.avif'
   ];
 
   const stats = [
@@ -122,7 +122,7 @@ export default function CleanHeroSection() {
           <div className="inline-block animate-fade-in mb-6">
             <div className="flex items-center gap-2 bg-gradient-to-r from-[#08472C]/20 to-[#08472C]/10 backdrop-blur-sm px-3 py-2 rounded-full border border-[#08472C]/30">
               <div className="w-2 h-2 rounded-full bg-[#08472C] animate-pulse"></div>
-              <span className="text-white font-semibold text-xs">Evernal - Nurturing Young Minds Since 2010</span>
+              <span className="text-white font-semibold text-xs">Evernal Academy</span>
             </div>
           </div>
 
@@ -167,7 +167,7 @@ export default function CleanHeroSection() {
             <div className="inline-block animate-fade-in">
               <div className="flex items-center gap-2 md:gap-3 bg-gradient-to-r from-[#08472C]/20 to-[#08472C]/10 backdrop-blur-sm px-3 md:px-4 py-2 md:py-2.5 rounded-full border border-[#08472C]/30">
                 <div className="w-2 h-2 rounded-full bg-[#08472C] animate-pulse"></div>
-                <span className="text-white font-semibold text-xs md:text-sm">Evernal - Nurturing Young Minds Since 2010</span>
+                <span className="text-white font-semibold text-xs md:text-sm">Evernal Academy</span>
               </div>
             </div>
 

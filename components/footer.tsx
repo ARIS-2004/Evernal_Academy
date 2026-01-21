@@ -34,7 +34,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 md:w-24 md:h-24 relative">
               <Image
-                src="/logo_2.png"
+                src="/logo_2-removebg-preview.png"
                 alt="Evernal Academy Logo"
                 fill
                 className="object-contain"
@@ -114,7 +114,7 @@ export default function Footer() {
                 { name: "Kindergarten (4-6 Years)", href: "/programmes/kindergarten" },
                 { name: "Daycare Facility", href: "/programmes/daycare" },
                 { name: "Teacher Training", href: "/programmes/teacher-training" },
-                { name: "Summer Workshops", href: "/programmes/summer" },
+                // { name: "Summer Workshops", href: "/programmes/summer" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
@@ -134,11 +134,12 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-6 text-white">Quick Links</h4>
             <ul className="space-y-3">
               {[
+                 { name: "About", href: "/aabout" },
                 { name: "Admissions", href: "/admissions" },
                 { name: "Gallery", href: "/gallery" },
-                { name: "Parent Testimonials", href: "/testimonials" },
+                { name: "Success Stories", href: "/success-stories" },
                 { name: "Blog & Articles", href: "/blog" },
-                { name: "FAQ", href: "/faq" },
+                { name: "Franchise", href: "/franchise" },
                 { name: "Contact Us", href: "/contact" },
               ].map((item) => (
                 <li key={item.name}>
@@ -255,9 +256,9 @@ export default function Footer() {
                 <Link href="/refund-policy" className="hover:text-[#FCAB17] transition-colors">
                   Refund Policy
                 </Link>
-                <Link href="/sitemap" className="hover:text-[#FCAB17] transition-colors">
+                {/* <Link href="/sitemap" className="hover:text-[#FCAB17] transition-colors">
                   Sitemap
-                </Link>
+                </Link> */}
               </div>
             </div>
 

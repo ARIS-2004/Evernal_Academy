@@ -201,10 +201,10 @@ export default function TeachersSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-5 py-2.5 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+          {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-5 py-2.5 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
             <Heart className="w-4 h-4 text-[#FCAB17]" />
             Meet Our Dedicated Educators
-          </div>
+          </div> */}
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-4">
             Our <span className="text-[#08472C]">Passionate</span> Teaching Team
@@ -214,7 +214,7 @@ export default function TeachersSection() {
           </p>
           
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
+          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
             <div className="text-center p-4 bg-white rounded-xl border border-[#B2C6BD]/30 shadow-sm">
               <div className="text-2xl md:text-3xl font-bold text-[#08472C]">15+</div>
               <div className="text-sm text-[#0F172A]/70">Years Average Experience</div>
@@ -231,7 +231,7 @@ export default function TeachersSection() {
               <div className="text-2xl md:text-3xl font-bold text-[#08472C]">1:8</div>
               <div className="text-sm text-[#0F172A]/70">Teacher-Student Ratio</div>
             </div>
-          </div>
+          </div> */}
           
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -369,7 +369,7 @@ export default function TeachersSection() {
         </div>
 
         {/* Additional Info Section */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 bg-gradient-to-r from-[#08472C]/5 via-[#B2C6BD]/10 to-[#FCAB17]/5 rounded-2xl p-8 border border-[#B2C6BD]/30">
+        {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 bg-gradient-to-r from-[#08472C]/5 via-[#B2C6BD]/10 to-[#FCAB17]/5 rounded-2xl p-8 border border-[#B2C6BD]/30">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full mb-4 shadow-sm">
               <Target className="w-6 h-6 text-[#FCAB17]" />
@@ -399,7 +399,7 @@ export default function TeachersSection() {
               Multiple awards for excellence in early childhood education
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* CTA Section */}
         {/* <div className="mt-16 text-center">

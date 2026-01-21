@@ -8,7 +8,7 @@ const programmes = [
   {
     title: 'PlayGroup',
     desc: 'Children in this age group are identified as Toddlers. Children are born curious. They begin to explore the world around them through sensory play and guided activities.',
-    img: 'https://images.unsplash.com/photo-1541692641319-981cc79ee10a?w=800&auto=format&fit=crop',
+    img: '/landing_img/PlayGroup_img.avif',
     age: '2 – 3 Years',
     duration: '3 Hours/Day',
     features: ['Sensory Play', 'Motor Skills', 'Social Interaction'],
@@ -18,7 +18,7 @@ const programmes = [
   {
     title: 'Nursery',
     desc: 'The child is now identified as a Pre-schooler. Mandatory level 1 of Foundational Stage as per NEP. Focus on language development and basic concepts.',
-    img: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w-800&auto=format&fit=crop',
+    img: '/landing_img/Nursery_img.jpg',
     age: '3 – 4 Years',
     duration: '3 Hours/Day',
     features: ['Language Skills', 'Basic Concepts', 'Creative Arts'],
@@ -28,7 +28,7 @@ const programmes = [
   {
     title: 'Junior KG / Senior KG',
     desc: 'This is level 2 and 3 of Foundational Stage 1 – Mandatory as per NEP. Advanced learning with structured activities and skill development.',
-    img: 'https://images.unsplash.com/photo-1516627145497-ae6954783b6c?w=800&auto=format&fit=crop',
+    img: '/landing_img/Junior KG_img.jpg',
     age: '4 – 6 Years',
     duration: '4 Hours/Day',
     features: ['Academic Readiness', 'Problem Solving', 'Team Activities'],
@@ -38,7 +38,7 @@ const programmes = [
   {
     title: 'Teacher Training Programme',
     desc: 'Teacher Training Programme has set unrivalled standards in the CDE space as a leader in ECCE. Comprehensive training for aspiring educators.',
-    img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop',
+    img: '/landing_img/Teacher Training Programme.webp',
     age: 'Adults',
     duration: '6 Months Course',
     features: ['ECE Certification', 'Practical Training', 'Placement Support'],
@@ -55,10 +55,7 @@ export default function ProgrammesSection() {
       <div className="max-w-7xl mx-auto">
         {/* Heading Section */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 px-5 py-2.5 rounded-full text-sm font-semibold text-[#08472C] mb-6 border border-[#08472C]/20">
-            <Star className="w-4 h-4 text-[#FCAB17]" />
-            Our Educational Programmes
-          </div>
+        
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-4">
             Nurturing <span className="text-[#08472C]">Young Minds</span> at Every Stage

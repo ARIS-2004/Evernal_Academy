@@ -30,7 +30,7 @@ export default function CTASection() {
         <div className="relative mb-12">
           <div className="w-24 h-1 bg-gradient-to-r from-[#FCAB17] to-transparent rounded-full mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Join hundreds of happy parents who have chosen Jaiago Academy for their children's 
+            Join hundreds of happy parents who have chosen Evernal Academy for their children's 
             early education. Give your child the best start in their learning journey.
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function CTASection() {
             
             <div className="group">
               <a
-                href="mailto:admission@jaiagoacademy.com"
+                href="mailto:admission@Evernalacademy.com"
                 className="flex items-center justify-center md:justify-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-[#FCAB17]/30"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-[#FCAB17] to-[#FFD700] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -111,7 +111,7 @@ export default function CTASection() {
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-white/70 mb-1">Email for inquiries</p>
-                  <p className="font-bold text-white group-hover:text-[#FCAB17] transition-colors duration-300">admission@jaiagoacademy.com</p>
+                  <p className="font-bold text-white group-hover:text-[#FCAB17] transition-colors duration-300">admission@Evernalacademy.com</p>
                 </div>
               </a>
             </div>

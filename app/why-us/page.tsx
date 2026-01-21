@@ -28,7 +28,7 @@ export default function WhyUsPage() {
           <div className="absolute inset-0 "></div>
           <Image
             src="/pexels-yankrukov-8617970.jpg"
-            alt="Children learning and playing at Jaiago Academy"
+            alt="Children learning and playing at Evernal Academy"
             fill
             className="object-cover mix-blend-overlay"
             priority
@@ -89,7 +89,7 @@ export default function WhyUsPage() {
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-6">
               <Target className="w-4 h-4 text-[#08472C]" />
-              <span className="text-[#08472C] font-semibold text-sm md:text-base">WHY JAIAGO ACADEMY?</span>
+              <span className="text-[#08472C] font-semibold text-sm md:text-base">WHY Evernal ACADEMY?</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Why Parents Trust Us For Their <span className="text-[#FCAB17]">Children's Future</span>
@@ -390,7 +390,7 @@ export default function WhyUsPage() {
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#FCAB17] to-transparent mx-auto mb-8 rounded-full"></div>
             <p className="text-lg md:text-xl text-[#0F172A]/70 max-w-2xl mx-auto">
-              See the difference between Jaiago Academy and traditional preschools
+              See the difference between Evernal Academy and traditional preschools
             </p>
           </div>
 
@@ -405,7 +405,7 @@ export default function WhyUsPage() {
                         <div className="w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center">
                           <Star className="w-3 h-3 md:w-4 md:h-4 text-[#08472C]" />
                         </div>
-                        <span>Jaiago Academy</span>
+                        <span>Evernal Academy</span>
                       </div>
                     </th>
                     <th className="px-4 md:px-8 py-4 md:py-6 text-center font-bold text-base md:text-lg">Other Preschools</th>
@@ -566,7 +566,7 @@ export default function WhyUsPage() {
             Ready to Start Your Child's <span className="text-[#FCAB17]">Learning Journey</span>?
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of happy parents who have chosen Jaiago Academy for their children's early education
+            Join hundreds of happy parents who have chosen Evernal Academy for their children's early education
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-10 md:mb-12">

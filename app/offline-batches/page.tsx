@@ -289,7 +289,7 @@ export default function OfflineBatchesPage() {
                   <MapPin className="w-5 h-5 md:w-6 md:h-6 text-[#08472C]" />
                   <h4 className="font-bold text-[#0F172A] text-lg md:text-xl">Location</h4>
                 </div>
-                <p className="text-[#0F172A]/70 mb-2">Jaiago Academy Campus</p>
+                <p className="text-[#0F172A]/70 mb-2">Evernal Academy Campus</p>
                 <p className="text-[#0F172A]/70 mb-4">[Your City, Bangladesh]</p>
                 <a href="/visit" className="inline-flex items-center gap-1 text-[#08472C] font-semibold hover:text-[#FCAB17] transition-colors text-sm md:text-base">
                   Schedule a Visit <ChevronRight className="w-4 h-4" />
@@ -613,7 +613,7 @@ export default function OfflineBatchesPage() {
               <div className="bg-gradient-to-r from-[#08472C] to-[#0F5C3C] rounded-xl md:rounded-2xl h-64 md:h-80 flex items-center justify-center">
                 <div className="text-center text-white p-4 md:p-6">
                   <MapPin className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4" />
-                  <p className="text-xl md:text-2xl font-semibold">Jaiago Academy Campus</p>
+                  <p className="text-xl md:text-2xl font-semibold">Evernal Academy Campus</p>
                   <p className="text-white/80 mt-2 text-sm md:text-base">[Enter your campus address here]</p>
                 </div>
               </div>
@@ -629,7 +629,7 @@ export default function OfflineBatchesPage() {
                       <MapPin className="w-5 h-5 text-[#08472C]" />
                       <h4 className="font-semibold text-[#0F172A]">Address</h4>
                     </div>
-                    <p className="text-[#0F172A]/70 text-sm md:text-base">Jaiago Academy Campus</p>
+                    <p className="text-[#0F172A]/70 text-sm md:text-base">Evernal Academy Campus</p>
                     <p className="text-[#0F172A]/70 text-sm md:text-base">[Your City, Bangladesh]</p>
                   </div>
                   
@@ -648,7 +648,7 @@ export default function OfflineBatchesPage() {
                       <h4 className="font-semibold text-[#0F172A]">Contact</h4>
                     </div>
                     <p className="text-[#0F172A]/70 text-sm md:text-base">Phone: +880 XXXX-XXXXXX</p>
-                    <p className="text-[#0F172A]/70 text-sm md:text-base">Email: admission@jaiagoacademy.com</p>
+                    <p className="text-[#0F172A]/70 text-sm md:text-base">Email: admission@Evernalacademy.com</p>
                   </div>
                   
                   <a

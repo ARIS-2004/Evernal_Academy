@@ -80,7 +80,7 @@ export default function AdmissionsPage() {
 
   const faqs = [
     {
-      question: 'What sets Jaiago\'s curriculum apart from other preschools?',
+      question: 'What sets evernal\'s curriculum apart from other preschools?',
       answer: 'Our curriculum is based on the PéNTEMiND framework, a scientifically designed approach that focuses on holistic development through play-based learning, creativity, and life skills development tailored for early childhood education.'
     },
     {
@@ -92,11 +92,11 @@ export default function AdmissionsPage() {
       answer: 'We follow a child-centered approach combining Montessori principles with modern pedagogical methods. Our focus is on nurturing each child\'s unique potential through experiential learning and creative exploration.'
     },
     {
-      question: 'What is the teacher-to-child ratio at Jaiago?',
+      question: 'What is the teacher-to-child ratio at Evernal?',
       answer: 'We maintain an optimal 1:8 teacher-child ratio to ensure personalized attention and care for every child, allowing our educators to focus on individual learning needs and development.'
     },
     {
-      question: 'What safety measures are in place at Jaiago?',
+      question: 'What safety measures are in place at Evernal?',
       answer: 'We have comprehensive safety protocols including CCTV surveillance, secure entry systems, trained staff, regular health check-ups, and child-friendly facilities with soft play areas and hygienic practices.'
     }
   ];
@@ -570,7 +570,7 @@ export default function AdmissionsPage() {
               <Mail className="w-8 h-8 text-[#FCAB17]" />
               <div>
                 <p className="text-white/80 mb-1">Email us at</p>
-                <p className="text-xl font-bold text-white">admissions@jaiagoacademy.com</p>
+                <p className="text-xl font-bold text-white">admissions@Evernalacademy.com</p>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">

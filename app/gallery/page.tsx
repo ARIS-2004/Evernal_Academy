@@ -114,7 +114,7 @@ const galleryVideos = [
   {
     id: 1,
     thumbnail: '/gallery/video-thumb-1.jpg',
-    title: 'A Day at Jaiago Academy',
+    title: 'A Day at Evernal Academy',
     category: 'Campus Tour',
     duration: '4:32',
     views: '1.2K',
@@ -254,7 +254,7 @@ export default function GalleryPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#08472C]/90 via-[#0F172A]/80 to-[#08472C]/90"></div>
           <Image
             src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-            alt="Children playing and learning at Jaiago Academy"
+            alt="Children playing and learning at Evernal Academy"
             fill
             className="object-cover mix-blend-overlay"
             priority

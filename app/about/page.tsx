@@ -21,7 +21,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#08472C]/90 via-[#08472C]/80 to-[#0F172A]/90"></div>
           <Image
             src="/about_img/hero_sections_img.jpg"
-            alt="Jaiago Academy Children Playing"
+            alt="Evernal Academy Children Playing"
             fill
             className="object-cover"
             priority
@@ -39,7 +39,7 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FCAB17]/20 to-[#FFD700]/10 backdrop-blur-sm px-6 py-3 rounded-full border border-[#FCAB17]/30 mb-8">
             <Heart className="w-5 h-5 text-[#FCAB17] animate-pulse" />
-            <span className="text-white font-medium">Welcome to Jaiago Academy</span>
+            <span className="text-white font-medium">Welcome to Evernal Academy</span>
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
@@ -71,11 +71,11 @@ export default function AboutPage() {
               Our Story & Philosophy
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
-              Welcome to <span className="text-[#08472C]">Jaiago Academy</span>
+              Welcome to <span className="text-[#08472C]">Evernal Academy</span>
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#08472C] to-[#FCAB17] mx-auto mb-8 rounded-full"></div>
             <p className="text-lg text-[#0F172A]/70 max-w-4xl mx-auto leading-relaxed">
-              Founded in 2010, Jaiago Academy was born from a simple belief: every child deserves 
+              Founded in 2010, Evernal Academy was born from a simple belief: every child deserves 
               a nurturing environment where they can grow, explore, and discover their unique potential 
               through play, creativity, and guided learning.
             </p>
@@ -315,7 +315,7 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Calendar className="w-4 h-4 text-[#FCAB17]" />
-              A Day at Jaiago
+              A Day at Evernal
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Our <span className="text-[#08472C]">Daily Schedule</span>
@@ -501,7 +501,7 @@ export default function AboutPage() {
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#08472C] to-[#FCAB17] mx-auto mb-8 rounded-full"></div>
             <p className="text-lg text-[#0F172A]/70 max-w-2xl mx-auto">
-              Hear from parents who have chosen Jaiago Academy for their child's early education
+              Hear from parents who have chosen Evernal Academy for their child's early education
             </p>
           </div>
 
@@ -511,7 +511,7 @@ export default function AboutPage() {
                 name: "Priya Sharma",
                 child: "Aarav (4 years)",
                 programme: "Kindergarten",
-                testimonial: "My son looks forward to school every day! The teachers are so loving and patient. His confidence has grown tremendously since joining Jaiago.",
+                testimonial: "My son looks forward to school every day! The teachers are so loving and patient. His confidence has grown tremendously since joining Evernal.",
                 rating: 5,
                 avatar: "👩‍👦"
               },
@@ -738,7 +738,7 @@ export default function AboutPage() {
               <Mail className="w-8 h-8 text-[#FCAB17]" />
               <div>
                 <p className="text-white/80 mb-1">Email us at</p>
-                <p className="text-xl font-bold text-white">info@jaiagoacademy.com</p>
+                <p className="text-xl font-bold text-white">info@evernalacademy.com</p>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">

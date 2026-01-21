@@ -173,7 +173,7 @@ export default function SuccessStoriesPage() {
           <div className="absolute inset-0 "></div>
           <Image
             src="/children-boy-girl-reading-book-600nw-2672857949.webp"
-            alt="Happy children playing and learning at Jaiago Academy"
+            alt="Happy children playing and learning at Evernal Academy"
             fill
             className="object-cover mix-blend-overlay"
             priority
@@ -468,7 +468,7 @@ export default function SuccessStoriesPage() {
             Ready to See Your Child <span className="text-[#FCAB17]">Blossom</span>?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of happy parents who have chosen Jaiago Academy for their children's early development
+            Join hundreds of happy parents who have chosen Evernal Academy for their children's early development
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

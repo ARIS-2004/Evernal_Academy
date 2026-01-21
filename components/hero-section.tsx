@@ -124,7 +124,7 @@ export default function CleanHeroSection() {
             <div className="inline-block animate-fade-in">
               <div className="flex items-center gap-2 md:gap-3 bg-gradient-to-r from-[#08472C]/20 to-[#08472C]/10 backdrop-blur-sm px-3 md:px-4 py-2 md:py-2.5 rounded-full border border-[#08472C]/30">
                 <div className="w-2 h-2 rounded-full bg-[#08472C] animate-pulse"></div>
-                <span className="text-white font-semibold text-xs md:text-sm">JA IAGO - Nurturing Young Minds Since 2010</span>
+                <span className="text-white font-semibold text-xs md:text-sm">Evernal - Nurturing Young Minds Since 2010</span>
               </div>
             </div>
 

@@ -9,7 +9,7 @@ const testimonials = [
     name: 'Priya Sharma',
     course: 'PlayGroup',
     position: 'Parent',
-    company: 'Jaiago Academy',
+    company: 'Evernal Academy',
     review: 'My 2-year-old absolutely loves coming to school! The teachers are incredibly caring and the activities are perfect for his age. Seeing him learn through play has been amazing.',
     rating: 5,
     image: '👩‍👦',
@@ -23,7 +23,7 @@ const testimonials = [
     name: 'Rajesh Mehta',
     course: 'Kindergarten',
     position: 'Parent',
-    company: 'Jaiago Academy',
+    company: 'Evernal Academy',
     review: 'The progress my daughter has made in just 6 months is remarkable. She\'s confident, curious, and loves learning. The holistic approach focusing on all aspects of development is wonderful.',
     rating: 5,
     image: '👨‍👧',
@@ -37,7 +37,7 @@ const testimonials = [
     name: 'Sunita Reddy',
     course: 'Nursery',
     position: 'Parent',
-    company: 'Jaiago Academy',
+    company: 'Evernal Academy',
     review: 'As a working parent, the safety and care provided gives me complete peace of mind. The regular updates and parent-teacher meetings keep me involved in my child\'s progress.',
     rating: 5,
     image: '👩‍💼',
@@ -51,7 +51,7 @@ const testimonials = [
     name: 'Vikram Singh',
     course: 'Teacher Training',
     position: 'Educator',
-    company: 'Jaiago Academy',
+    company: 'Evernal Academy',
     review: 'The teacher training programme here is exceptional. Practical training combined with theory prepared me perfectly for early childhood education. Highly recommended!',
     rating: 5,
     image: '👨‍🏫',
@@ -65,7 +65,7 @@ const testimonials = [
     name: 'Anjali Patel',
     course: 'Daycare',
     position: 'Parent',
-    company: 'Jaiago Academy',
+    company: 'Evernal Academy',
     review: 'The daycare facility is excellent. My child gets nutritious meals, proper rest, and engaging activities. The staff is trained and caring. Couldn\'t ask for more!',
     rating: 5,
     image: '👩‍👧',
@@ -155,7 +155,7 @@ export default function TestimonialsSection() {
           
           
           <p className="text-[#0F172A]/70 text-lg max-w-2xl mx-auto">
-            Hear from our parents and educators about their wonderful experiences at Jaiago Academy
+            Hear from our parents and educators about their wonderful experiences at Evernal Academy
           </p>
         </div>
 

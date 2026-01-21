@@ -227,76 +227,117 @@ export default function OfflineBatchesPage() {
       </section>
 
       {/* Academy Facilities */}
-      <section className="py-12 md:py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0F172A] mb-3 md:mb-4">
-              Our <span className="text-[#08472C]">Child-Friendly</span> Facilities
-            </h2>
-            <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-[#FCAB17] to-transparent mx-auto mb-4 md:mb-6 rounded-full"></div>
-            <p className="text-base md:text-lg text-[#0F172A]/70 max-w-3xl mx-auto">
-              Safe, colorful, and stimulating environment for joyful learning
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6">
-                {[
-                  { name: 'Play Area', color: 'from-[#08472C] to-[#0F5C3C]', icon: Gamepad },
-                  { name: 'Art Corner', color: 'from-[#FCAB17] to-[#FFD700]', icon: Art },
-                  { name: 'Music Room', color: 'from-[#B2C6BD] to-white', icon: MusicIcon },
-                  { name: 'Outdoor Garden', color: 'from-[#08472C] to-[#0F172A]', icon: TreePine },
-                ].map((facility, i) => {
-                  const Icon = facility.icon;
-                  return (
-                    <div key={i} className="relative h-32 md:h-40 rounded-lg md:rounded-xl overflow-hidden group">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${facility.color} flex flex-col items-center justify-center p-4`}>
-                        <Icon className="w-8 h-8 md:w-10 md:h-10 text-white mb-2" />
-                        <span className="text-white font-semibold text-sm md:text-base text-center">{facility.name}</span>
-                      </div>
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] mb-4 md:mb-6">Academy Highlights</h3>
-              <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
-                {[
-                  'Colorful, child-friendly classrooms with age-appropriate furniture',
-                  'CCTV monitored premises with secure entry/exit',
-                  'Sanitized play equipment and learning materials',
-                  'First-aid trained staff and pediatrician on call',
-                  'Safe indoor and outdoor play areas',
-                  'Clean, hygienic washrooms with child-sized fixtures',
-                  'Well-ventilated, air-conditioned learning spaces',
-                  'Organic meal options available (optional)',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-[#08472C] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#0F172A] text-sm md:text-base">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/10 rounded-xl md:rounded-2xl p-4 md:p-6 border border-[#B2C6BD]/30">
-                <div className="flex items-center gap-3 mb-3">
-                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-[#08472C]" />
-                  <h4 className="font-bold text-[#0F172A] text-lg md:text-xl">Location</h4>
+    <section className="py-12 md:py-16 px-4 bg-white">
+  <div className="max-w-7xl mx-auto">
+    {/* Heading */}
+    <div className="text-center mb-8 md:mb-12">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0F172A] mb-3 md:mb-4">
+        Our <span className="text-[#08472C]">Child-Friendly</span> Facilities
+      </h2>
+      <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-[#FCAB17] to-transparent mx-auto mb-4 md:mb-6 rounded-full"></div>
+      <p className="text-base md:text-lg text-[#0F172A]/70 max-w-3xl mx-auto">
+        Safe, colorful, and stimulating environment for joyful learning
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      
+      {/* Facility Boxes */}
+      <div>
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          {[
+            {
+              name: 'Play Area',
+              color: 'from-[#08472C] to-[#0F5C3C]',
+              icon: Gamepad,
+            },
+            {
+              name: 'Art Corner',
+              color: 'from-[#FCAB17] to-[#FFD700]',
+              icon: Art,
+            },
+            {
+              name: 'Music Room',
+              color: 'from-[#7C3AED] to-[#A78BFA]', // FIXED
+              icon: MusicIcon,
+            },
+            {
+              name: 'Outdoor Garden',
+              color: 'from-[#0F5C3C] to-[#0F172A]',
+              icon: TreePine,
+            },
+          ].map((facility, i) => {
+            const Icon = facility.icon;
+            return (
+              <div
+                key={i}
+                className="relative h-36 md:h-44 rounded-xl overflow-hidden group shadow-md hover:shadow-xl transition-all"
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${facility.color} flex flex-col items-center justify-center p-4`}
+                >
+                  <Icon className="w-10 h-10 md:w-12 md:h-12 text-white mb-2 drop-shadow-lg" />
+                  <span className="text-white font-semibold text-sm md:text-base text-center">
+                    {facility.name}
+                  </span>
                 </div>
-                <p className="text-[#0F172A]/70 mb-2">Evernal Academy Campus</p>
-                <p className="text-[#0F172A]/70 mb-4">[Your City, Bangladesh]</p>
-                <a href="/visit" className="inline-flex items-center gap-1 text-[#08472C] font-semibold hover:text-[#FCAB17] transition-colors text-sm md:text-base">
-                  Schedule a Visit <ChevronRight className="w-4 h-4" />
-                </a>
+
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
-      </section>
+      </div>
+
+      {/* Right Content */}
+      <div>
+        <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] mb-4 md:mb-6">
+          Academy Highlights
+        </h3>
+
+        <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
+          {[
+            'Colorful, child-friendly classrooms with age-appropriate furniture',
+            'CCTV monitored premises with secure entry/exit',
+            'Sanitized play equipment and learning materials',
+            'First-aid trained staff and pediatrician on call',
+            'Safe indoor and outdoor play areas',
+            'Clean, hygienic washrooms with child-sized fixtures',
+            'Well-ventilated, air-conditioned learning spaces',
+            'Organic meal options available (optional)',
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-[#08472C] mt-0.5 flex-shrink-0" />
+              <span className="text-[#0F172A] text-sm md:text-base">
+                {item}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Location Box */}
+        <div className="bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/10 rounded-xl md:rounded-2xl p-4 md:p-6 border border-[#B2C6BD]/30">
+          <div className="flex items-center gap-3 mb-3">
+            <MapPin className="w-5 h-5 md:w-6 md:h-6 text-[#08472C]" />
+            <h4 className="font-bold text-[#0F172A] text-lg md:text-xl">
+              Location
+            </h4>
+          </div>
+          <p className="text-[#0F172A]/70 mb-2">Evernal Academy Campus</p>
+          <p className="text-[#0F172A]/70 mb-4">[Your City, Bangladesh]</p>
+
+          <a
+            href="/visit"
+            className="inline-flex items-center gap-1 text-[#08472C] font-semibold hover:text-[#FCAB17] transition-colors text-sm md:text-base"
+          >
+            Schedule a Visit <ChevronRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Daily Schedule */}
       <section className="py-12 md:py-16 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
@@ -664,7 +705,7 @@ export default function OfflineBatchesPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 md:py-16 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
+      {/* <section className="py-12 md:py-16 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0F172A] mb-3 md:mb-4">
@@ -711,7 +752,7 @@ export default function OfflineBatchesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Final CTA */}
       {/* <section className="py-12 md:py-16 px-4 bg-gradient-to-r from-[#08472C] via-[#0F172A] to-[#08472C]">

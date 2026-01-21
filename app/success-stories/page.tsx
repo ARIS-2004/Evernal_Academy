@@ -169,9 +169,9 @@ export default function SuccessStoriesPage() {
       {/* Hero Section */}
       <section className="relative py-16 md:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 "></div>
+          <div className="absolute inset-0 item-center"></div>
           <Image
-            src="/children-boy-girl-reading-book-600nw-2672857949.webp"
+            src="/about_img/OYW1PzYMTXWHCl_MorWqeg.jpg"
             alt="Happy children playing and learning at Evernal Academy"
             fill
             className="object-cover mix-blend-overlay"
@@ -196,10 +196,10 @@ export default function SuccessStoriesPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-4">
             <Sparkles className="w-4 h-4 text-[#FCAB17]" />
             <span className="text-white font-medium text-sm md:text-base">HAPPY PARENTS, HAPPY CHILDREN</span>
-          </div>
+          </div> */}
           
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
             Our <span className="text-[#FCAB17]">Happy Children</span> Stories
@@ -253,10 +253,10 @@ export default function SuccessStoriesPage() {
       <section id="stories-slider" className="py-16 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-4">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-4">
               <Heart className="w-4 h-4 text-[#08472C]" />
               <span className="text-[#08472C] font-semibold text-sm md:text-base">HAPPY CHILDREN'S JOURNEYS</span>
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">
               From <span className="text-[#08472C]">First Steps</span> to <span className="text-[#FCAB17]">Confident Strides</span>
             </h2>
@@ -339,10 +339,10 @@ export default function SuccessStoriesPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FCAB17]/10 to-[#FFD700]/10 rounded-full mb-4">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FCAB17]/10 to-[#FFD700]/10 rounded-full mb-4">
               <Rocket className="w-4 h-4 text-[#FCAB17]" />
               <span className="text-[#FCAB17] font-semibold">DEVELOPMENT JOURNEY</span>
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">
               How Children <span className="text-[#08472C]">Grow & Develop</span> With Us
             </h2>
@@ -397,50 +397,61 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* Activities Showcase - Gradient Background */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#08472C] to-[#0F172A]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Our Fun <span className="text-[#FCAB17]">Learning Activities</span>
-            </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              See what makes our children happy and engaged every day
-            </p>
-          </div>
+    <section className="py-16 px-4 bg-gradient-to-br from-[#08472C] to-[#0F172A]">
+  <div className="max-w-7xl mx-auto">
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {[
-              { name: "Art & Craft", icon: <Palette className="w-6 h-6 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
-              { name: "Music & Dance", icon: <Music className="w-6 h-6 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
-              { name: "Story Time", icon: <BookOpen className="w-6 h-6 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
-              { name: "Outdoor Play", icon: <Gamepad className="w-6 h-6 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
-              { name: "Water Play", icon: "💧", color: "bg-blue-500/10" },
-              { name: "Puppet Show", icon: "🎭", color: "bg-purple-500/10" },
-              { name: "Sand Play", icon: "🏖️", color: "bg-yellow-500/10" },
-              { name: "Nature Walk", icon: "🌿", color: "bg-green-500/10" },
-              { name: "Role Play", icon: "👨‍⚕️", color: "bg-red-500/10" },
-              { name: "Puzzle Time", icon: "🧩", color: "bg-orange-500/10" },
-              { name: "Building Blocks", icon: "🧱", color: "bg-blue-500/10" },
-              { name: "Cooking Fun", icon: "👩‍🍳", color: "bg-pink-500/10" }
-            ].map((activity, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#FCAB17]/50 transition-all duration-300 group">
-                <div className="text-center">
-                  <div className={`w-12 h-12 ${activity.color} rounded-full flex items-center justify-center mb-2 mx-auto group-hover:scale-110 transition-transform duration-300`}>
-                    {typeof activity.icon === 'string' ? (
-                      <span className="text-xl">{activity.icon}</span>
-                    ) : (
-                      activity.icon
-                    )}
-                  </div>
-                  <div className="font-bold text-white text-xs group-hover:text-[#FCAB17] transition-colors">
-                    {activity.name}
-                  </div>
-                </div>
-              </div>
-            ))}
+    {/* Heading */}
+    <div className="text-center mb-10">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        Our Fun <span className="text-[#FCAB17]">Learning Activities</span>
+      </h2>
+      <p className="text-lg text-white/80 max-w-2xl mx-auto">
+        See what makes our children happy and engaged every day
+      </p>
+    </div>
+
+    {/* Activities */}
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      {[
+        { name: "Art & Craft", icon: <Palette className="w-7 h-7 md:w-8 md:h-8 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
+        { name: "Music & Dance", icon: <Music className="w-7 h-7 md:w-8 md:h-8 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
+        { name: "Story Time", icon: <BookOpen className="w-7 h-7 md:w-8 md:h-8 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
+        { name: "Outdoor Play", icon: <Gamepad className="w-7 h-7 md:w-8 md:h-8 text-[#FCAB17]" />, color: "bg-[#FCAB17]/10" },
+        { name: "Water Play", icon: "💧", color: "bg-blue-500/10" },
+        { name: "Puppet Show", icon: "🎭", color: "bg-purple-500/10" },
+        { name: "Sand Play", icon: "🏖️", color: "bg-yellow-500/10" },
+        { name: "Nature Walk", icon: "🌿", color: "bg-green-500/10" },
+        { name: "Role Play", icon: "👨‍⚕️", color: "bg-red-500/10" },
+        { name: "Puzzle Time", icon: "🧩", color: "bg-orange-500/10" },
+        { name: "Building Blocks", icon: "🧱", color: "bg-blue-500/10" },
+        { name: "Cooking Fun", icon: "👩‍🍳", color: "bg-pink-500/10" },
+      ].map((activity, index) => (
+        <div
+          key={index}
+          className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#FCAB17]/50 transition-all duration-300 group"
+        >
+          <div className="text-center">
+            <div
+              className={`w-14 h-14 md:w-16 md:h-16 ${activity.color} rounded-full flex items-center justify-center mb-3 mx-auto group-hover:scale-110 transition-transform duration-300`}
+            >
+              {typeof activity.icon === "string" ? (
+                <span className="text-2xl md:text-3xl">{activity.icon}</span>
+              ) : (
+                activity.icon
+              )}
+            </div>
+
+            <div className="font-semibold text-white text-sm md:text-base group-hover:text-[#FCAB17] transition-colors">
+              {activity.name}
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
       {/* Final CTA - Gradient Background */}
       <section className="py-16 px-4 relative overflow-hidden">
@@ -458,10 +469,10 @@ export default function SuccessStoriesPage() {
         </div>
         
         <div className="max-w-4xl mx-auto text-center text-white relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
             <Quote className="w-4 h-4 text-[#FCAB17]" />
             <span className="font-bold text-sm">YOUR CHILD'S HAPPY JOURNEY STARTS HERE</span>
-          </div>
+          </div> */}
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Ready to See Your Child <span className="text-[#FCAB17]">Blossom</span>?

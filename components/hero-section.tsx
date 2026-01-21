@@ -225,79 +225,97 @@ export default function CleanHeroSection() {
 
           {/* Right Side - Stats Card - Mobile First */}
           <div className="bg-gradient-to-br from-[#08472C]/95 to-[#0F5C3C]/90 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl border border-white/30 p-4 md:p-6 lg:p-8 transform hover:scale-[1.02] transition-all duration-500">
-            
-            {/* Academy Info */}
-            <div className="text-center mb-6 md:mb-8">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br from-white to-[#B2C6BD] flex items-center justify-center mb-3 md:mb-4 mx-auto shadow-lg">
-                <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#08472C] to-[#0F5C3C] bg-clip-text text-transparent">EA</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white">Evernal Academy</h3>
-              <p className="text-white/90 text-xs md:text-sm font-medium mt-1">Nurturing Future Leaders</p>
-              
-              {/* Divider */}
-              <div className="w-12 md:w-16 h-0.5 md:h-1 bg-gradient-to-r from-[#FCAB17] to-transparent rounded-full mx-auto mt-2 md:mt-3"></div>
-            </div>
+  
+  {/* Academy Info */}
+  <div className="text-center mb-6 md:mb-8">
+    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl md:rounded-2xl bg-white flex items-center justify-center mb-3 md:mb-4 mx-auto shadow-lg">
+      <img
+        src="/logo_crop.png"
+        alt="Evernal Academy Logo"
+        className="w-14 h-14 md:w-16 md:h-16 object-contain"
+      />
+    </div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
-              {stats.map((stat, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/15 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 text-center hover:shadow-md transition-all duration-300 border border-white/20"
-                >
-                  <div className="text-lg md:text-2xl font-bold text-white mb-0.5 md:mb-1">{stat.value}</div>
-                  <div className="text-xs text-white/80 font-medium leading-tight">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+    <h3 className="text-xl md:text-2xl font-bold text-white">
+      Evernal Academy
+    </h3>
+    <p className="text-white/90 text-xs md:text-sm font-medium mt-1">
+      Nurturing Future Leaders
+    </p>
 
-            {/* Quick Links */}
-            <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-              <Link 
-                href="/programmes/playgroup" 
-                className="flex items-center justify-between p-2.5 md:p-3 bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl hover:bg-white/15 transition-all duration-300 group border border-white/20"
-              >
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#FCAB17] flex-shrink-0"></div>
-                  <span className="text-white font-medium text-sm md:text-base">Playgroup (2-3 Years)</span>
-                </div>
-                <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-white group-hover:translate-x-1 transition-transform flex-shrink-0" />
-              </Link>
-              
-              <Link 
-                href="/programmes/kindergarten" 
-                className="flex items-center justify-between p-2.5 md:p-3 bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl hover:bg-white/15 transition-all duration-300 group border border-white/20"
-              >
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#FCAB17] flex-shrink-0"></div>
-                  <span className="text-white font-medium text-sm md:text-base">Kindergarten (3-6 Years)</span>
-                </div>
-                <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-white group-hover:translate-x-1 transition-transform flex-shrink-0" />
-              </Link>
-            </div>
+    {/* Divider */}
+    <div className="w-12 md:w-16 h-0.5 md:h-1 bg-gradient-to-r from-[#FCAB17] to-transparent rounded-full mx-auto mt-2 md:mt-3"></div>
+  </div>
 
-            {/* Rating & Trust Badge */}
-            <div className="pt-4 md:pt-6 border-t border-white/30">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <div className="flex text-[#FCAB17]">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-current" />
-                      ))}
-                    </div>
-                    <span className="text-white font-bold text-base md:text-lg">4.9</span>
-                  </div>
-                  <span className="text-white/70 text-xs mt-0.5">500+ Parent Reviews</span>
-                </div>
-                
-                <div className="flex items-center gap-1.5 md:gap-2 bg-white/20 backdrop-blur-sm px-2.5 md:px-3 py-1 md:py-1.5 rounded-full">
-                  <Shield className="w-3 h-3 md:w-4 md:h-4 text-white" />
-                  <span className="text-white text-xs font-medium">ISO Certified</span>
-                </div>
-              </div>
-            </div>
+  {/* Stats Grid */}
+  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
+    {stats.map((stat, index) => (
+      <div
+        key={index}
+        className="bg-white/15 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 text-center hover:shadow-md transition-all duration-300 border border-white/20"
+      >
+        <div className="text-lg md:text-2xl font-bold text-white mb-0.5 md:mb-1">
+          {stat.value}
+        </div>
+        <div className="text-xs text-white/80 font-medium leading-tight">
+          {stat.label}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Quick Links */}
+  <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+    <Link
+      href="/programmes/playgroup"
+      className="flex items-center justify-between p-2.5 md:p-3 bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl hover:bg-white/15 transition-all duration-300 group border border-white/20"
+    >
+      <div className="flex items-center gap-2 md:gap-3">
+        <div className="w-2 h-2 rounded-full bg-[#FCAB17]"></div>
+        <span className="text-white font-medium text-sm md:text-base">
+          Playgroup (2–3 Years)
+        </span>
+      </div>
+      <ChevronRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+    </Link>
+
+    <Link
+      href="/programmes/kindergarten"
+      className="flex items-center justify-between p-2.5 md:p-3 bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl hover:bg-white/15 transition-all duration-300 group border border-white/20"
+    >
+      <div className="flex items-center gap-2 md:gap-3">
+        <div className="w-2 h-2 rounded-full bg-[#FCAB17]"></div>
+        <span className="text-white font-medium text-sm md:text-base">
+          Kindergarten (3–6 Years)
+        </span>
+      </div>
+      <ChevronRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+    </Link>
+  </div>
+
+  {/* Rating & Trust */}
+  <div className="pt-4 md:pt-6 border-t border-white/30">
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="flex items-center gap-2">
+          <div className="flex text-[#FCAB17]">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-4 h-4 fill-current" />
+            ))}
           </div>
+          <span className="text-white font-bold text-lg">4.9</span>
+        </div>
+        <span className="text-white/70 text-xs">500+ Parent Reviews</span>
+      </div>
+
+      <div className="flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-full">
+        <Shield className="w-4 h-4 text-white" />
+        <span className="text-white text-xs font-medium">ISO Certified</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 
           {/* Mobile: CTA Buttons - Below Card */}
           <div className="md:hidden mt-6">

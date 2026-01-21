@@ -17,9 +17,9 @@ export default function AboutPage() {
       <section className="relative py-20 md:py-28 px-4 overflow-hidden">
         {/* Background with overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#08472C]/90 via-[#08472C]/80 to-[#0F172A]/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#08472C]/90 via-[#08472C]/80 to-[#0F172A]/90 "></div>
           <Image
-            src="/about_img/hero_sections_img.jpg"
+            src="/about_img/about_images.webp"
             alt="Evernal Academy Children Playing"
             fill
             className="object-cover"
@@ -36,10 +36,10 @@ export default function AboutPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FCAB17]/20 to-[#FFD700]/10 backdrop-blur-sm px-6 py-3 rounded-full border border-[#FCAB17]/30 mb-8">
+          {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FCAB17]/20 to-[#FFD700]/10 backdrop-blur-sm px-6 py-3 rounded-full border border-[#FCAB17]/30 mb-8">
             <Heart className="w-5 h-5 text-[#FCAB17] animate-pulse" />
             <span className="text-white font-medium">Welcome to Evernal Academy</span>
-          </div>
+          </div> */}
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Where Every Child's <span className="text-[#FCAB17]">Journey</span> Begins
@@ -705,58 +705,62 @@ export default function AboutPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#08472C] via-[#08472C]/90 to-[#0F172A] relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#FCAB17]/10 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#B2C6BD]/5 rounded-full animate-ping opacity-20"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FCAB17]/20 rounded-full animate-bounce"></div>
-        </div>
-        
-        <div className="max-w-4xl mx-auto text-center text-white relative z-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
-            Begin Your Child's <span className="text-[#FCAB17]">Learning Adventure</span> Today!
-          </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join our community of happy families and give your child the best start in their educational journey
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="group px-10 py-4 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-bold text-lg rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-3">
-              <Baby className="w-6 h-6" />
-              <span>Schedule Campus Visit</span>
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </button>
-            <button className="group px-10 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3">
-              <Phone className="w-6 h-6 group-hover:animate-pulse" />
-              <span>Call: +91 98765 43210</span>
-            </button>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-12 border-t border-white/20">
-            <div className="flex flex-col items-center gap-3">
-              <Mail className="w-8 h-8 text-[#FCAB17]" />
-              <div>
-                <p className="text-white/80 mb-1">Email us at</p>
-                <p className="text-xl font-bold text-white">info@evernalacademy.com</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <MapPin className="w-8 h-8 text-[#FCAB17]" />
-              <div>
-                <p className="text-white/80 mb-1">Visit our campus</p>
-                <p className="text-xl font-bold text-white">Kolkata, West Bengal</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <Calendar className="w-8 h-8 text-[#FCAB17]" />
-              <div>
-                <p className="text-white/80 mb-1">Open Hours</p>
-                <p className="text-xl font-bold text-white">Mon-Sat: 8 AM - 6 PM</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+ <section className="py-10 md:py-14 px-4 bg-gradient-to-br from-[#08472C] via-[#08472C]/90 to-[#0F172A] relative overflow-hidden">
+  
+  {/* Animated background elements (smaller) */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-1/4 left-1/4 w-40 h-40 bg-[#FCAB17]/10 rounded-full animate-pulse"></div>
+    <div className="absolute bottom-1/4 right-1/4 w-60 h-60 bg-[#B2C6BD]/5 rounded-full opacity-20"></div>
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-[#FCAB17]/20 rounded-full"></div>
+  </div>
+  
+  <div className="max-w-4xl mx-auto text-center text-white relative z-10">
+    
+    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+      Begin Your Child&apos;s{" "}
+      <span className="text-[#FCAB17]">Learning Adventure</span> Today!
+    </h2>
+
+    <p className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+      Join our community of happy families and give your child the best start
+      in their educational journey.
+    </p>
+
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <button className="group px-8 py-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-bold rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3">
+        <Baby className="w-5 h-5" />
+        <span>Schedule Campus Visit</span>
+        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </button>
+
+      <button className="group px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3">
+        <Phone className="w-5 h-5" />
+        <span>Call: +91 98765 43210</span>
+      </button>
+    </div>
+
+    {/* Contact Info */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-6 border-t border-white/20">
+      <div className="flex flex-col items-center gap-2">
+        <Mail className="w-6 h-6 text-[#FCAB17]" />
+        <p className="text-white/80 text-sm">info@evernalacademy.com</p>
+      </div>
+
+      <div className="flex flex-col items-center gap-2">
+        <MapPin className="w-6 h-6 text-[#FCAB17]" />
+        <p className="text-white/80 text-sm">Kolkata, West Bengal</p>
+      </div>
+
+      <div className="flex flex-col items-center gap-2">
+        <Calendar className="w-6 h-6 text-[#FCAB17]" />
+        <p className="text-white/80 text-sm">Mon–Sat: 8 AM – 6 PM</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
       
     </main>

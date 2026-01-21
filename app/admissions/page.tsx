@@ -195,11 +195,11 @@ export default function AdmissionsPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FCAB17]/20 to-[#FFD700]/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#FCAB17]/30">
+          {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FCAB17]/20 to-[#FFD700]/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#FCAB17]/30">
             <Calendar className="w-5 h-5 text-[#FCAB17]" />
             Admissions Open for 2025-26
           </div>
-          
+           */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Evernal<span className="text-[#FCAB17]">Academy</span> Admissions
           </h1>
@@ -208,14 +208,7 @@ export default function AdmissionsPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="flex items-center gap-4 text-white">
-              <div className="flex items-center gap-2">
-                <Home className="w-5 h-5 text-[#FCAB17]" />
-                <Link href="/" className="font-medium hover:text-[#FCAB17] transition-colors">Home</Link>
-              </div>
-              <ChevronRight className="w-4 h-4 text-white/50" />
-              <span className="font-bold text-[#FCAB17]">Admissions</span>
-            </div>
+         
             <a 
               href="tel:+915551234567" 
               className="group px-8 py-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-3"

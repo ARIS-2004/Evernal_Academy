@@ -248,7 +248,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#08472C] via-[#0A5C3A] to-[#08472C] text-white">
+      {/* <section className="py-16 px-4 bg-gradient-to-br from-[#08472C] via-[#0A5C3A] to-[#08472C] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Stay Informed About Child Development</h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
@@ -270,7 +270,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             </button>
           </form>
         </div>
-      </section>
+      </section> */}
 
 
 

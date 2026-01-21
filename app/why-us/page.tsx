@@ -25,7 +25,7 @@ export default function WhyUsPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 "></div>
           <Image
-            src="/pexels-yankrukov-8617970.jpg"
+            src="/about_img/about_imag_2.webp"
             alt="Children learning and playing at Evernal Academy"
             fill
             className="object-cover mix-blend-overlay"
@@ -54,8 +54,8 @@ export default function WhyUsPage() {
             <Heart className="w-4 h-4 text-white" />
             <span className="text-white text-sm md:text-base font-medium">Why Parents Choose Us</span>
           </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-4">
-            Why Choose <span className="text-[#08472C]">Evernal Academy?</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Why Choose <span className="text-[#FCAB17]">Evernal Academy?</span>
           </h2>
         
           <p className="text-lg md:text-xl lg:text-2xl text-white/95 max-w-3xl mx-auto font-medium mb-8">
@@ -85,10 +85,10 @@ export default function WhyUsPage() {
       <section className="py-16 md:py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-6">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-6">
               <Target className="w-4 h-4 text-[#08472C]" />
               <span className="text-[#08472C] font-semibold text-sm md:text-base">WHY Evernal ACADEMY?</span>
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Why Parents Trust Us For Their <span className="text-[#FCAB17]">Children's Future</span>
             </h2>
@@ -379,10 +379,10 @@ export default function WhyUsPage() {
       <section className="py-16 md:py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-6">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#08472C]/10 to-[#B2C6BD]/10 rounded-full mb-6">
               <TrendingUp className="w-4 h-4 text-[#08472C]" />
               <span className="text-[#08472C] font-semibold">COMPARISON</span>
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Why We <span className="text-[#FCAB17]">Stand Out</span>
             </h2>
@@ -540,75 +540,81 @@ export default function WhyUsPage() {
       </section>
 
       {/* Final CTA - Gradient Background */}
-      <section className="py-16 md:py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#08472C] via-[#0F172A] to-[#08472C]"></div>
-          <div className="absolute top-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-[#FCAB17]/10 rounded-full -translate-x-32 md:-translate-x-48 -translate-y-32 md:-translate-y-48"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 md:w-128 md:h-128 bg-white/5 rounded-full translate-x-40 md:translate-x-64 translate-y-40 md:translate-y-64"></div>
-          {/* Floating elements */}
-          <div className="absolute top-1/3 left-10 animate-float">
-            <div className="w-8 h-8 rounded-full bg-[#FCAB17]/20"></div>
-          </div>
-          <div className="absolute bottom-1/3 right-20 animate-float" style={{animationDelay: '1s'}}>
-            <div className="w-6 h-6 rounded-full bg-white/20"></div>
-          </div>
-        </div>
-        
-        <div className="max-w-4xl mx-auto text-center text-white relative z-10">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
-            <Sparkles className="w-5 h-5 text-[#FCAB17]" />
-            <span className="font-bold">LIMITED SPOTS AVAILABLE</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8">
-            Ready to Start Your Child's <span className="text-[#FCAB17]">Learning Journey</span>?
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of happy parents who have chosen Evernal Academy for their children's early education
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-10 md:mb-12">
-            <Link
-              href="/admission"
-              className="group px-8 md:px-12 py-4 md:py-5 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-[#FCAB17]/40 transition-all duration-500 transform hover:scale-105 flex items-center justify-center gap-3"
-            >
-              <span>Enroll Now - Free Trial Available</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </Link>
-            <Link
-              href="/contact"
-              className="group px-8 md:px-12 py-4 md:py-5 bg-transparent border-2 border-white text-white font-bold text-lg rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-500 flex items-center justify-center gap-3"
-            >
-              <Calendar className="w-5 h-5" />
-              <span>Schedule Campus Visit</span>
-            </Link>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/20">
-            <div className="flex flex-col items-center gap-3">
-              <Headphones className="w-8 h-8 text-[#FCAB17]" />
-              <div>
-                <p className="text-white/80 mb-1">Parent Support</p>
-                <p className="text-lg font-bold text-white">24/7 Communication</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <Shield className="w-8 h-8 text-[#FCAB17]" />
-              <div>
-                <p className="text-white/80 mb-1">Safe & Secure</p>
-                <p className="text-lg font-bold text-white">CCTV Monitored</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <BookOpen className="w-8 h-8 text-[#FCAB17]" />
-              <div>
-                <p className="text-white/80 mb-1">Quality Education</p>
-                <p className="text-lg font-bold text-white">Certified Curriculum</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section className="py-10 md:py-14 px-4 relative overflow-hidden">
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#08472C] via-[#0F172A] to-[#08472C]"></div>
+
+    <div className="absolute top-0 left-0 w-48 h-48 md:w-72 md:h-72 bg-[#FCAB17]/10 rounded-full -translate-x-24 -translate-y-24"></div>
+    <div className="absolute bottom-0 right-0 w-56 h-56 md:w-80 md:h-80 bg-white/5 rounded-full translate-x-32 translate-y-32"></div>
+
+    {/* Floating dots (smaller) */}
+    <div className="absolute top-1/3 left-10">
+      <div className="w-6 h-6 rounded-full bg-[#FCAB17]/20"></div>
+    </div>
+    <div className="absolute bottom-1/3 right-20">
+      <div className="w-4 h-4 rounded-full bg-white/20"></div>
+    </div>
+  </div>
+
+  <div className="max-w-4xl mx-auto text-center text-white relative z-10">
+
+    {/* Badge */}
+    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+      <Sparkles className="w-4 h-4 text-[#FCAB17]" />
+      <span className="text-sm font-bold">LIMITED SPOTS AVAILABLE</span>
+    </div>
+
+    {/* Heading */}
+    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+      Ready to Start Your Child&apos;s{" "}
+      <span className="text-[#FCAB17]">Learning Journey</span>?
+    </h2>
+
+    {/* Description */}
+    <p className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+      Join hundreds of happy parents who trust Evernal Academy for early education.
+    </p>
+
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <Link
+        href="/admission"
+        className="group px-7 md:px-10 py-3 md:py-4 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-bold rounded-xl hover:shadow-xl hover:shadow-[#FCAB17]/40 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+      >
+        <span>Enroll Now</span>
+        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </Link>
+
+      <Link
+        href="/contact"
+        className="group px-7 md:px-10 py-3 md:py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+      >
+        <Calendar className="w-4 h-4" />
+        <span>Campus Visit</span>
+      </Link>
+    </div>
+
+    {/* Features */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-6 border-t border-white/20">
+      <div className="flex flex-col items-center gap-2">
+        <Headphones className="w-7 h-7 text-[#FCAB17]" />
+        <p className="text-sm text-white/80">24/7 Parent Support</p>
+      </div>
+
+      <div className="flex flex-col items-center gap-2">
+        <Shield className="w-7 h-7 text-[#FCAB17]" />
+        <p className="text-sm text-white/80">CCTV Secured Campus</p>
+      </div>
+
+      <div className="flex flex-col items-center gap-2">
+        <BookOpen className="w-7 h-7 text-[#FCAB17]" />
+        <p className="text-sm text-white/80">Certified Curriculum</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
    
 

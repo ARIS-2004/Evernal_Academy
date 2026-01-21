@@ -31,43 +31,43 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Logo & Brand Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
-          <div className="flex items-center gap-4">
-            <div className="w-20 h-20 md:w-24 md:h-24 relative">
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="w-32 h-32 md:w-36 md:h-36 relative">
               <Image
                 src="/logo_2-removebg-preview.png"
                 alt="Evernal Academy Logo"
                 fill
                 className="object-contain"
-                sizes="(max-width: 768px) 80px, 96px"
+                sizes="(max-width: 768px) 128px, 144px"
               />
             </div>
-           
+            <div className="text-center md:text-left">
+        
+             
+            </div>
           </div>
 
-          {/* Quick Contact */}
-          <div className="bg-[#0F172A]/30 rounded-xl p-4 md:p-6 border border-[#B2C6BD]/20">
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#FCAB17]/10 rounded-full flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-[#FCAB17]" />
+          {/* Quick Contact - Updated without Schedule Visit button */}
+          <div className="bg-[#0F172A]/30 rounded-xl p-6 border border-[#B2C6BD]/20 w-full md:w-auto">
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-[#FCAB17]/10 rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-[#FCAB17]" />
                 </div>
-                <div>
-                  <p className="text-white font-semibold">Call Now</p>
-                  <a href="tel:+919876543210" className="text-[#FCAB17] font-bold text-lg hover:underline">
+                <div className="text-center md:text-left">
+                  <p className="text-white/80 text-sm">Call Now</p>
+                  <a href="tel:+919876543210" className="text-[#FCAB17] font-bold text-xl hover:underline block mt-1">
                     +91 98765 43210
                   </a>
+                  <p className="text-white/60 text-xs mt-1">Mon-Sat: 8:00 AM - 6:00 PM</p>
                 </div>
               </div>
-              <div className="hidden sm:block h-8 w-px bg-[#B2C6BD]/30"></div>
-              <button className="px-6 py-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap">
-                Schedule Visit
-              </button>
             </div>
           </div>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-15 mb-8">
           {/* About */}
           <div>
             <h4 className="font-semibold text-lg mb-6 text-white flex items-center gap-2">
@@ -114,7 +114,6 @@ export default function Footer() {
                 { name: "Kindergarten (4-6 Years)", href: "/programmes/kindergarten" },
                 { name: "Daycare Facility", href: "/programmes/daycare" },
                 { name: "Teacher Training", href: "/programmes/teacher-training" },
-                // { name: "Summer Workshops", href: "/programmes/summer" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
@@ -134,7 +133,7 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-6 text-white">Quick Links</h4>
             <ul className="space-y-3">
               {[
-                 { name: "About", href: "/aabout" },
+                { name: "About", href: "/about" },
                 { name: "Admissions", href: "/admissions" },
                 { name: "Gallery", href: "/gallery" },
                 { name: "Success Stories", href: "/success-stories" },
@@ -174,7 +173,7 @@ export default function Footer() {
               <div className="flex gap-3 items-center">
                 <Phone className="w-5 h-5 text-[#FCAB17] flex-shrink-0" />
                 <div>
-                  <a href="tel:+919876543210" className="text-white hover:text-[#FCAB17] transition-colors">
+                  <a href="tel:+919876543210" className="text-white hover:text-[#FCAB17] transition-colors text-base">
                     +91 98765 43210
                   </a>
                   <p className="text-[#B2C6BD] text-xs mt-1">Mon-Sat: 8 AM - 6 PM</p>
@@ -183,7 +182,7 @@ export default function Footer() {
 
               <div className="flex gap-3 items-center">
                 <Mail className="w-5 h-5 text-[#FCAB17] flex-shrink-0" />
-                <a href="mailto:info@evernalacademy.com" className="text-white hover:text-[#FCAB17] transition-colors">
+                <a href="mailto:info@evernalacademy.com" className="text-white hover:text-[#FCAB17] transition-colors text-sm">
                   info@evernalacademy.com
                 </a>
               </div>
@@ -215,7 +214,7 @@ export default function Footer() {
         </div>
 
         {/* Newsletter */}
-        <div className="bg-[#0F172A]/30 rounded-xl p-6 mb-8 border border-[#B2C6BD]/20">
+        {/* <div className="bg-[#0F172A]/30 rounded-xl p-6 mb-8 border border-[#B2C6BD]/20">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
               <h4 className="text-lg font-bold text-white mb-2">
@@ -236,7 +235,7 @@ export default function Footer() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Section */}
         <div className="border-t border-[#B2C6BD]/20 pt-8">
@@ -256,9 +255,6 @@ export default function Footer() {
                 <Link href="/refund-policy" className="hover:text-[#FCAB17] transition-colors">
                   Refund Policy
                 </Link>
-                {/* <Link href="/sitemap" className="hover:text-[#FCAB17] transition-colors">
-                  Sitemap
-                </Link> */}
               </div>
             </div>
 

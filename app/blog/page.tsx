@@ -240,7 +240,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#08472C] via-[#0A5C3A] to-[#08472C] text-white">
+      {/* <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#08472C] via-[#0A5C3A] to-[#08472C] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-2xl mb-6 backdrop-blur-sm">
             <span className="text-3xl">📧</span>
@@ -265,7 +265,7 @@ export default function BlogPage() {
           </form>
           <p className="text-white/70 text-sm mt-4">Join thousands of parents. Unsubscribe anytime.</p>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

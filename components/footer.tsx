@@ -35,7 +35,7 @@ export default function Footer() {
             <div className="w-20 h-20 md:w-24 md:h-24 relative">
               <Image
                 src="/logo_2.png"
-                alt="Jaiago Academy Logo"
+                alt="Evernal Academy Logo"
                 fill
                 className="object-contain"
                 sizes="(max-width: 768px) 80px, 96px"
@@ -75,7 +75,7 @@ export default function Footer() {
               About Us
             </h4>
             <p className="text-[#B2C6BD] text-sm leading-relaxed mb-6">
-              Jaiago Academy is a premier early childhood education center committed to 
+              Evernal Academy is a premier early childhood education center committed to 
               nurturing young minds through play-based learning and holistic development 
               approaches for over 12 years.
             </p>
@@ -182,8 +182,8 @@ export default function Footer() {
 
               <div className="flex gap-3 items-center">
                 <Mail className="w-5 h-5 text-[#FCAB17] flex-shrink-0" />
-                <a href="mailto:info@jaiagoacademy.com" className="text-white hover:text-[#FCAB17] transition-colors">
-                  info@jaiagoacademy.com
+                <a href="mailto:info@evernalacademy.com" className="text-white hover:text-[#FCAB17] transition-colors">
+                  info@evernalacademy.com
                 </a>
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function Footer() {
             {/* Copyright */}
             <div className="text-center md:text-left">
               <p className="text-[#B2C6BD] text-sm">
-                © {currentYear} Jaiago Academy. All rights reserved.
+                © {currentYear} Evernal Academy. All rights reserved.
               </p>
               <div className="flex flex-wrap gap-4 mt-2 text-xs text-[#B2C6BD]">
                 <Link href="/privacy-policy" className="hover:text-[#FCAB17] transition-colors">

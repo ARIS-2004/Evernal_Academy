@@ -9,6 +9,7 @@ import TrainersSection from '@/components/trainers-section';
 import CTASection from '@/components/cta-section';
 import EarlyEducationSection from '@/components/EarlyEducationSection';
 import ProgrammesSection from '@/components/ProgrammesSection';
+import TieUpWithCompanies from '@/components/TieUpWithCompanies';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
      
       <HeroSection />
       <AchievementsSection />
+       <TieUpWithCompanies />
       {/* <PopularCoursesSection /> */}
       <EarlyEducationSection />
       <ProgrammesSection />

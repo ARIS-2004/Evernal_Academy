@@ -118,8 +118,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold mb-1" style={{ color: '#0F172A' }}>Phone</p>
-                    <p className="text-[#64748B]">+1 (555) 123-4567</p>
-                    <p className="text-[#64748B]">+1 (555) 987-6543</p>
+                    <p className="text-[#64748B]">+91 7003999531</p>
+                    {/* <p className="text-[#64748B]">+1 (555) 987-6543</p> */}
                   </div>
                 </div>
 
@@ -136,8 +136,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold mb-1" style={{ color: '#0F172A' }}>Email</p>
-                    <p className="text-[#64748B]">info@eliteacademy.com</p>
-                    <p className="text-[#64748B]">support@eliteacademy.com</p>
+                    <p className="text-[#64748B]">Evernalacademy@gmail.com</p>
+                    {/* <p className="text-[#64748B]">support@eliteacademy.com</p> */}
                   </div>
                 </div>
 
@@ -154,8 +154,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold mb-1" style={{ color: '#0F172A' }}>Address</p>
-                    <p className="text-[#64748B]">123 Education Street</p>
-                    <p className="text-[#64748B]">Tech City, TC 12345</p>
+                    <p className="text-[#64748B]">Shikharbagan, NO. 1154,SRCMRD,Rajarhat, Kol-136</p>
+                    {/* <p className="text-[#64748B]">Tech City, TC 12345</p> */}
                   </div>
                 </div>
 
@@ -200,7 +200,7 @@ export default function ContactPage() {
                     <Phone className="w-5 h-5 text-[#0F172A]" />
                   </div>
                   <div>
-                    <span className="font-medium text-white">+1 (555) 123-4567</span>
+                    <span className="font-medium text-white">+91 7003999531</span>
                     <p className="text-sm text-[#B2C6BD]">Primary Support</p>
                   </div>
                 </div>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-[#0F172A]" />
                   </div>
                   <div>
-                    <span className="font-medium text-white">support@eliteacademy.com</span>
+                    <span className="font-medium text-white">Evernalacademy@gmail.com</span>
                     <p className="text-sm text-[#B2C6BD]">Email Support</p>
                   </div>
                 </div>

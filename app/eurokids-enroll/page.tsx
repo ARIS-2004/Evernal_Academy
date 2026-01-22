@@ -462,7 +462,7 @@ const EnrollPage = () => {
                   </div>
                   <div>
                     <p className="font-bold">Phone Support</p>
-                    <p>+91 555 123 4567</p>
+                    <p>+91 7003999531</p>
                     <p className="text-sm opacity-80">Mon-Sat, 9AM-6PM</p>
                   </div>
                 </div>
@@ -473,11 +473,11 @@ const EnrollPage = () => {
                   </div>
                   <div>
                     <p className="font-bold">Email Support</p>
-                    <p>admissions@ebernalacademy.com</p>
+                    <p>Evernalacademy@gmail.comm</p>
                     <p className="text-sm opacity-80">Response within 24h</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
+                {/* <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center" 
                        style={{ backgroundColor: '#FCAB17' }}>
                     <Home className="w-6 h-6" style={{ color: '#0F172A' }} />
@@ -487,7 +487,7 @@ const EnrollPage = () => {
                     <p>Schedule a tour</p>
                     <p className="text-sm opacity-80">By appointment</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

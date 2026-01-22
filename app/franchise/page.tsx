@@ -592,7 +592,7 @@ const PartnerPage = () => {
                     </div>
                     <div>
                       <p className="font-bold">Franchise Helpline</p>
-                      <p>+91 555 123 4567</p>
+                      <p>+91 7003999531</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -602,7 +602,7 @@ const PartnerPage = () => {
                     </div>
                     <div>
                       <p className="font-bold">Email Support</p>
-                      <p>franchise@eliteacademy.com</p>
+                      <p>Evernalacademy@gmail.com</p>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-white/20">

@@ -65,10 +65,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+            {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Heart className="w-4 h-4 text-[#FCAB17]" />
               Our Story & Philosophy
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Welcome to <span className="text-[#08472C]">Evernal Academy</span>
             </h2>
@@ -231,10 +231,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+            {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Baby className="w-4 h-4 text-[#FCAB17]" />
               Our Learning Philosophy
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Learning Through <span className="text-[#08472C]">Play & Discovery</span>
             </h2>
@@ -247,14 +247,20 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
-              {
-                icon: <Brain className="w-8 h-8" />,
-                title: "Cognitive Development",
-                desc: "Problem-solving, memory, and critical thinking activities",
-                activities: ["Puzzles", "Pattern Games", "Memory Cards"],
-                color: "from-[#08472C] to-[#0F172A]",
-                emoji: "🧩"
-              },
+            {
+  icon: (
+    <div className="flex items-center justify-center w-14 h-14 rounded-xl 
+                    bg-white/90 shadow-md">
+      <Brain className="w-8 h-8 text-[#08472C]" />
+    </div>
+  ),
+  title: "Cognitive Development",
+  desc: "Problem-solving, memory, and critical thinking activities",
+  activities: ["Puzzles", "Pattern Games", "Memory Cards"],
+  color: "from-[#08472C] to-[#0F172A]",
+  emoji: "🧩"
+},
+
               {
                 icon: <Heart className="w-8 h-8" />,
                 title: "Social-Emotional",
@@ -312,10 +318,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+            {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Calendar className="w-4 h-4 text-[#FCAB17]" />
               A Day at Evernal
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Our <span className="text-[#08472C]">Daily Schedule</span>
             </h2>
@@ -409,10 +415,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+            {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Home className="w-4 h-4 text-[#FCAB17]" />
               Our World-Class Facilities
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               A <span className="text-[#08472C]">Safe & Stimulating</span> Environment
             </h2>
@@ -491,10 +497,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+            {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Heart className="w-4 h-4 text-[#FCAB17]" />
               What Parents Say
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Happy <span className="text-[#08472C]">Parents</span>, Happy <span className="text-[#FCAB17]">Children</span>
             </h2>
@@ -562,10 +568,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+            {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Users className="w-4 h-4 text-[#FCAB17]" />
               Our Caring Team
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Meet Our <span className="text-[#08472C]">Educators</span>
             </h2>
@@ -635,10 +641,10 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
+            {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
               <Award className="w-4 h-4 text-[#FCAB17]" />
               Recognition & Accreditation
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
               Our <span className="text-[#08472C]">Accreditations</span>
             </h2>
@@ -657,7 +663,7 @@ export default function AboutPage() {
                 year: "Since 2015"
               },
               { 
-                name: "NEP 2020 Compliant", 
+                name: "NEP Compliant", 
                 logo: "📜",
                 description: "National Education Policy",
                 year: "2020"
@@ -675,7 +681,7 @@ export default function AboutPage() {
                 year: "Award 2022"
               },
               { 
-                name: "Hygiene Excellence", 
+                name: "Hygiene Plus", 
                 logo: "🧼",
                 description: "Health & Hygiene Standards",
                 year: "Certified"

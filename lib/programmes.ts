@@ -33,13 +33,13 @@ export const programmes: Programme[] = [
     description: 'Age appropriate curriculum for toddlers',
     overview: 'Children in this age group are identified as Toddlers. Kidzee\'s playgroup age appropriate curriculum plays an important role in helping children continue their exploration. At Kidzee, the Playgroup programme prepares a child for developmental and academic progress.',
     note: 'As per RTE- Right to Education and NEP- National Education Policy from state to state. Playgroup curriculum provides a safe and stimulating environment for child to learn and improve in all developmental domains.',
-    heroImage: 'https://images.unsplash.com/photo-1503454537688-e6c6ff891b52?w=1200&h=600&fit=crop',
+    heroImage: '/gallery/image_10.jpeg',
     heroVideo: 'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
     images: [
-      'https://images.unsplash.com/photo-1503454537688-e6c6ff891b52?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1545776490-14de3f13f8d2?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1515905217210-f9aee1a1bfe5?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1503454537688-e6c6ff891b52?w=600&h=400&fit=crop'
+      '/gallery/image_14.jpeg',
+      // '/gallery/image_12.jpeg',
+      // '/gallery/image_13.jpeg',
+      // '/gallery/image_13.jpeg',
     ],
     videos: [
       'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
@@ -107,13 +107,13 @@ export const programmes: Programme[] = [
     description: 'Comprehensive early education programme for pre-primary children',
     overview: 'The Nursery programme is designed to provide a structured and nurturing environment where children develop foundational skills in academics, creativity, and social-emotional domains. Our specially trained educators focus on holistic development through play-based learning.',
     note: 'As per RTE- Right to Education and NEP- National Education Policy. The curriculum is designed to encourage curiosity, independence, and collaborative learning.',
-    heroImage: 'https://images.unsplash.com/photo-1517694712202-14819c9cb6c1?w=1200&h=600&fit=crop',
+    heroImage: '/gallery/nursery.jpeg',
     heroVideo: 'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
     images: [
-      'https://images.unsplash.com/photo-1517694712202-14819c9cb6c1?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1503454537688-e6c6ff891b52?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1545776490-14de3f13f8d2?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1515905217210-f9aee1a1bfe5?w=600&h=400&fit=crop'
+      '/gallery/image_16.jpeg',
+      // 'https://images.unsplash.com/photo-1503454537688-e6c6ff891b52?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1545776490-14de3f13f8d2?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1515905217210-f9aee1a1bfe5?w=600&h=400&fit=crop'
     ],
     videos: [
       'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
@@ -178,13 +178,13 @@ export const programmes: Programme[] = [
     description: 'Pre-primary education with academic focus and skill development',
     overview: 'Kindergarten programme prepares children for primary school while maintaining the essence of play-based learning. It combines structured academics with creative activities, ensuring children develop strong foundational skills in reading, writing, and numeracy.',
     note: 'Following international educational standards aligned with NEP. Focus on developing independent learners with problem-solving abilities and critical thinking skills.',
-    heroImage: 'https://images.unsplash.com/photo-1535338454862-38d5f8e47c4a?w=1200&h=600&fit=crop',
+    heroImage: '/gallery/Kindergarten.png',
     heroVideo: 'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
     images: [
-      'https://images.unsplash.com/photo-1535338454862-38d5f8e47c4a?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1516627145497-ae6968895b2f?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1517694712202-14819c9cb6c1?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1515905217210-f9aee1a1bfe5?w=600&h=400&fit=crop'
+      '/gallery/image_17.jpeg',
+      // 'https://images.unsplash.com/photo-1516627145497-ae6968895b2f?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1517694712202-14819c9cb6c1?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1515905217210-f9aee1a1bfe5?w=600&h=400&fit=crop'
     ],
     videos: [
       'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
@@ -251,13 +251,13 @@ export const programmes: Programme[] = [
     description: 'Comprehensive training for educators in early childhood education',
     overview: 'Our Teacher Training Programme is designed to equip educators with contemporary pedagogical methods, child psychology knowledge, and practical skills in classroom management. We focus on developing confident, empathetic, and innovative teachers.',
     note: 'Certified training programme following international standards in early childhood education.',
-    heroImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop',
+    heroImage: '/gallery/Teacher Training Programme.webp',
     heroVideo: 'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
     images: [
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1516627145497-ae6968895b2f?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop'
+      '/gallery/image_18.jpeg',
+      // 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1516627145497-ae6968895b2f?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop'
     ],
     videos: [
       'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
@@ -322,13 +322,13 @@ export const programmes: Programme[] = [
     description: 'Full-day care service with structured developmental activities',
     overview: 'Our Daycare programme provides safe, nurturing care combined with developmental activities throughout the day. Designed for working parents, it offers flexible timings while maintaining educational standards and individualized attention for every child.',
     note: 'Professional caregivers trained in early childhood development and safety standards. Customizable schedules to meet family needs.',
-    heroImage: 'https://images.unsplash.com/photo-1517694712202-14819c9cb6c1?w=1200&h=600&fit=crop',
+    heroImage: '/gallery/Daycare.avif',
     heroVideo: 'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',
     images: [
-      'https://images.unsplash.com/photo-1517694712202-14819c9cb6c1?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1503454537688-e6c6ff891b52?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1493761671305-129cf7649b1d?w=600&h=400&fit=crop'
+      '/gallery/Daycare-1.avif',
+      // 'https://images.unsplash.com/photo-1503454537688-e6c6ff891b52?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop',
+      // 'https://images.unsplash.com/photo-1493761671305-129cf7649b1d?w=600&h=400&fit=crop'
     ],
     videos: [
       'https://cdn.pixabay.com/vimeo/775039876/small_children%20playing-775039876.mp4',

@@ -214,7 +214,7 @@ export default function AdmissionsPage() {
               className="group px-8 py-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-3"
             >
               <Phone className="w-5 h-5" />
-              <span>Enquire Now: +91 555 123 4567</span>
+              <span>Enquire Now: +91 7003999531</span>
             </a>
           </div>
         </div>
@@ -627,8 +627,8 @@ export default function AdmissionsPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-white mb-1">Phone</p>
-                      <p className="text-[#B2C6BD]">+91 555 123 4567</p>
-                      <p className="text-[#B2C6BD]">+91 555 987 6543</p>
+                      <p className="text-[#B2C6BD]">+91 7003999531</p>
+                      {/* <p className="text-[#B2C6BD]">+91 555 987 6543</p> */}
                     </div>
                   </div>
                   
@@ -638,8 +638,8 @@ export default function AdmissionsPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-white mb-1">Email</p>
-                      <p className="text-[#B2C6BD]">admissions@eliteacademy.com</p>
-                      <p className="text-[#B2C6BD]">info@eliteacademy.com</p>
+                      <p className="text-[#B2C6BD]">Evernalacademy@gmail.com</p>
+                      {/* <p className="text-[#B2C6BD]">info@eliteacademy.com</p> */}
                     </div>
                   </div>
                   
@@ -794,7 +794,7 @@ export default function AdmissionsPage() {
               <Phone className="w-5 h-5" style={{ color: '#FCAB17' }} />
               <span className="font-medium" style={{ color: '#0F172A' }}>Still have questions? Call us at </span>
               <a href="tel:+915551234567" className="font-bold hover:underline" style={{ color: '#08472C' }}>
-                +91 555 123 4567
+                +91 7003999531
               </a>
             </div>
           </div>
@@ -838,7 +838,7 @@ export default function AdmissionsPage() {
               <Mail className="w-8 h-8 text-[#FCAB17]" />
               <div>
                 <p className="text-white/80 mb-1">Email us at</p>
-                <p className="text-xl font-bold text-white">admissions@eliteacademy.com</p>
+                <p className="text-xl font-bold text-white">Evernalacademy@gmail.com</p>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">

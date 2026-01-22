@@ -30,7 +30,7 @@ export default function CTASection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Link
-            href="/admission"
+            href="/enroll"
             className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] px-8 py-4 rounded-xl font-bold hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Enroll Now
@@ -93,7 +93,7 @@ export default function CTASection() {
               className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition"
             >
               <Phone className="w-6 h-6 text-[#FCAB17]" />
-              <span className="font-bold">+880 XXXX-XXXXXX</span>
+              <span className="font-bold">+91 7003999531</span>
             </a>
 
             <a
@@ -102,7 +102,7 @@ export default function CTASection() {
             >
               <Mail className="w-6 h-6 text-[#FCAB17]" />
               <span className="font-bold">
-                admission@Evernalacademy.com
+                Evernalacademy@gmail.com
               </span>
             </a>
           </div>

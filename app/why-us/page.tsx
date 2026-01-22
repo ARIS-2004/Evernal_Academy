@@ -487,7 +487,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Stats Section - Gradient Background */}
-      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
+      {/* <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-white to-[#B2C6BD]/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-6">
@@ -537,7 +537,7 @@ export default function WhyUsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Final CTA - Gradient Background */}
       <section className="py-10 md:py-14 px-4 relative overflow-hidden">
@@ -559,10 +559,10 @@ export default function WhyUsPage() {
   <div className="max-w-4xl mx-auto text-center text-white relative z-10">
 
     {/* Badge */}
-    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+    {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-4">
       <Sparkles className="w-4 h-4 text-[#FCAB17]" />
       <span className="text-sm font-bold">LIMITED SPOTS AVAILABLE</span>
-    </div>
+    </div> */}
 
     {/* Heading */}
     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">

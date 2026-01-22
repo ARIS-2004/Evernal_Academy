@@ -776,7 +776,7 @@ export default function EnrollPage() {
                 }}
               >
                 <Phone className="w-5 h-5" />
-                Call Admission: +1 (555) 123-4567
+                Call Admission: +91 7003999531
               </a>
               <a
                 href="/contact"

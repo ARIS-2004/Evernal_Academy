@@ -25,23 +25,70 @@ export default function CleanHeroSection() {
   }, [isMounted]);
 
   const backgroundImages = [
-    '/landing_img/hero_img_7.png',
-    '/landing_img/hero_img_4.jpg',
+    '/landing_img/landing_img_new.jpeg',
+    '/landing_img/landing_img_new2.jpeg',
     '/landing_img/hero_img_6.avif'
   ];
 
   const stats = [
-    { value: '1000+', label: 'Happy Students' },
-    { value: '95%', label: 'Parent Satisfaction' },
-    { value: '25+', label: 'Expert Teachers' },
-    { value: '12+', label: 'Years Experience' }
+    { value: '1000+', label: 'Happy Students', color: 'from-blue-500/20 to-blue-600/20' },
+    { value: '95%', label: 'Parent Satisfaction', color: 'from-green-500/20 to-green-600/20' },
+    { value: '25+', label: 'Expert Teachers', color: 'from-purple-500/20 to-purple-600/20' },
+    { value: '12+', label: 'Years Experience', color: 'from-orange-500/20 to-orange-600/20' }
   ];
 
   const features = [
-    { icon: <Shield className="w-5 h-5" />, text: 'Safe Environment' },
-    { icon: <Target className="w-5 h-5" />, text: 'Holistic Development' },
-    { icon: <BookOpen className="w-5 h-5" />, text: 'Play-Based Learning' },
-    { icon: <Sparkles className="w-5 h-5" />, text: 'Creative Curriculum' }
+    { 
+      icon: <Shield className="w-5 h-5" />, 
+      text: 'Safe Environment',
+      bgColor: 'from-blue-500/20 to-blue-600/20',
+      iconBg: 'from-blue-500 to-blue-600'
+    },
+    { 
+      icon: <Target className="w-5 h-5" />, 
+      text: 'Holistic Development',
+      bgColor: 'from-green-500/20 to-green-600/20',
+      iconBg: 'from-green-500 to-green-600'
+    },
+    { 
+      icon: <BookOpen className="w-5 h-5" />, 
+      text: 'Play-Based Learning',
+      bgColor: 'from-purple-500/20 to-purple-600/20',
+      iconBg: 'from-purple-500 to-purple-600'
+    },
+    { 
+      icon: <Sparkles className="w-5 h-5" />, 
+      text: 'Creative Curriculum',
+      bgColor: 'from-pink-500/20 to-pink-600/20',
+      iconBg: 'from-pink-500 to-pink-600'
+    }
+  ];
+
+  const trustIndicators = [
+    { 
+      icon: <Award className="w-5 h-5 md:w-6 md:h-6" />, 
+      title: 'Certified', 
+      subtitle: 'Teachers',
+      bgColor: 'from-blue-500/20 to-blue-600/20'
+    },
+    { 
+      icon: <Users className="w-5 h-5 md:w-6 md:h-6" />, 
+      title: 'Small', 
+      subtitle: 'Class Sizes',
+      bgColor: 'from-green-500/20 to-green-600/20'
+    },
+    { 
+      icon: <BookOpen className="w-5 h-5 md:w-6 md:h-6" />, 
+      title: 'Modern', 
+      subtitle: 'Curriculum',
+      bgColor: 'from-purple-500/20 to-purple-600/20'
+    },
+    { 
+      icon: <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />, 
+      title: 'Progressive', 
+      subtitle: 'Learning',
+      bgColor: 'from-orange-500/20 to-orange-600/20'
+    }
   ];
 
   const handlePrevSlide = () => {
@@ -146,9 +193,9 @@ export default function CleanHeroSection() {
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30"
+                className={`flex items-center gap-2 bg-gradient-to-r ${feature.bgColor} backdrop-blur-sm rounded-lg p-2 border border-white/30`}
               >
-                <div className="w-6 h-6 bg-gradient-to-br from-[#08472C] to-[#0F5C3C] rounded flex items-center justify-center flex-shrink-0">
+                <div className={`w-6 h-6 bg-gradient-to-br ${feature.iconBg} rounded flex items-center justify-center flex-shrink-0`}>
                   <div className="text-white text-xs">
                     {feature.icon}
                   </div>
@@ -186,14 +233,14 @@ export default function CleanHeroSection() {
               </p>
             </div>
 
-            {/* Features - Improved List */}
+            {/* Features - Improved List with unique colors */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  className="flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 hover:bg-white/25 transition-all duration-300 group hover:translate-x-0 md:hover:translate-x-1 border border-white/30"
+                  className={`flex items-center gap-2 md:gap-3 bg-gradient-to-r ${feature.bgColor} backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 hover:bg-opacity-40 transition-all duration-300 group hover:translate-x-0 md:hover:translate-x-1 border border-white/30`}
                 >
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#08472C] to-[#0F5C3C] rounded-lg flex items-center justify-center group-hover:scale-105 md:group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                  <div className={`w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br ${feature.iconBg} rounded-lg flex items-center justify-center group-hover:scale-105 md:group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                     <div className="text-white scale-75 md:scale-100">
                       {feature.icon}
                     </div>
@@ -215,7 +262,7 @@ export default function CleanHeroSection() {
               
               <Link
                 href="/virtual-tour"
-                className="inline-flex items-center justify-center gap-2 md:gap-3 bg-white/25 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-bold hover:bg-white/35 transition-all duration-300 group border border-white/40 text-sm md:text-base"
+                className="inline-flex items-center justify-center gap-2 md:gap-3 bg-gradient-to-r from-blue-500/25 to-blue-600/25 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-bold hover:from-blue-500/35 hover:to-blue-600/35 transition-all duration-300 group border border-blue-400/40 text-sm md:text-base"
               >
                 <Play className="w-4 h-4 md:w-5 md:h-5" />
                 <span>Virtual Tour</span>
@@ -228,7 +275,7 @@ export default function CleanHeroSection() {
   
   {/* Academy Info */}
   <div className="text-center mb-6 md:mb-8">
-    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl md:rounded-2xl bg-white flex items-center justify-center mb-3 md:mb-4 mx-auto shadow-lg">
+    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-50 to-white flex items-center justify-center mb-3 md:mb-4 mx-auto shadow-lg">
       <img
         src="/logo_crop.png"
         alt="Evernal Academy Logo"
@@ -252,7 +299,7 @@ export default function CleanHeroSection() {
     {stats.map((stat, index) => (
       <div
         key={index}
-        className="bg-white/15 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 text-center hover:shadow-md transition-all duration-300 border border-white/20"
+        className={`bg-gradient-to-r ${stat.color} backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 text-center hover:shadow-md transition-all duration-300 border border-white/20`}
       >
         <div className="text-lg md:text-2xl font-bold text-white mb-0.5 md:mb-1">
           {stat.value}
@@ -268,7 +315,7 @@ export default function CleanHeroSection() {
   <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
     <Link
       href="/programmes/playgroup"
-      className="flex items-center justify-between p-2.5 md:p-3 bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl hover:bg-white/15 transition-all duration-300 group border border-white/20"
+      className="flex items-center justify-between p-2.5 md:p-3 bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm rounded-lg md:rounded-xl hover:from-blue-500/30 hover:to-blue-600/30 transition-all duration-300 group border border-blue-400/30"
     >
       <div className="flex items-center gap-2 md:gap-3">
         <div className="w-2 h-2 rounded-full bg-[#FCAB17]"></div>
@@ -281,7 +328,7 @@ export default function CleanHeroSection() {
 
     <Link
       href="/programmes/kindergarten"
-      className="flex items-center justify-between p-2.5 md:p-3 bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl hover:bg-white/15 transition-all duration-300 group border border-white/20"
+      className="flex items-center justify-between p-2.5 md:p-3 bg-gradient-to-r from-green-500/20 to-green-600/20 backdrop-blur-sm rounded-lg md:rounded-xl hover:from-green-500/30 hover:to-green-600/30 transition-all duration-300 group border border-green-400/30"
     >
       <div className="flex items-center gap-2 md:gap-3">
         <div className="w-2 h-2 rounded-full bg-[#FCAB17]"></div>
@@ -308,7 +355,7 @@ export default function CleanHeroSection() {
         <span className="text-white/70 text-xs">500+ Parent Reviews</span>
       </div>
 
-      <div className="flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-full">
+      <div className="flex items-center gap-2 bg-gradient-to-r from-blue-500/25 to-blue-600/25 px-3 py-1.5 rounded-full backdrop-blur-sm border border-blue-400/30">
         <Shield className="w-4 h-4 text-white" />
         <span className="text-white text-xs font-medium">ISO Certified</span>
       </div>
@@ -330,7 +377,7 @@ export default function CleanHeroSection() {
               
               <Link
                 href="/virtual-tour"
-                className="inline-flex items-center justify-center gap-2 bg-white/25 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-bold hover:bg-white/35 transition-all duration-300 group border border-white/40 text-sm mt-3 sm:mt-0"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500/25 to-blue-600/25 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-bold hover:from-blue-500/35 hover:to-blue-600/35 transition-all duration-300 group border border-blue-400/40 text-sm mt-3 sm:mt-0"
               >
                 <Play className="w-4 h-4" />
                 <span>Virtual Tour</span>
@@ -341,72 +388,38 @@ export default function CleanHeroSection() {
 
         {/* Trust Indicators at Bottom - Only show on Desktop */}
         <div className="hidden md:grid mt-8 md:mt-12 lg:mt-16 grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          <div className="flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/30">
-            <Award className="w-5 h-5 md:w-6 md:h-6 text-white" />
-            <div>
-              <div className="text-white font-semibold text-sm md:text-base">Certified</div>
-              <div className="text-white/80 text-xs md:text-sm">Teachers</div>
+          {trustIndicators.map((item, index) => (
+            <div 
+              key={index}
+              className={`flex items-center gap-2 md:gap-3 bg-gradient-to-r ${item.bgColor} backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/30 hover:shadow-md transition-all duration-300`}
+            >
+              <div className="text-white">
+                {item.icon}
+              </div>
+              <div>
+                <div className="text-white font-semibold text-sm md:text-base">{item.title}</div>
+                <div className="text-white/80 text-xs md:text-sm">{item.subtitle}</div>
+              </div>
             </div>
-          </div>
-          
-          <div className="flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/30">
-            <Users className="w-5 h-5 md:w-6 md:h-6 text-white" />
-            <div>
-              <div className="text-white font-semibold text-sm md:text-base">Small</div>
-              <div className="text-white/80 text-xs md:text-sm">Class Sizes</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/30">
-            <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-white" />
-            <div>
-              <div className="text-white font-semibold text-sm md:text-base">Modern</div>
-              <div className="text-white/80 text-xs md:text-sm">Curriculum</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/30">
-            <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-white" />
-            <div>
-              <div className="text-white font-semibold text-sm md:text-base">Progressive</div>
-              <div className="text-white/80 text-xs md:text-sm">Learning</div>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Mobile: Trust Indicators - Show at bottom in grid */}
         <div className="md:hidden grid grid-cols-2 gap-2 mt-6">
-          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
-            <Award className="w-4 h-4 text-white" />
-            <div>
-              <div className="text-white font-semibold text-xs">Certified</div>
-              <div className="text-white/80 text-xs">Teachers</div>
+          {trustIndicators.map((item, index) => (
+            <div 
+              key={index}
+              className={`flex items-center gap-2 bg-gradient-to-r ${item.bgColor} backdrop-blur-sm rounded-lg p-2 border border-white/30`}
+            >
+              <div className="text-white">
+                {item.icon}
+              </div>
+              <div>
+                <div className="text-white font-semibold text-xs">{item.title}</div>
+                <div className="text-white/80 text-xs">{item.subtitle}</div>
+              </div>
             </div>
-          </div>
-          
-          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
-            <Users className="w-4 h-4 text-white" />
-            <div>
-              <div className="text-white font-semibold text-xs">Small</div>
-              <div className="text-white/80 text-xs">Class Sizes</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
-            <BookOpen className="w-4 h-4 text-white" />
-            <div>
-              <div className="text-white font-semibold text-xs">Modern</div>
-              <div className="text-white/80 text-xs">Curriculum</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
-            <TrendingUp className="w-4 h-4 text-white" />
-            <div>
-              <div className="text-white font-semibold text-xs">Progressive</div>
-              <div className="text-white/80 text-xs">Learning</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 

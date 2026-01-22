@@ -57,7 +57,7 @@ export default function Footer() {
                 <div className="text-center md:text-left">
                   <p className="text-white/80 text-sm">Call Now</p>
                   <a href="tel:+919876543210" className="text-[#FCAB17] font-bold text-xl hover:underline block mt-1">
-                    +91 98765 43210
+                    +91 7003999531
                   </a>
                   <p className="text-white/60 text-xs mt-1">Mon-Sat: 8:00 AM - 6:00 PM</p>
                 </div>
@@ -161,8 +161,7 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-[#FCAB17] mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-[#B2C6BD] text-sm">
-                    123 Learning Lane, Education District,<br />
-                    Kolkata, West Bengal 700001
+                    Shikharbagan, NO. 1154,SRCMRD,Rajarhat, Kol-136
                   </p>
                   <button className="text-[#FCAB17] text-sm font-medium mt-1 hover:underline">
                     Get Directions →
@@ -174,7 +173,7 @@ export default function Footer() {
                 <Phone className="w-5 h-5 text-[#FCAB17] flex-shrink-0" />
                 <div>
                   <a href="tel:+919876543210" className="text-white hover:text-[#FCAB17] transition-colors text-base">
-                    +91 98765 43210
+                    +91 7003999531
                   </a>
                   <p className="text-[#B2C6BD] text-xs mt-1">Mon-Sat: 8 AM - 6 PM</p>
                 </div>
@@ -183,7 +182,7 @@ export default function Footer() {
               <div className="flex gap-3 items-center">
                 <Mail className="w-5 h-5 text-[#FCAB17] flex-shrink-0" />
                 <a href="mailto:info@evernalacademy.com" className="text-white hover:text-[#FCAB17] transition-colors text-sm">
-                  info@evernalacademy.com
+                  Evernalacademy@gmail.com
                 </a>
               </div>
             </div>

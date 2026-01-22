@@ -77,13 +77,13 @@ export default function EnhancedNavbar() {
     }`}>
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo - Updated with larger size and adjusted gap */}
+          {/* Logo - Animation removed */}
           <Link 
             href="/" 
-            className="flex items-center group ml-[-8px] lg:ml-0"
+            className="flex items-center ml-[-8px] lg:ml-0"
             onClick={() => setIsOpen(false)}
           >
-            <div className="w-28 h-28 lg:w-32 lg:h-32 flex items-center justify-center rounded-2xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+            <div className="w-28 h-28 lg:w-32 lg:h-32 flex items-center justify-center">
               <Image 
                 src="/logo_2-removebg-preview.png" 
                 alt="Evernal Academy Logo" 
@@ -197,7 +197,7 @@ export default function EnhancedNavbar() {
           {/* Header - Updated with larger logo */}
           <div className="flex items-center justify-between p-4 border-b border-[#B2C6BD]/30 bg-gradient-to-r from-[#08472C] to-[#0F172A]">
             <div className="flex items-center gap-3">
-              <div className="w-16 h-16 flex items-center justify-center rounded-lg">
+              <div className="w-16 h-16 flex items-center justify-center">
                 <Image 
                   src="/logo_1.png" 
                   alt="Evernal Logo" 

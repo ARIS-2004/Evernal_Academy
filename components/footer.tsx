@@ -261,7 +261,7 @@ export default function Footer() {
             <div className="text-center md:text-right">
               <p className="text-xs text-[#B2C6BD]">
                 Made with <Heart className="w-3 h-3 inline mx-1 text-[#FCAB17] fill-current" /> by{" "}
-                <span className="text-[#FCAB17] font-medium">Mindverge</span>
+                <span className="text-[#FCAB17] font-medium">Mivaxo</span>
               </p>
               <p className="text-xs text-[#B2C6BD] mt-2">
                 Committed to excellence in early childhood education

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote, Award, GraduationCap, Heart, Users, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Quote, GraduationCap } from 'lucide-react';
 
 const testimonials = [
   {
@@ -9,333 +9,170 @@ const testimonials = [
     name: 'Priya Sharma',
     course: 'PlayGroup',
     position: 'Parent',
-    company: 'Evernal Academy',
     review: 'My 2-year-old absolutely loves coming to school! The teachers are incredibly caring and the activities are perfect for his age. Seeing him learn through play has been amazing.',
-    rating: 5,
-    image: '👩‍👦',
+    image: '👩👦',
     date: '2 months ago',
-    color: 'bg-[#FCAB17]/10',
-    borderColor: 'border-[#FCAB17]/20',
-    childAge: '2 years'
+    childAge: '2 years',
   },
   {
     id: 2,
     name: 'Rajesh Mehta',
     course: 'Kindergarten',
     position: 'Parent',
-    company: 'Evernal Academy',
-    review: 'The progress my daughter has made in just 6 months is remarkable. She\'s confident, curious, and loves learning. The holistic approach focusing on all aspects of development is wonderful.',
-    rating: 5,
-    image: '👨‍👧',
+    review: "The progress my daughter has made in just 6 months is remarkable. She's confident, curious, and loves learning. The holistic approach focusing on all aspects of development is wonderful.",
+    image: '👨👧',
     date: '3 months ago',
-    color: 'bg-[#08472C]/10',
-    borderColor: 'border-[#08472C]/20',
-    childAge: '5 years'
+    childAge: '5 years',
   },
   {
     id: 3,
     name: 'Sunita Reddy',
     course: 'Nursery',
     position: 'Parent',
-    company: 'Evernal Academy',
-    review: 'As a working parent, the safety and care provided gives me complete peace of mind. The regular updates and parent-teacher meetings keep me involved in my child\'s progress.',
-    rating: 5,
-    image: '👩‍💼',
+    review: "As a working parent, the safety and care provided gives me complete peace of mind. The regular updates and parent-teacher meetings keep me involved in my child's progress.",
+    image: '👩💼',
     date: '1 month ago',
-    color: 'bg-[#FCAB17]/10',
-    borderColor: 'border-[#FCAB17]/20',
-    childAge: '3.5 years'
+    childAge: '3.5 years',
   },
   {
     id: 4,
     name: 'Vikram Singh',
     course: 'Teacher Training',
     position: 'Educator',
-    company: 'Evernal Academy',
     review: 'The teacher training programme here is exceptional. Practical training combined with theory prepared me perfectly for early childhood education. Highly recommended!',
-    rating: 5,
-    image: '👨‍🏫',
+    image: '👨🏫',
     date: '4 months ago',
-    color: 'bg-[#08472C]/10',
-    borderColor: 'border-[#08472C]/20',
-    childAge: null
+    childAge: null,
   },
   {
     id: 5,
     name: 'Anjali Patel',
     course: 'Daycare',
     position: 'Parent',
-    company: 'Evernal Academy',
-    review: 'The daycare facility is excellent. My child gets nutritious meals, proper rest, and engaging activities. The staff is trained and caring. Couldn\'t ask for more!',
-    rating: 5,
-    image: '👩‍👧',
+    review: "The daycare facility is excellent. My child gets nutritious meals, proper rest, and engaging activities. The staff is trained and caring. Couldn't ask for more!",
+    image: '👩👧',
     date: '2 weeks ago',
-    color: 'bg-[#FCAB17]/10',
-    borderColor: 'border-[#FCAB17]/20',
-    childAge: '4 years'
+    childAge: '4 years',
   },
 ];
 
 export default function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const [auto, setAuto] = useState(true);
+  const ref = useRef<HTMLElement>(null);
 
-  // Auto slide effect
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    
-    if (isAutoPlaying && isVisible) {
-      interval = setInterval(() => {
-        handleNext();
-      }, 4000); // Slide every 4 seconds
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isAutoPlaying, isVisible]);
-
-  // Intersection observer for animation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const section = document.getElementById('testimonials-section');
-    if (section) observer.observe(section);
-
-    return () => {
-      if (section) observer.unobserve(section);
-    };
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, []);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    setIsAutoPlaying(false);
-  };
+  useEffect(() => {
+    if (!auto || !visible) return;
+    const t = setInterval(() => setCurrent(p => (p + 1) % testimonials.length), 4000);
+    return () => clearInterval(t);
+  }, [auto, visible]);
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
+  const prev = () => { setCurrent(p => (p - 1 + testimonials.length) % testimonials.length); setAuto(false); };
+  const next = () => { setCurrent(p => (p + 1) % testimonials.length); setAuto(false); };
 
-  // Get visible testimonials for desktop (3 cards)
-  const getVisibleTestimonials = () => {
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      visible.push(testimonials[(currentIndex + i) % testimonials.length]);
-    }
-    return visible;
-  };
+  const visible3 = [0, 1, 2].map(i => testimonials[(current + i) % testimonials.length]);
 
-  // Handle dot click
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
-    setIsAutoPlaying(false);
-  };
+  const Card = ({ t, center = false }: { t: typeof testimonials[0]; center?: boolean }) => (
+    <div className={`flex flex-col bg-white rounded-2xl border border-[#f0f0f0] overflow-hidden transition-all duration-500 hover:shadow-xl
+      ${center ? 'shadow-lg border-[#08472C]/15 scale-[1.02]' : 'shadow-sm'}`}>
+
+      {/* quote + message */}
+      <div className="px-6 pt-6 pb-5 flex-1">
+        <Quote className="w-7 h-7 text-[#FCAB17] mb-4 opacity-80" />
+        <p className="text-[#0F172A]/65 text-sm leading-relaxed italic">
+          "{t.review}"
+        </p>
+      </div>
+
+      {/* stars */}
+      <div className="px-6 flex gap-0.5 mb-4">
+        {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-[#FCAB17] fill-[#FCAB17]" />)}
+      </div>
+
+      {/* divider */}
+      <div className="mx-6 h-px bg-[#f0f0f0]" />
+
+      {/* footer */}
+      <div className="px-6 py-4 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-full bg-[#08472C] flex items-center justify-center flex-shrink-0">
+              <span className="text-xs font-black text-white">{t.name.split(' ').map((n: string) => n[0]).join('')}</span>
+            </div>
+          <div>
+            <div className="text-sm font-bold text-[#08472C] leading-tight">{t.name}</div>
+            <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+              <span className="text-[10px] font-semibold text-[#0F172A]/50">{t.position}</span>
+              {t.childAge && <>
+                <span className="text-[#0F172A]/25 text-[10px]">·</span>
+                <span className="text-[10px] text-[#0F172A]/45">Child: {t.childAge}</span>
+              </>}
+              <span className="text-[#0F172A]/25 text-[10px]">·</span>
+              <span className="text-[10px] text-[#0F172A]/35">{t.date}</span>
+            </div>
+          </div>
+        </div>
+        <span className="flex-shrink-0 inline-flex items-center gap-1 text-[9px] font-bold text-[#08472C] bg-[#08472C]/6 border border-[#08472C]/10 px-2 py-1 rounded-full">
+          <GraduationCap className="w-3 h-3" />
+          {t.course}
+        </span>
+      </div>
+    </div>
+  );
 
   return (
-    <section id="testimonials-section" className="py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/5 text-[#08472C] px-5 py-2.5 rounded-full text-sm font-semibold mb-6 border border-[#08472C]/20">
-            <Heart className="w-4 h-4 text-[#FCAB17]" />
-            Parent & Student Stories
-          </div> */}
-           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] mb-4">
-            Happy Families, <span className="text-[#08472C]">Happy Children</span>
-          </h2>
-          
-          
-          <p className="text-[#0F172A]/70 text-lg max-w-2xl mx-auto">
-            Hear from our parents and educators about their wonderful experiences at Evernal Academy
-          </p>
+    <section ref={ref} className="py-14 bg-[#f9fafb]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* heading */}
+        <div className={`mb-8 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="h-px w-8 bg-[#FCAB17]" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#08472C]/50 font-semibold">Testimonials</span>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#08472C]">
+              Happy Families, <span className="text-[#FCAB17]">Happy Children</span>
+            </h2>
+            <p className="text-[#0F172A]/40 text-xs max-w-xs leading-relaxed">
+              Hear from our parents and educators about their experiences.
+            </p>
+          </div>
         </div>
 
-        {/* Testimonials Container */}
-        <div className="relative" ref={containerRef}>
-          {/* Desktop View - 3 Cards Slider */}
-          <div className="hidden lg:grid grid-cols-3 gap-6 mb-10 relative">
-            {getVisibleTestimonials().map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className={`relative bg-white rounded-2xl border border-[#B2C6BD]/50 overflow-hidden 
-                  transition-all duration-500 hover:shadow-xl hover:-translate-y-2 
-                  ${testimonial.color} ${testimonial.borderColor}
-                  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ 
-                  transitionDelay: `${index * 200}ms`,
-                  transform: `scale(${index === 1 ? 1.05 : 0.95}) translateY(${index === 1 ? '-10px' : '0px'})`
-                }}
-                onMouseEnter={() => setIsAutoPlaying(false)}
-              >
-                {/* Quote Icon */}
-                <div className="absolute top-6 right-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-[#FCAB17]/20 to-[#FFD700]/10 rounded-full flex items-center justify-center">
-                    <Quote className="w-5 h-5 text-[#FCAB17]" />
-                  </div>
-                </div>
+        {/* desktop 3-col */}
+        <div className={`hidden lg:grid grid-cols-3 gap-4 mb-6 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+          onMouseEnter={() => setAuto(false)} onMouseLeave={() => setAuto(true)}>
+          {visible3.map((t, i) => <Card key={t.id} t={t} center={i === 1} />)}
+        </div>
 
-                {/* Content */}
-                <div className="p-6 md:p-8">
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-[#FCAB17] fill-current" />
-                    ))}
-                  </div>
+        {/* mobile single */}
+        <div className={`lg:hidden mb-6 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          <Card t={testimonials[current]} center />
+        </div>
 
-                  {/* Review Text */}
-                  <p className="text-[#0F172A]/70 leading-relaxed mb-6 italic text-base">
-                    "{testimonial.review}"
-                  </p>
-
-                  {/* Student Info */}
-                  <div className="border-t border-[#B2C6BD]/30 pt-6">
-                    <div className="flex items-center gap-4">
-                      <div className="text-3xl">{testimonial.image}</div>
-                      <div className="flex-1">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h4 className="font-bold text-[#0F172A] text-lg">{testimonial.name}</h4>
-                            <p className="text-[#08472C] text-sm font-medium">{testimonial.position}</p>
-                            {testimonial.childAge && (
-                              <p className="text-[#0F172A]/60 text-sm">Child: {testimonial.childAge}</p>
-                            )}
-                          </div>
-                          <span className="text-xs text-[#08472C] bg-[#08472C]/5 px-2 py-1 rounded">
-                            {testimonial.date}
-                          </span>
-                        </div>
-                        <div className="mt-2">
-                          <div className={`inline-flex items-center gap-1 ${testimonial.course === 'PlayGroup' ? 'bg-[#FCAB17]/10 text-[#FCAB17]' : 'bg-[#08472C]/10 text-[#08472C]'} px-3 py-1 rounded-full text-xs font-medium`}>
-                            <GraduationCap className="w-3 h-3" />
-                            {testimonial.course}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Corner Decoration */}
-                <div className={`absolute -bottom-2 -right-2 w-16 h-16 rounded-full ${testimonial.course === 'PlayGroup' ? 'bg-[#FCAB17]/5' : 'bg-[#08472C]/5'} blur-xl`}></div>
-              </div>
+        {/* controls */}
+        <div className="flex items-center justify-center gap-4">
+          <button onClick={prev} className="w-9 h-9 rounded-full border border-[#e5e7eb] bg-white flex items-center justify-center hover:border-[#08472C]/30 hover:bg-[#08472C]/5 transition-all duration-200">
+            <ChevronLeft className="w-4 h-4 text-[#08472C]" />
+          </button>
+          <div className="flex gap-1.5">
+            {testimonials.map((_, i) => (
+              <button key={i} onClick={() => { setCurrent(i); setAuto(false); }}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? 'w-5 bg-[#08472C]' : 'w-1.5 bg-[#08472C]/20 hover:bg-[#08472C]/40'}`} />
             ))}
           </div>
-
-          {/* Mobile & Tablet View - Single Card */}
-          <div className="lg:hidden mb-10">
-            <div
-              className={`bg-white rounded-2xl border border-[#B2C6BD]/50 overflow-hidden 
-                ${testimonials[currentIndex].color} ${testimonials[currentIndex].borderColor}
-                transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-            >
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#FCAB17]/20 to-[#FFD700]/10 rounded-full flex items-center justify-center">
-                  <Quote className="w-5 h-5 text-[#FCAB17]" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 md:p-8">
-                {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-[#FCAB17] fill-current" />
-                  ))}
-                </div>
-
-                {/* Review Text */}
-                <p className="text-[#0F172A]/70 leading-relaxed mb-6 italic text-base">
-                  "{testimonials[currentIndex].review}"
-                </p>
-
-                {/* Student Info */}
-                <div className="border-t border-[#B2C6BD]/30 pt-6">
-                  <div className="flex items-center gap-4">
-                    <div className="text-3xl">{testimonials[currentIndex].image}</div>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-bold text-[#0F172A] text-lg">{testimonials[currentIndex].name}</h4>
-                          <p className="text-[#08472C] text-sm font-medium">{testimonials[currentIndex].position}</p>
-                          {testimonials[currentIndex].childAge && (
-                            <p className="text-[#0F172A]/60 text-sm">Child: {testimonials[currentIndex].childAge}</p>
-                          )}
-                        </div>
-                        <span className="text-xs text-[#08472C] bg-[#08472C]/5 px-2 py-1 rounded">
-                          {testimonials[currentIndex].date}
-                        </span>
-                      </div>
-                      <div className="mt-2">
-                        <div className={`inline-flex items-center gap-1 ${testimonials[currentIndex].course === 'PlayGroup' ? 'bg-[#FCAB17]/10 text-[#FCAB17]' : 'bg-[#08472C]/10 text-[#08472C]'} px-3 py-1 rounded-full text-xs font-medium`}>
-                          <GraduationCap className="w-3 h-3" />
-                          {testimonials[currentIndex].course}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-center gap-4">
-            <button
-              onClick={handlePrev}
-              className="p-3 rounded-full border border-[#B2C6BD]/50 bg-white hover:bg-[#08472C]/5 hover:border-[#08472C]/30 
-                transition-all duration-300 shadow-sm hover:shadow-md"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5 text-[#08472C]" />
-            </button>
-
-            {/* Dots Indicator */}
-            <div className="flex gap-2 mx-6">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleDotClick(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex 
-                      ? `bg-gradient-to-r ${testimonials[index].color === 'bg-[#FCAB17]/10' ? 'from-[#FCAB17] to-[#FFD700]' : 'from-[#08472C] to-[#0F172A]'} w-6` 
-                      : 'bg-[#B2C6BD]/50 w-2 hover:bg-[#08472C]/30'
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={handleNext}
-              className="p-3 rounded-full border border-[#B2C6BD]/50 bg-white hover:bg-[#08472C]/5 hover:border-[#08472C]/30 
-                transition-all duration-300 shadow-sm hover:shadow-md"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5 text-[#08472C]" />
-            </button>
-          </div>
-
-          {/* Auto-play Indicator */}
-          <div className="mt-6 text-center">
-            <div className="inline-flex items-center gap-2">
-              <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-[#FCAB17]' : 'bg-[#B2C6BD]'}`} />
-              <span className="text-sm text-[#0F172A]/70">
-                {isAutoPlaying ? 'Auto-slide enabled' : 'Manual control'}
-              </span>
-            </div>
-          </div>
+          <button onClick={next} className="w-9 h-9 rounded-full border border-[#e5e7eb] bg-white flex items-center justify-center hover:border-[#08472C]/30 hover:bg-[#08472C]/5 transition-all duration-200">
+            <ChevronRight className="w-4 h-4 text-[#08472C]" />
+          </button>
         </div>
+
       </div>
     </section>
   );

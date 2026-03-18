@@ -1,325 +1,213 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, BookOpen, Trophy, GraduationCap, Phone, LogIn, Building, FileText, Star, ArrowRight, Images, Users, Book, UserPlus } from 'lucide-react';
 import Image from 'next/image';
+import { Menu, X, ChevronDown, ArrowRight, Phone, GraduationCap, Trophy, Book, UserPlus, Images, Star, Building, FileText } from 'lucide-react';
 
-export default function EnhancedNavbar() {
+const navLinks = [
+  { href: '/about', label: 'About Us', icon: <GraduationCap className="w-4 h-4" /> },
+  { href: '/why-us', label: 'Why Us', icon: <Trophy className="w-4 h-4" /> },
+  {
+    href: '/programmes',
+    label: 'Programmes',
+    icon: <Book className="w-4 h-4" />,
+    dropdown: [
+      { href: '/programmes/playgroup', label: 'Playgroup', sub: '2–3 Years' },
+      { href: '/programmes/nursery', label: 'Nursery', sub: '3–4 Years' },
+      { href: '/programmes/kindergarten', label: 'Kindergarten', sub: '4–6 Years' },
+      { href: '/programmes/teacher-training', label: 'Teacher Training', sub: 'Professional Development' },
+      { href: '/programmes/daycare', label: 'Daycare', sub: 'Full Day Care' },
+    ],
+  },
+  { href: '/admissions', label: 'Admissions', icon: <UserPlus className="w-4 h-4" /> },
+  { href: '/gallery', label: 'Gallery', icon: <Images className="w-4 h-4" /> },
+  { href: '/success-stories', label: 'Success Stories', icon: <Star className="w-4 h-4" /> },
+  { href: '/offline-batches', label: 'Offline Batches', icon: <Building className="w-4 h-4" /> },
+  { href: '/blog', label: 'Blog', icon: <FileText className="w-4 h-4" /> },
+  { href: '/contact', label: 'Contact', icon: <Phone className="w-4 h-4" /> },
+];
+
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [hidden, setHidden] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const lastScrollY = useRef(0);
 
-  // Handle scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      const y = window.scrollY;
+      setScrolled(y > 10);
+      setHidden(y > lastScrollY.current && y > 80);
+      lastScrollY.current = y;
     };
-    
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when resizing to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsOpen(false);
-        setActiveDropdown(null);
-      }
+      if (window.innerWidth >= 1024) { setIsOpen(false); setActiveDropdown(null); }
     };
-    
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const allNavLinks = [
-    { href: '/about', label: 'About Us', icon: <GraduationCap className="w-4 h-4" /> },
-    { href: '/why-us', label: 'Why Us', icon: <Trophy className="w-4 h-4" /> },
-    { 
-      href: '/programmes', 
-      label: 'Programmes',
-      icon: <Book className="w-4 h-4" />,
-      dropdown: [
-        { href: '/programmes/playgroup', label: 'Playgroup' },
-        { href: '/programmes/nursery', label: 'Nursery' },
-        { href: '/programmes/kindergarten', label: 'Kindergarten' },
-        { href: '/programmes/teacher-training', label: 'Teacher Training Programme' },
-        { href: '/programmes/daycare', label: 'Daycare' },
-      ]
-    },
-    { href: '/admissions', label: 'Admissions', icon: <UserPlus className="w-4 h-4" /> },
-    { href: '/gallery', label: 'Gallery', icon: <Images className="w-4 h-4" /> },
-    { href: '/success-stories', label: 'Success Stories', icon: <Star className="w-4 h-4" /> },
-    { href: '/offline-batches', label: 'Offline Batches', icon: <Building className="w-4 h-4" /> },
-    { href: '/blog', label: 'Blog', icon: <FileText className="w-4 h-4" /> },
-    { href: '/contact', label: 'Contact', icon: <Phone className="w-4 h-4" /> },
-    // { href: '/login', label: 'Login', icon: <LogIn className="w-4 h-4" /> },
-  ];
-
-  const toggleDropdown = (label) => {
-    if (activeDropdown === label) {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown(label);
-    }
-  };
-
   return (
-    <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-      scrolled 
-        ? 'bg-[#08472C]/95 backdrop-blur-md shadow-lg border-b border-[#B2C6BD]/50' 
-        : 'bg-[#08472C] border-b border-[#B2C6BD]/30'
-    }`}>
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo - Animation removed */}
-          <Link 
-            href="/" 
-            className="flex items-center ml-[-8px] lg:ml-0"
-            onClick={() => setIsOpen(false)}
-          >
-            <div className="w-28 h-28 lg:w-32 lg:h-32 flex items-center justify-center">
-              <Image 
-                src="/logo_2-removebg-preview.png" 
-                alt="Evernal Academy Logo" 
-                width={250} 
-                height={250} 
-                className="w-28 h-28 lg:w-32 lg:h-32 object-contain"
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${hidden ? '-translate-y-full' : 'translate-y-0'} ${
+        scrolled
+          ? 'bg-[#052e1c]/95 backdrop-blur-xl shadow-2xl shadow-black/20 border-b border-white/5'
+          : 'bg-gradient-to-b from-[#052e1c] to-[#063d26]'
+      }`}>
+        {/* Top gold accent line */}
+        <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-[#FCAB17]/60 to-transparent" />
+
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="flex items-center justify-between h-20 lg:h-24">
+
+            {/* Logo */}
+            <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center group">
+              <Image
+                src="/logo_2-removebg-preview.png"
+                alt="Evernal Academy"
+                width={80} height={80}
+                className="w-20 h-20 lg:w-24 lg:h-24 object-contain drop-shadow-lg"
                 priority
               />
-            </div>
-          </Link>
+            </Link>
 
-          {/* Desktop Navigation - All Links in One Line */}
-          <div className="hidden lg:flex items-center gap-1">
-            {/* All Navigation Links in Correct Order */}
-            {allNavLinks.map((link) => (
-              <div 
-                key={link.href} 
-                className="relative"
-                onMouseEnter={() => link.dropdown && setActiveDropdown(link.label)}
-                onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
-              >
-                <Link
-                  href={link.href}
-                  className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-white hover:text-[#FCAB17] transition-all duration-200 rounded-lg hover:bg-[#0F172A]/20 whitespace-nowrap ${
-                    activeDropdown === link.label ? 'text-[#FCAB17] bg-[#0F172A]/20' : ''
-                  }`}
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-1">
+              {navLinks.map((link) => (
+                <div
+                  key={link.href}
+                  className="relative"
+                  onMouseEnter={() => link.dropdown && setActiveDropdown(link.label)}
+                  onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
                 >
-                  {link.icon && <span className="opacity-70">{link.icon}</span>}
-                  {link.label}
-                  {link.dropdown && (
-                    <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${
-                      activeDropdown === link.label ? 'rotate-180' : ''
-                    }`} />
+                  <Link
+                    href={link.href}
+                    className={`relative flex items-center gap-1 px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200 whitespace-nowrap group ${
+                      activeDropdown === link.label ? 'text-[#FCAB17]' : 'text-white/80 hover:text-white'
+                    }`}
+                  >
+                    {link.label}
+                    {link.dropdown && (
+                      <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180 text-[#FCAB17]' : ''}`} />
+                    )}
+                    {/* Hover underline */}
+                    <span className={`absolute bottom-0 left-2.5 right-2.5 h-px bg-[#FCAB17] transition-all duration-300 ${activeDropdown === link.label ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 group-hover:opacity-60 group-hover:scale-x-100'}`} />
+                  </Link>
+
+                  {/* Dropdown */}
+                  {link.dropdown && activeDropdown === link.label && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-[#052e1c] border border-white/10 rounded-xl shadow-2xl shadow-black/40 overflow-hidden">
+                      <div className="p-1.5">
+                        {link.dropdown.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/8 transition-all duration-150 group"
+                          >
+                            <div>
+                              <div className="text-white text-sm font-medium group-hover:text-[#FCAB17] transition-colors">{item.label}</div>
+                              <div className="text-white/40 text-xs mt-0.5">{item.sub}</div>
+                            </div>
+                            <ArrowRight className="w-3 h-3 text-white/20 group-hover:text-[#FCAB17] group-hover:translate-x-0.5 transition-all" />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   )}
-                </Link>
-                
-                {/* Dropdown Menu for Programmes */}
+                </div>
+              ))}
+
+              {/* Enroll CTA */}
+              <Link
+                href="/enroll"
+                className="ml-3 flex items-center gap-1.5 px-5 py-2.5 bg-[#FCAB17] hover:bg-[#e09a14] text-[#0F172A] text-sm font-bold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-[#FCAB17]/20 whitespace-nowrap"
+              >
+                Enroll Now <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Mobile right */}
+            <div className="flex lg:hidden items-center gap-2">
+              <Link href="/enroll" className="px-3.5 py-2 bg-[#FCAB17] text-[#0F172A] text-sm font-bold rounded-lg shadow">
+                Enroll
+              </Link>
+              <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-white/80 hover:text-white transition-colors" aria-label="Menu">
+                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer */}
+      <div className={`lg:hidden fixed inset-0 z-[60] transition-all duration-300 ${isOpen ? 'visible' : 'invisible'}`}>
+        <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} onClick={() => setIsOpen(false)} />
+
+        <div className={`absolute right-0 top-0 h-full w-[80vw] max-w-xs bg-[#052e1c] shadow-2xl transition-transform duration-300 ease-out flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          {/* Drawer header */}
+          <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+            <div className="flex items-center gap-3">
+              <Image src="/logo_2-removebg-preview.png" alt="Logo" width={40} height={40} className="w-10 h-10 object-contain" />
+              <div>
+                <div className="text-white font-bold text-sm">Evernal Academy</div>
+                <div className="text-[#FCAB17]/60 text-[10px] tracking-widest uppercase">Preschool & Daycare</div>
+              </div>
+            </div>
+            <button onClick={() => setIsOpen(false)} className="p-1.5 text-white/60 hover:text-white transition-colors">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Links */}
+          <div className="flex-1 overflow-y-auto py-3 px-3">
+            {navLinks.map((link) => (
+              <div key={link.href}>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-3 flex-1 px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-all text-sm font-medium"
+                    onClick={() => { if (!link.dropdown) setIsOpen(false); }}
+                  >
+                    <span className="text-[#FCAB17]/60">{link.icon}</span>
+                    {link.label}
+                  </Link>
+                  {link.dropdown && (
+                    <button onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)} className="p-2 text-white/40 hover:text-white transition-colors">
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''}`} />
+                    </button>
+                  )}
+                </div>
                 {link.dropdown && activeDropdown === link.label && (
-                  <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-xl border border-[#B2C6BD]/50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="ml-10 mb-1 border-l border-[#FCAB17]/20 pl-3 space-y-0.5">
                     {link.dropdown.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="flex items-center gap-3 px-4 py-3 text-sm text-[#0F172A] hover:text-[#08472C] hover:bg-[#B2C6BD]/20 transition-all duration-200 border-b border-[#B2C6BD]/30 last:border-0 group"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-[#08472C] opacity-70 group-hover:opacity-100"></div>
-                        <div>
-                          <div className="font-medium">{item.label}</div>
-                          {item.label === 'Teacher Training Programme' && (
-                            <div className="text-xs text-[#08472C]/70 mt-0.5">Professional Development</div>
-                          )}
-                        </div>
+                      <Link key={item.href} href={item.href} className="block px-3 py-2 text-white/60 hover:text-[#FCAB17] text-sm rounded-lg hover:bg-white/5 transition-all" onClick={() => setIsOpen(false)}>
+                        {item.label}
                       </Link>
                     ))}
                   </div>
                 )}
               </div>
             ))}
-
-            {/* Enroll Now Button - Desktop */}
-            <Link
-              href="/enroll"
-              className="ml-2 relative px-4 py-2.5 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 transform overflow-hidden group flex items-center gap-1.5 whitespace-nowrap"
-            >
-              <span className="relative z-10">Enroll Now</span>
-              <ArrowRight className="w-3.5 h-3.5 relative z-10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700] to-[#FCAB17] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Link>
           </div>
 
-          {/* Mobile/Tablet Navigation */}
-          <div className="flex lg:hidden items-center gap-1">
-            {/* Enroll Now Button - Mobile (Shorter text for mobile) */}
-            <Link
-              href="/enroll"
-              className="px-3 py-2 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-sm font-semibold rounded-lg shadow hover:shadow-md transition-all duration-300 whitespace-nowrap"
-            >
-              Enroll
+          {/* Drawer footer */}
+          <div className="p-4 border-t border-white/10">
+            <Link href="/enroll" className="flex items-center justify-center gap-2 w-full py-3 bg-[#FCAB17] hover:bg-[#e09a14] text-[#0F172A] font-bold text-sm rounded-xl transition-all" onClick={() => setIsOpen(false)}>
+              Enroll Now <ArrowRight className="w-4 h-4" />
             </Link>
-
-            {/* Mobile Menu Button - Simple 3 lines icon */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-white hover:text-[#FCAB17] rounded-lg transition-all duration-300"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            <a href="tel:+917003999531" className="flex items-center justify-center gap-2 mt-2 py-2.5 text-white/50 hover:text-white text-xs transition-colors">
+              <Phone className="w-3.5 h-3.5" /> +91 7003999531
+            </a>
           </div>
         </div>
       </div>
-
-      {/* Mobile Slide-out Menu */}
-      <div className={`lg:hidden fixed inset-0 z-50 ${
-        isOpen ? 'block' : 'hidden'
-      }`}>
-        {/* Overlay */}
-        <div 
-          className="fixed inset-0 bg-black/50"
-          onClick={() => setIsOpen(false)}
-        />
-        
-        {/* Menu Panel - Right side slide */}
-        <div className={`fixed right-0 top-0 h-full w-4/5 max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}>
-          {/* Header - Updated with larger logo */}
-          <div className="flex items-center justify-between p-4 border-b border-[#B2C6BD]/30 bg-gradient-to-r from-[#08472C] to-[#0F172A]">
-            <div className="flex items-center gap-3">
-              <div className="w-16 h-16 flex items-center justify-center">
-                <Image 
-                  src="/logo_1.png" 
-                  alt="Evernal Logo" 
-                  width={64} 
-                  height={64} 
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
-              <div>
-                <div className="font-bold text-white text-lg">Evernal Academy</div>
-                <div className="text-xs text-white/70">Preschool & Daycare</div>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="p-2 rounded-lg hover:bg-white/10"
-            >
-              <X className="w-5 h-5 text-white" />
-            </button>
-          </div>
-
-          {/* Menu Content */}
-          <div className="h-[calc(100vh-89px)] overflow-y-auto bg-gradient-to-b from-white to-[#B2C6BD]/10">
-            <div className="p-4">
-              {/* Main Links List */}
-              <div className="space-y-1">
-                {allNavLinks.map((link) => (
-                  <div key={link.href}>
-                    <div className="flex items-center justify-between">
-                      <Link
-                        href={link.href}
-                        className="flex items-center gap-3 px-4 py-4 text-[#0F172A] hover:text-[#08472C] hover:bg-[#B2C6BD]/20 rounded-lg transition-all duration-200 font-medium w-full"
-                        onClick={() => {
-                          if (!link.dropdown) {
-                            setIsOpen(false);
-                          }
-                        }}
-                      >
-                        <div className="w-10 h-10 flex items-center justify-center bg-[#08472C]/10 rounded-lg">
-                          {link.icon}
-                        </div>
-                        <span className="text-base">{link.label}</span>
-                      </Link>
-                      
-                      {link.dropdown && (
-                        <button 
-                          onClick={() => toggleDropdown(link.label)}
-                          className="p-2 mr-2"
-                        >
-                          <ChevronDown className={`w-4 h-4 transition-transform duration-200 text-[#08472C] ${
-                            activeDropdown === link.label ? 'rotate-180' : ''
-                          }`} />
-                        </button>
-                      )}
-                    </div>
-                    
-                    {/* Mobile Dropdown */}
-                    {link.dropdown && activeDropdown === link.label && (
-                      <div className="ml-14 my-1 pl-4 border-l-2 border-[#08472C]">
-                        {link.dropdown.map((item, idx) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="flex items-center gap-3 px-4 py-3 text-[#0F172A] hover:text-[#08472C] rounded-lg transition-all duration-200 text-sm"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <div className={`w-2.5 h-2.5 rounded-full ${idx === 0 ? 'bg-[#FCAB17]' : idx === 1 ? 'bg-[#08472C]' : idx === 2 ? 'bg-[#0F172A]' : idx === 3 ? 'bg-[#FF6B6B]' : 'bg-[#4ECDC4]'}`}></div>
-                            <span className="font-medium text-sm">{item.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Quick Contact Section */}
-              <div className="mt-8 pt-4 border-t border-[#B2C6BD]/30">
-                <h4 className="text-base font-semibold text-[#0F172A] mb-4">Quick Contact</h4>
-                <div className="space-y-4">
-                  <a href="tel:+919876543210" className="flex items-center gap-4 text-[#08472C] text-base hover:underline" onClick={() => setIsOpen(false)}>
-                    <div className="w-12 h-12 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">Call Us</div>
-                      <div className="text-sm">+91 98765 43210</div>
-                    </div>
-                  </a>
-                  <a href="mailto:info@evernal.com" className="flex items-center gap-4 text-[#08472C] text-base hover:underline" onClick={() => setIsOpen(false)}>
-                    <div className="w-12 h-12 bg-[#B2C6BD]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <FileText className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">Email Us</div>
-                      <div className="text-sm">info@evernal.com</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              {/* Quick Links */}
-              <div className="mt-8 pt-4 border-t border-[#B2C6BD]/30">
-                <div className="grid grid-cols-2 gap-4">
-                  <Link href="/demo" className="text-center px-4 py-3 bg-[#08472C]/5 text-[#08472C] text-sm font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
-                    Demo Class
-                  </Link>
-                  <Link href="/brochure" className="text-center px-4 py-3 bg-[#08472C]/5 text-[#08472C] text-sm font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
-                    Brochure
-                  </Link>
-                  <Link href="/faq" className="text-center px-4 py-3 bg-[#08472C]/5 text-[#08472C] text-sm font-medium rounded-lg hover:bg-[#08472C]/10 transition-colors" onClick={() => setIsOpen(false)}>
-                    FAQ
-                  </Link>
-                  <Link href="/enroll" className="text-center px-4 py-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] text-sm font-semibold rounded-lg shadow transition-all" onClick={() => setIsOpen(false)}>
-                    Enroll Now
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    </>
   );
 }

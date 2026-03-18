@@ -1,133 +1,145 @@
-'use client';
+import { programmes } from "@/lib/programmes";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight, Clock, Users, Phone } from "lucide-react";
 
-import { programmes } from '@/lib/programmes';
-
-import Link from 'next/link';
-import { ChevronRight, Users, BookOpen, Heart, Briefcase } from 'lucide-react';
+const icons = ["🧸", "📚", "🎓", "👩🏫", "🏠"];
 
 export default function ProgrammesPage() {
-  const icons = [
-    <Users key="users" className="w-8 h-8" />,
-    <BookOpen key="book" className="w-8 h-8" />,
-    <Heart key="heart" className="w-8 h-8" />,
-    <Briefcase key="briefcase" className="w-8 h-8" />,
-    <Users key="users2" className="w-8 h-8" />
-  ];
-
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
-     
+    <main className="min-h-screen bg-white">
 
-      {/* Breadcrumb */}
-      <div className="bg-[#08472C]/5 px-4 sm:px-6 lg:px-8 py-4">
-        <div className="max-w-6xl mx-auto flex items-center gap-2 text-sm">
-          <Link href="/" className="text-[#08472C] hover:underline">Home</Link>
-          <ChevronRight size={16} className="text-[#B2C6BD]" />
-          <span className="text-[#0F172A] font-medium">Programmes</span>
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-[#08472C] to-[#0F172A] text-white px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">Our Programmes</h1>
-          <p className="text-lg text-[#B2C6BD] max-w-2xl mx-auto">
-            Comprehensive educational programmes designed for every stage of early childhood development, from infants to school-ready children
-          </p>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
-        {/* Intro Section */}
-        <div className="mb-16">
-          <p className="text-lg text-[#0F172A] leading-relaxed text-center max-w-3xl mx-auto">
-            At our institution, we believe every child is unique and deserves personalized attention. Our carefully crafted programmes blend play-based learning with structured academics, fostering holistic development across all domains.
-          </p>
-        </div>
-
-        {/* Programmes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {programmes.map((programme, idx) => (
-            <Link key={programme.id} href={programme.href}>
-              <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-[#B2C6BD]/20 hover:border-[#FCAB17]/50 h-full flex flex-col">
-                {/* Header */}
-                <div className="bg-gradient-to-r from-[#08472C] to-[#0F172A] p-6 text-white flex items-start justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">{programme.name}</h3>
-                    <p className="text-[#B2C6BD] text-sm">{programme.ageGroup}</p>
-                  </div>
-                  <div className="text-[#FCAB17]">
-                    {icons[idx]}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex-grow flex flex-col">
-                  <p className="text-[#0F172A] mb-4 flex-grow">{programme.description}</p>
-                  
-                  {/* Details */}
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#FCAB17] font-semibold">Duration:</span>
-                      <span className="text-[#0F172A]">{programme.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#FCAB17] font-semibold">Focus Areas:</span>
-                      <span className="text-[#0F172A]">{programme.keyAreas.length} key areas</span>
-                    </div>
-                  </div>
-
-                  {/* CTA */}
-                  <div className="inline-flex items-center gap-2 text-[#08472C] font-semibold hover:text-[#FCAB17] transition-colors">
-                    Learn More <ChevronRight size={16} />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Why Choose Us Section */}
-        <section className="bg-gradient-to-r from-[#08472C]/10 to-[#FCAB17]/10 rounded-xl p-8 sm:p-12 border border-[#B2C6BD]/30 mb-12">
-          <h2 className="text-3xl font-bold text-[#08472C] mb-8 text-center">Why Choose Our Programmes?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-[#FCAB17] text-white flex items-center justify-center mx-auto mb-4 font-bold text-lg">✓</div>
-              <h3 className="font-semibold text-[#08472C] mb-2">Expert Educators</h3>
-              <p className="text-[#0F172A] text-sm">Trained professionals with child development expertise</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-[#FCAB17] text-white flex items-center justify-center mx-auto mb-4 font-bold text-lg">✓</div>
-              <h3 className="font-semibold text-[#08472C] mb-2">Safe Environment</h3>
-              <p className="text-[#0F172A] text-sm">Secure, nurturing spaces designed for optimal learning</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-[#FCAB17] text-white flex items-center justify-center mx-auto mb-4 font-bold text-lg">✓</div>
-              <h3 className="font-semibold text-[#08472C] mb-2">Holistic Development</h3>
-              <p className="text-[#0F172A] text-sm">Balanced focus on academic, social, and emotional growth</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-[#FCAB17] text-white flex items-center justify-center mx-auto mb-4 font-bold text-lg">✓</div>
-              <h3 className="font-semibold text-[#08472C] mb-2">Parent Partnership</h3>
-              <p className="text-[#0F172A] text-sm">Regular communication and involvement in child's learning</p>
-            </div>
+      {/* ── HERO ── */}
+      <section className="relative h-[180px] sm:h-[200px] flex items-start overflow-hidden">
+        <Image src="/gallery/image_5.jpeg" alt="Our Programmes" fill className="object-cover" style={{ objectPosition: "center 100%" }} priority sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#08472C]/85 via-[#08472C]/55 to-[#08472C]/80" />
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 w-full">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="h-px w-8 bg-[#FCAB17]" />
+            <span className="text-[10px] uppercase tracking-[0.24em] text-[#FCAB17] font-semibold">Early Childhood Education</span>
           </div>
-        </section>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+            Our <span className="text-[#FCAB17]">Programmes</span>
+          </h1>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#FCAB17]" />
+      </section>
 
-        {/* CTA Section */}
-        <section className="bg-gradient-to-r from-[#08472C] to-[#0F172A] rounded-xl p-8 sm:p-12 text-white text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Begin Your Child's Journey?</h2>
-          <p className="text-lg text-[#B2C6BD] mb-8">Explore our programmes and find the perfect fit for your child's developmental stage</p>
-          <Link
-            href="/enroll"
-            className="inline-block bg-[#FCAB17] text-[#0F172A] px-8 py-3 rounded-lg font-semibold hover:bg-[#FFD700] transition-colors"
-          >
-            Enroll Now
-          </Link>
-        </section>
-      </div>
-    </div>
+      {/* ── PROGRAMMES ── */}
+      <section className="py-12 bg-[#f7f8f6]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="h-px w-8 bg-[#FCAB17]" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#08472C]/50 font-semibold">All Programmes</span>
+          </div>
+
+          <div className="space-y-4">
+            {programmes.map((p, idx) => (
+              <Link
+                key={p.id}
+                href={p.href}
+                className="group flex flex-col sm:flex-row bg-white border border-[#eaeaea] rounded-2xl overflow-hidden hover:border-[#08472C]/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+              >
+                {/* image */}
+                <div className="relative w-full sm:w-48 h-40 sm:h-auto flex-shrink-0 overflow-hidden">
+                  <Image src={p.heroImage} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width:640px)100vw,192px" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#08472C]/30 sm:bg-gradient-to-b sm:from-transparent sm:to-[#08472C]/40" />
+                  <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-[#08472C]/75 backdrop-blur-sm border border-[#FCAB17]/25 px-2 py-1 rounded-lg">
+                    <span className="w-3.5 h-3.5 rounded-sm bg-[#FCAB17] flex items-center justify-center text-[7px] font-black text-[#08472C]">{String(idx + 1).padStart(2, "0")}</span>
+                    <span className="text-[8px] uppercase tracking-[0.18em] text-white/75 font-semibold">Programme</span>
+                  </span>
+                  <span className="absolute bottom-3 left-3 text-xl">{icons[idx]}</span>
+                </div>
+
+                {/* content */}
+                <div className="flex flex-col flex-1 min-w-0">
+                  {/* header band */}
+                  <div className="bg-[#08472C] px-5 py-3 flex items-center justify-between gap-4">
+                    <div className="min-w-0">
+                      <h3 className="text-[14px] font-bold text-white truncate">{p.name}</h3>
+                      <p className="text-[10px] text-[#FCAB17] font-semibold mt-0.5">{p.ageGroup}</p>
+                    </div>
+                    <div className="flex items-center gap-1 text-white/50 text-[10px] flex-shrink-0">
+                      <Clock className="w-3 h-3" />
+                      <span>{p.duration}</span>
+                    </div>
+                  </div>
+
+                  {/* body */}
+                  <div className="px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-4 flex-1">
+                    <p className="text-[12px] text-[#0F172A]/55 leading-relaxed flex-1">{p.description}</p>
+
+                    <div className="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-2 flex-shrink-0">
+                      <div className="flex flex-wrap gap-1.5">
+                        {p.keyAreas.slice(0, 2).map((a) => (
+                          <span key={a} className="text-[9px] font-semibold text-[#08472C]/65 bg-[#08472C]/6 border border-[#08472C]/10 px-2 py-0.5 rounded-full whitespace-nowrap">{a}</span>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-[10px] text-[#0F172A]/35 flex items-center gap-1 whitespace-nowrap">
+                          <Users className="w-3 h-3" />{p.keyAreas.length} areas
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#08472C] group-hover:text-[#FCAB17] transition-colors whitespace-nowrap">
+                          Learn More <ArrowUpRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY CHOOSE ── */}
+      <section className="py-12 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="h-px w-8 bg-[#FCAB17]" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#08472C]/50 font-semibold">Why Choose Our Programmes</span>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { n: "01", title: "Expert Educators", desc: "Trained professionals with child development expertise" },
+              { n: "02", title: "Safe Environment", desc: "Secure, nurturing spaces designed for optimal learning" },
+              { n: "03", title: "Holistic Development", desc: "Balanced focus on academic, social, and emotional growth" },
+              { n: "04", title: "Parent Partnership", desc: "Regular communication and involvement in child's learning" },
+            ].map(({ n, title, desc }) => (
+              <div key={n} className="rounded-2xl border border-[#f0f0f0] bg-white p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-7 h-7 rounded-lg bg-[#08472C] flex items-center justify-center text-[10px] font-black text-[#FCAB17]">{n}</span>
+                </div>
+                <h3 className="text-[13px] font-bold text-[#08472C] mb-1">{title}</h3>
+                <p className="text-[11px] text-[#0F172A]/55 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA BAND ── */}
+      <section className="bg-[#08472C] py-10 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+        <div className="h-px bg-[#FCAB17]/40 absolute top-0 left-0 right-0" />
+        <div className="h-px bg-[#FCAB17]/40 absolute bottom-0 left-0 right-0" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-[#FCAB17]/60 font-semibold mb-1">Ready to Begin?</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Start Your Child's Journey Today</h2>
+          </div>
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <Link href="/enroll" className="inline-flex items-center gap-2 bg-[#FCAB17] text-[#08472C] text-[11px] font-bold px-5 py-2.5 rounded-xl hover:bg-[#ffc13d] transition-colors">
+              Enroll Now <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+            <a href="tel:+917003999531" className="inline-flex items-center gap-2 border border-white/20 text-white text-[11px] font-bold px-5 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+              <Phone className="w-3.5 h-3.5" /> Call Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
   );
 }

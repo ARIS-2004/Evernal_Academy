@@ -41,7 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased pb-20 sm:pb-8`}>
+      <body className={`${inter.className} antialiased pt-20 lg:pt-24`}>
         
         {/* Header / Navbar */}
         <Navbar />

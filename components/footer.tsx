@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -7,272 +7,252 @@ import {
   Phone,
   MapPin,
   Facebook,
+  Instagram,
   Twitter,
   Linkedin,
-  Instagram,
   Youtube,
-  Heart,
-  ArrowRight,
-  Calendar,
-  Users,
-  Award,
-  BookOpen,
-  GraduationCap
+  ArrowUpRight,
 } from "lucide-react";
 
+const programmes = [
+  { name: "Daycare", sub: "6m – 3 Years", href: "/programmes/daycare" },
+  { name: "PlayGroup", sub: "2 – 3 Years", href: "/programmes/playgroup" },
+  { name: "Nursery", sub: "3 – 4 Years", href: "/programmes/nursery" },
+  {
+    name: "Kindergarten",
+    sub: "4 – 6 Years",
+    href: "/programmes/kindergarten",
+  },
+  {
+    name: "Teacher Training",
+    sub: "Professional",
+    href: "/programmes/teacher-training",
+  },
+];
+
+const quickLinks = [
+  { name: "About Us", href: "/about" },
+  { name: "Admissions", href: "/admissions" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Success Stories", href: "/success-stories" },
+  { name: "Contact Us", href: "/contact" },
+];
+
+const socials = [
+  { icon: Facebook, label: "Facebook" },
+  { icon: Instagram, label: "Instagram" },
+  { icon: Twitter, label: "Twitter" },
+  { icon: Linkedin, label: "LinkedIn" },
+  { icon: Youtube, label: "YouTube" },
+];
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#08472C] text-white">
-      {/* Top Decorative Border */}
-      <div className="h-1 bg-gradient-to-r from-transparent via-[#FCAB17] to-transparent"></div>
+    <footer className="relative bg-[#0a2e1c] text-white overflow-hidden">
+      {/* ── atmosphere glows ── */}
+      <div className="absolute top-0 left-0 w-[500px] h-[400px] bg-[#0d5c35] opacity-30 blur-[130px] pointer-events-none rounded-full -translate-x-1/4 -translate-y-1/4" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-[#FCAB17] opacity-[0.05] blur-[90px] pointer-events-none rounded-full translate-x-1/3 -translate-y-1/3" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-56 bg-[#0d5c35] opacity-20 blur-[90px] pointer-events-none rounded-full" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        {/* Logo & Brand Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <div className="w-32 h-32 md:w-36 md:h-36 relative">
-              <Image
-                src="/logo_2-removebg-preview.png"
-                alt="Evernal Academy Logo"
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 128px, 144px"
-              />
-            </div>
-            <div className="text-center md:text-left">
-        
-             
-            </div>
-          </div>
+      {/* ── fine grid texture ── */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
-          {/* Quick Contact - Updated without Schedule Visit button */}
-          <div className="bg-[#0F172A]/30 rounded-xl p-6 border border-[#B2C6BD]/20 w-full md:w-auto">
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-[#FCAB17]/10 rounded-full flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-[#FCAB17]" />
-                </div>
-                <div className="text-center md:text-left">
-                  <p className="text-white/80 text-sm">Call Now</p>
-                  <a href="tel:+919876543210" className="text-[#FCAB17] font-bold text-xl hover:underline block mt-1">
-                    +91 7003999531
-                  </a>
-                  <p className="text-white/60 text-xs mt-1">Mon-Sat: 8:00 AM - 6:00 PM</p>
-                </div>
+      {/* ── gold top rule ── */}
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#FCAB17] to-transparent opacity-70" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* ════════════════════════════════════════
+            MAIN BODY
+        ════════════════════════════════════════ */}
+        <div className="grid lg:grid-cols-[1.6fr_1fr_1fr_1.2fr] gap-10 py-10 border-b border-white/[0.06]">
+          {/* ── col 1: BRAND ── */}
+          <div className="flex flex-col">
+            {/* large logo */}
+            <div className="relative w-28 h-28 mb-5">
+              <div className="absolute inset-0 rounded-2xl bg-[#08472C]/60 blur-xl scale-90" />
+              <div className="relative w-full h-full rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/logo_2-removebg-preview.png"
+                  alt="Evernal Academy"
+                  fill
+                  className="object-contain p-2"
+                  sizes="112px"
+                />
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-15 mb-8">
-          {/* About */}
-          <div>
-            <h4 className="font-semibold text-lg mb-6 text-white flex items-center gap-2">
-              <GraduationCap className="w-5 h-5 text-[#FCAB17]" />
-              About Us
-            </h4>
-            <p className="text-[#B2C6BD] text-sm leading-relaxed mb-6">
-              Evernal Academy is a premier early childhood education center committed to 
-              nurturing young minds through play-based learning and holistic development 
-              approaches for over 12 years.
+            <h3 className="text-lg font-bold text-white tracking-tight mb-1">
+              Evernal Academy
+            </h3>
+            <p className="text-[10px] text-[#FCAB17]/60 uppercase tracking-[0.2em] mb-4">
+              Nurturing Young Minds Since 2010
             </p>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-[#FCAB17]/10 rounded flex items-center justify-center">
-                  <Calendar className="w-4 h-4 text-[#FCAB17]" />
-                </div>
-                <span className="text-sm text-[#B2C6BD]">Established: 2010</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-[#FCAB17]/10 rounded flex items-center justify-center">
-                  <Users className="w-4 h-4 text-[#FCAB17]" />
-                </div>
-                <span className="text-sm text-[#B2C6BD]">1000+ Happy Families</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-[#FCAB17]/10 rounded flex items-center justify-center">
-                  <Award className="w-4 h-4 text-[#FCAB17]" />
-                </div>
-                <span className="text-sm text-[#B2C6BD]">ISO Certified</span>
-              </div>
-            </div>
-          </div>
+            <p className="text-[11px] text-white/60 leading-relaxed mb-6 max-w-[220px]">
+              A premier early childhood education centre committed to holistic
+              development through play-based, Montessori-inspired learning.
+            </p>
 
-          {/* Programmes */}
-          <div>
-            <h4 className="font-semibold text-lg mb-6 text-white flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-[#FCAB17]" />
-              Our Programmes
-            </h4>
-            <ul className="space-y-3">
-              {[
-                { name: "PlayGroup (2-3 Years)", href: "/programmes/playgroup" },
-                { name: "Nursery (3-4 Years)", href: "/programmes/nursery" },
-                { name: "Kindergarten (4-6 Years)", href: "/programmes/kindergarten" },
-                { name: "Daycare Facility", href: "/programmes/daycare" },
-                { name: "Teacher Training", href: "/programmes/teacher-training" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-[#B2C6BD] hover:text-[#FCAB17] transition-colors duration-300 group flex items-center gap-2 text-sm"
-                  >
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-lg mb-6 text-white">Quick Links</h4>
-            <ul className="space-y-3">
-              {[
-                { name: "About", href: "/about" },
-                { name: "Admissions", href: "/admissions" },
-                { name: "Gallery", href: "/gallery" },
-                { name: "Success Stories", href: "/success-stories" },
-                { name: "Blog & Articles", href: "/blog" },
-                { name: "Franchise", href: "/franchise" },
-                { name: "Contact Us", href: "/contact" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-[#B2C6BD] hover:text-[#FCAB17] transition-colors duration-300 text-sm"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold text-lg mb-6 text-white">Contact Info</h4>
-            <div className="space-y-4">
-              <div className="flex gap-3 items-start">
-                <MapPin className="w-5 h-5 text-[#FCAB17] mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-[#B2C6BD] text-sm">
-                    Shikharbagan, NO. 1154,SRCMRD,Rajarhat, Kol-136
-                  </p>
-                  <button className="text-[#FCAB17] text-sm font-medium mt-1 hover:underline">
-                    Get Directions →
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                <Phone className="w-5 h-5 text-[#FCAB17] flex-shrink-0" />
-                <div>
-                  <a href="tel:+919876543210" className="text-white hover:text-[#FCAB17] transition-colors text-base">
-                    +91 7003999531
-                  </a>
-                  <p className="text-[#B2C6BD] text-xs mt-1">Mon-Sat: 8 AM - 6 PM</p>
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                <Mail className="w-5 h-5 text-[#FCAB17] flex-shrink-0" />
-                <a href="mailto:info@evernalacademy.com" className="text-white hover:text-[#FCAB17] transition-colors text-sm">
-                  Evernalacademy@gmail.com
+            {/* socials */}
+            <div className="flex items-center gap-2">
+              {socials.map(({ icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="w-8 h-8 rounded-xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center text-white/60 hover:border-[#FCAB17]/60 hover:bg-[#FCAB17]/10 hover:text-[#FCAB17] transition-all duration-200"
+                >
+                  <Icon className="w-3.5 h-3.5" />
                 </a>
-              </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── col 2: PROGRAMMES ── */}
+          <div className="pt-1">
+            <div className="flex items-center gap-2 mb-5">
+              <span className="w-4 h-[1px] bg-[#FCAB17]/50" />
+              <p className="text-[9px] uppercase tracking-[0.22em] text-[#FCAB17]/50 font-semibold">
+                Programmes
+              </p>
+            </div>
+            <ul className="space-y-1">
+              {programmes.map(({ name, sub, href }) => (
+                <li key={name}>
+                  <Link
+                    href={href}
+                    className="group flex items-center justify-between py-2 border-b border-white/[0.04] hover:border-[#FCAB17]/20 transition-colors"
+                  >
+                    <div>
+                      <p className="text-[12px] text-white/80 group-hover:text-white transition-colors font-medium">
+                        {name}
+                      </p>
+                      <p className="text-[9px] text-white/45 mt-0.5">{sub}</p>
+                    </div>
+                    <ArrowUpRight className="w-3 h-3 text-[#FCAB17] opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── col 3: QUICK LINKS ── */}
+          <div className="pt-1">
+            <div className="flex items-center gap-2 mb-5">
+              <span className="w-4 h-[1px] bg-[#FCAB17]/50" />
+              <p className="text-[9px] uppercase tracking-[0.22em] text-[#FCAB17]/50 font-semibold">
+                Quick Links
+              </p>
+            </div>
+            <ul className="space-y-1">
+              {quickLinks.map(({ name, href }) => (
+                <li key={name}>
+                  <Link
+                    href={href}
+                    className="group flex items-center justify-between py-2 border-b border-white/[0.04] hover:border-[#FCAB17]/20 transition-colors"
+                  >
+                    <p className="text-[12px] text-white/80 group-hover:text-white transition-colors font-medium">
+                      {name}
+                    </p>
+                    <ArrowUpRight className="w-3 h-3 text-[#FCAB17] opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── col 4: CONTACT ── */}
+          <div className="pt-1">
+            <div className="flex items-center gap-2 mb-5">
+              <span className="w-4 h-[1px] bg-[#FCAB17]/50" />
+              <p className="text-[9px] uppercase tracking-[0.22em] text-[#FCAB17]/50 font-semibold">
+                Contact
+              </p>
             </div>
 
-            {/* Social Media */}
-            <div className="mt-6 pt-6 border-t border-[#B2C6BD]/20">
-              <p className="text-[#B2C6BD] text-sm mb-3">Follow Us</p>
-              <div className="flex gap-3">
-                {[
-                  { icon: Facebook, label: "Facebook" },
-                  { icon: Instagram, label: "Instagram" },
-                  { icon: Twitter, label: "Twitter" },
-                  { icon: Linkedin, label: "LinkedIn" },
-                  { icon: Youtube, label: "YouTube" },
-                ].map((social) => (
-                  <a
-                    key={social.label}
-                    href="#"
-                    className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#FCAB17]/10 text-[#FCAB17] hover:bg-[#FCAB17] hover:text-[#0F172A] transition-all duration-300"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </a>
-                ))}
+            <div className="space-y-3 mb-6">
+              {/* address card */}
+              <div className="rounded-xl border border-white/[0.07] bg-white/[0.03] p-3 flex items-start gap-3">
+                <div className="w-7 h-7 rounded-lg bg-[#FCAB17]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#FCAB17]" />
+                </div>
+                <p className="text-[11px] text-white/70 leading-relaxed">
+                  Shikharbagan, No. 1154, SRCMRD,
+                  <br />
+                  Rajarhat, Kolkata – 136
+                </p>
               </div>
+
+              {/* phone card */}
+              <a
+                href="tel:+917003999531"
+                className="group rounded-xl border border-white/[0.07] bg-white/[0.03] hover:border-[#FCAB17]/30 hover:bg-[#FCAB17]/[0.04] p-3 flex items-center gap-3 transition-all"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#FCAB17]/10 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-3.5 h-3.5 text-[#FCAB17]" />
+                </div>
+                <div>
+                  <p className="text-[12px] text-white/80 group-hover:text-white transition-colors font-medium">
+                    +91 7003999531
+                  </p>
+                  <p className="text-[9px] text-white/50">
+                    Mon – Sat · 8 AM – 6 PM
+                  </p>
+                </div>
+              </a>
+
+              {/* email card */}
+              <a
+                href="mailto:evernalacademy@gmail.com"
+                className="group rounded-xl border border-white/[0.07] bg-white/[0.03] hover:border-[#FCAB17]/30 hover:bg-[#FCAB17]/[0.04] p-3 flex items-center gap-3 transition-all"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#FCAB17]/10 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-3.5 h-3.5 text-[#FCAB17]" />
+                </div>
+                <p className="text-[11px] text-white/80 group-hover:text-white transition-colors font-medium break-all">
+                  evernalacademy@gmail.com
+                </p>
+              </a>
             </div>
+
+            {/* enroll CTA */}
+            <Link
+              href="/enroll"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#FCAB17] text-[#08472C] text-[11px] font-bold hover:bg-[#ffc13d] transition-colors shadow-lg shadow-[#FCAB17]/10"
+            >
+              Enroll Now <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
 
-        {/* Newsletter */}
-        {/* <div className="bg-[#0F172A]/30 rounded-xl p-6 mb-8 border border-[#B2C6BD]/20">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div className="text-center lg:text-left">
-              <h4 className="text-lg font-bold text-white mb-2">
-                Subscribe to Our Newsletter
-              </h4>
-              <p className="text-[#B2C6BD] text-sm">
-                Get updates on events, parenting tips, and early education insights.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="px-4 py-3 rounded-lg bg-white/10 border border-[#B2C6BD]/30 text-white placeholder:text-[#B2C6BD] focus:outline-none focus:border-[#FCAB17] flex-grow sm:w-64"
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div> */}
-
-        {/* Bottom Section */}
-        <div className="border-t border-[#B2C6BD]/20 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Copyright */}
-            <div className="text-center md:text-left">
-              <p className="text-[#B2C6BD] text-sm">
-                © {currentYear} Evernal Academy. All rights reserved.
-              </p>
-              <div className="flex flex-wrap gap-4 mt-2 text-xs text-[#B2C6BD]">
-                <Link href="/privacy-policy" className="hover:text-[#FCAB17] transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms-conditions" className="hover:text-[#FCAB17] transition-colors">
-                  Terms & Conditions
-                </Link>
-                <Link href="/refund-policy" className="hover:text-[#FCAB17] transition-colors">
-                  Refund Policy
-                </Link>
-              </div>
-            </div>
-
-            {/* Made By */}
-            <div className="text-center md:text-right">
-              <p className="text-xs text-[#B2C6BD]">
-                Made with <Heart className="w-3 h-3 inline mx-1 text-[#FCAB17] fill-current" /> by{" "}
-                <span className="text-[#FCAB17] font-medium">Mivaxo</span>
-              </p>
-              <p className="text-xs text-[#B2C6BD] mt-2">
-                Committed to excellence in early childhood education
-              </p>
-            </div>
-          </div>
+        {/* ════════════════════════════════════════
+            BOTTOM BAR
+        ════════════════════════════════════════ */}
+        <div className="py-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+          <p className="text-[10px] text-white/50">
+            © {year} Evernal Academy. All rights reserved.
+          </p>
+          {["Privacy Policy", "Terms & Conditions", "Refund Policy"].map((l) => {
+            const href = l === 'Privacy Policy' ? '/privacy-policy' : l === 'Terms & Conditions' ? '/terms-and-conditions' : '/refund-policy';
+            return (
+            <span key={l} className="flex items-center gap-3">
+              <span className="w-px h-2.5 bg-white/[0.08]" />
+              <Link href={href} className="text-[10px] text-white/50 hover:text-[#FCAB17] transition-colors">{l}</Link>
+            </span>
+          )})}
         </div>
       </div>
 
-      {/* Bottom Decorative Border */}
-      <div className="h-1 bg-gradient-to-r from-transparent via-[#FCAB17] to-transparent"></div>
+      {/* gold bottom rule */}
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#FCAB17]/50 to-transparent" />
     </footer>
   );
 }

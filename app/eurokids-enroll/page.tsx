@@ -473,7 +473,7 @@ const EnrollPage = () => {
                   </div>
                   <div>
                     <p className="font-bold">Email Support</p>
-                    <p>Evernalacademy@gmail.comm</p>
+                    <p>evernalacademy@gmail.com</p>
                     <p className="text-sm opacity-80">Response within 24h</p>
                   </div>
                 </div>

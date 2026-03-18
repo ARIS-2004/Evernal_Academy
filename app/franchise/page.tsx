@@ -602,7 +602,7 @@ const PartnerPage = () => {
                     </div>
                     <div>
                       <p className="font-bold">Email Support</p>
-                      <p>Evernalacademy@gmail.com</p>
+                      <p>evernalacademy@gmail.com</p>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-white/20">

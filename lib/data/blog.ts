@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     authorBio: 'Dr. Johnson has 15+ years of experience in early childhood education and has published numerous research papers on child development.',
     authorImage: '👩‍🏫',
     category: 'Child Development',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop',
+    image: '/gallery/image_1.jpeg',
     slug: 'early-childhood-education-essential',
     readTime: '8 min read',
     content: `Early childhood education and pre-nursery schools play a vital role in a child's development, laying the foundation for a lifetime of learning and success. The first few years of a child's life are crucial, as their brains rapidly develop, making it the perfect time for them to absorb knowledge, cultivate essential skills, and foster a love for learning.
@@ -62,7 +62,7 @@ The NEP 2020 has now recognised the importance of Early Child Education and has 
     authorBio: 'Michael designs innovative play-based learning programs that have been implemented in over 100 preschools nationwide.',
     authorImage: '👨‍🎨',
     category: 'Play & Learning',
-    image: 'https://images.unsplash.com/photo-1516627145497-ae695c17c639?w-800&auto=format&fit=crop',
+    image: '/gallery/image_2.jpeg',
     slug: 'power-of-play-creative-activities',
     readTime: '6 min read',
     content: `Play is often described as the "work of childhood," and for good reason. Through play, children explore their world, develop critical skills, and lay the foundation for future learning. Creative activities are not just fun; they're essential tools for shaping young minds.
@@ -123,7 +123,7 @@ Remember, when children are deeply engaged in play, they're not just having fun�
     authorBio: 'Dr. Rodriguez specializes in emotional development and has helped thousands of children build healthy emotional skills.',
     authorImage: '👩‍⚕️',
     category: 'Emotional Development',
-    image: 'https://images.unsplash.com/photo-1541692641319-981cc79ee10a?w=800&auto=format&fit=crop',
+    image: '/gallery/image_3.jpeg',
     slug: 'building-emotional-intelligence-preschoolers',
     readTime: '10 min read',
     content: `Emotional intelligence is just as important as academic intelligence for a child's success in life. Preschool years are crucial for developing these skills, as children learn to navigate their feelings and understand others' emotions.
@@ -218,7 +218,7 @@ Remember, building emotional intelligence is a journey, not a destination. Every
     authorBio: 'Lisa specializes in creating nutrition plans that support optimal brain development in early childhood.',
     authorImage: '👩‍🔬',
     category: 'Health & Nutrition',
-    image: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&auto=format&fit=crop',
+    image: '/gallery/image_4.jpeg',
     slug: 'nutrition-growing-minds-healthy-eating',
     readTime: '12 min read',
     content: `Proper nutrition plays a critical role in a child's brain development, learning ability, and overall health. The foods children eat during their early years can have lasting effects on their cognitive function and academic performance.
@@ -346,7 +346,7 @@ Remember, establishing healthy eating habits early creates a foundation for life
     authorBio: 'David has designed nature-based learning programs for preschools across the country.',
     authorImage: '👨‍🌾',
     category: 'Outdoor Activities',
-    image: 'https://images.unsplash.com/photo-1516627145497-ae695c17c639?w=800&auto=format&fit=crop',
+    image: '/gallery/image_5.jpeg',
     slug: 'importance-outdoor-play-nature-exploration',
     readTime: '15 min read',
     content: `In today's digital age, outdoor play and nature exploration are more important than ever for children's development. Time spent in natural environments offers unique benefits that indoor activities simply cannot provide.
@@ -492,7 +492,7 @@ Remember, every moment in nature contributes to your child's development and cre
     authorBio: 'Professor Wilson researches language acquisition and has developed literacy programs for preschools.',
     authorImage: '👨‍🏫',
     category: 'Language Development',
-    image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&auto=format&fit=crop',
+    image: '/gallery/image_6.jpeg',
     slug: 'developing-language-skills-storytelling-reading',
     readTime: '9 min read',
     content: `Language development in early childhood lays the foundation for academic success, social relationships, and cognitive growth. Storytelling and reading are powerful tools that can significantly enhance a child's language abilities.
@@ -685,7 +685,7 @@ Remember, every conversation, every story, and every book shared contributes to 
     authorBio: 'Dr. Santos has studied various educational approaches and helps parents make informed decisions.',
     authorImage: '👩‍🎓',
     category: 'Educational Approaches',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop',
+    image: '/gallery/image_7.jpeg',
     slug: 'montessori-vs-traditional-choosing-right-approach',
     readTime: '11 min read',
     content: `Choosing the right educational approach for your child is one of the most important decisions parents make. Understanding the differences between Montessori and traditional education can help you select what aligns best with your child's needs and your family's values.
@@ -926,7 +926,7 @@ Remember, there's no one "right" answer for every child. The best approach is on
     authorBio: 'Karen has helped hundreds of families prepare for the kindergarten transition successfully.',
     authorImage: '👩‍💼',
     category: 'School Readiness',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop',
+    image: '/gallery/image_8.jpeg',
     slug: 'preparing-child-kindergarten-complete-guide',
     readTime: '7 min read',
     content: `The transition to kindergarten is a significant milestone for both children and parents. Proper preparation can make this transition smoother and set the stage for academic success. Here's a comprehensive guide to preparing your child for kindergarten.
@@ -1276,7 +1276,7 @@ Remember, kindergarten readiness is about more than just academic skills. It's a
     authorBio: 'Dr. Kim studies the impact of technology on young children\'s development and learning.',
     authorImage: '👨‍💻',
     category: 'Technology & Learning',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&auto=format&fit=crop',
+    image: '/gallery/image_9.jpeg',
     slug: 'technology-early-education-benefits-boundaries',
     readTime: '14 min read',
     content: `Technology has become an integral part of our lives, and its role in early education continues to evolve. Understanding how to use technology appropriately with young children is crucial for their development. This guide explores the benefits, risks, and best practices for technology use in early childhood.

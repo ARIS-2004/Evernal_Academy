@@ -2,432 +2,197 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Award, Users, BookOpen, TrendingUp, ChevronRight, Star, ChevronLeft, ChevronRight as ChevronRightIcon, Play, Shield, Target, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-export default function CleanHeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const slides = [
+  {
+    image: '/landing_img/landing_img_new.jpeg',
+    heading: 'Where Every Child\'s',
+    highlight: 'Journey Begins',
+    sub: 'A nurturing space where curiosity is celebrated and every milestone matters.',
+  },
+  {
+    image: '/landing_img/landing_img_new2.jpeg',
+    heading: 'Shaping Young Minds',
+    highlight: 'With Heart & Purpose',
+    sub: 'Expert educators dedicated to holistic growth — academically, socially, and emotionally.',
+  },
+  {
+    image: '/landing_img/hero_img_1.jpeg',
+    heading: 'Play-Based Learning',
+    highlight: 'That Lasts a Lifetime',
+    sub: 'We believe the best lessons are learned through joy, exploration, and imagination.',
+  },
+  {
+    image: '/landing_img/hero_img_2.jpeg',
+    heading: 'A Safe Haven',
+    highlight: 'For Little Explorers',
+    sub: 'Every corner of our campus is designed to inspire wonder and build confidence.',
+  },
+  {
+    image: '/landing_img/hero_img_3.jpg',
+    heading: 'Nurturing Potential',
+    highlight: 'One Child at a Time',
+    sub: 'Personalised attention ensures every child thrives at their own unique pace.',
+  },
+  {
+    image: '/landing_img/hero_img_4.jpg',
+    heading: 'Building Tomorrow\'s',
+    highlight: 'Leaders Today',
+    sub: 'Our curriculum blends modern pedagogy with timeless values for well-rounded development.',
+  },
+  {
+    image: '/landing_img/hero_img_5.webp',
+    heading: 'Where Creativity',
+    highlight: 'Knows No Bounds',
+    sub: 'Art, music, movement — we nurture every dimension of your child\'s growing mind.',
+  },
+  {
+    image: '/landing_img/hero_img_6.avif',
+    heading: 'Excellence in',
+    highlight: 'Early Education',
+    sub: 'Trusted by thousands of families for over a decade of quality preschool education.',
+  },
+  {
+    image: '/landing_img/hero_img_7.png',
+    heading: 'Growing Together',
+    highlight: 'As a Community',
+    sub: 'A warm, inclusive environment where children, parents, and educators thrive together.',
+  },
+  {
+    image: '/landing_img/Junior KG_img.jpg',
+    heading: 'Kindergarten That',
+    highlight: 'Sparks Curiosity',
+    sub: 'Our Junior & Senior KG programmes lay the perfect foundation for lifelong learning.',
+  },
+  {
+    image: '/landing_img/Nursery_img.jpg',
+    heading: 'Gentle Beginnings',
+    highlight: 'Bright Futures',
+    sub: 'Our nursery programme eases your child into learning with warmth and care.',
+  },
+  {
+    image: '/landing_img/PlayGroup_img.avif',
+    heading: 'First Steps Into',
+    highlight: 'A World of Wonder',
+    sub: 'Playgroup is where friendships form, laughter echoes, and learning feels like magic.',
+  },
+  {
+    image: '/landing_img/Teacher Training Programme.webp',
+    heading: 'Empowering Educators',
+    highlight: 'Inspiring Generations',
+    sub: 'Our teacher training programme shapes passionate educators who make a real difference.',
+  },
+];
+
+export default function HeroSection() {
+  const [current, setCurrent] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
-  
-  // Fix hydration error by only running on client
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const [textVisible, setTextVisible] = useState(true);
 
-  // Auto slide images (only on client)
+  useEffect(() => { setIsMounted(true); }, []);
+
   useEffect(() => {
     if (!isMounted) return;
-    
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3);
+      setTextVisible(false);
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % slides.length);
+        setTextVisible(true);
+      }, 400);
     }, 5000);
-    
     return () => clearInterval(interval);
   }, [isMounted]);
 
-  const backgroundImages = [
-    '/landing_img/landing_img_new.jpeg',
-    '/landing_img/landing_img_new2.jpeg',
-    '/landing_img/hero_img_6.avif'
-  ];
-
-  const stats = [
-    { value: '1000+', label: 'Happy Students', color: 'from-blue-500/20 to-blue-600/20' },
-    { value: '95%', label: 'Parent Satisfaction', color: 'from-green-500/20 to-green-600/20' },
-    { value: '25+', label: 'Expert Teachers', color: 'from-purple-500/20 to-purple-600/20' },
-    { value: '12+', label: 'Years Experience', color: 'from-orange-500/20 to-orange-600/20' }
-  ];
-
-  const features = [
-    { 
-      icon: <Shield className="w-5 h-5" />, 
-      text: 'Safe Environment',
-      bgColor: 'from-blue-500/20 to-blue-600/20',
-      iconBg: 'from-blue-500 to-blue-600'
-    },
-    { 
-      icon: <Target className="w-5 h-5" />, 
-      text: 'Holistic Development',
-      bgColor: 'from-green-500/20 to-green-600/20',
-      iconBg: 'from-green-500 to-green-600'
-    },
-    { 
-      icon: <BookOpen className="w-5 h-5" />, 
-      text: 'Play-Based Learning',
-      bgColor: 'from-purple-500/20 to-purple-600/20',
-      iconBg: 'from-purple-500 to-purple-600'
-    },
-    { 
-      icon: <Sparkles className="w-5 h-5" />, 
-      text: 'Creative Curriculum',
-      bgColor: 'from-pink-500/20 to-pink-600/20',
-      iconBg: 'from-pink-500 to-pink-600'
-    }
-  ];
-
-  const trustIndicators = [
-    { 
-      icon: <Award className="w-5 h-5 md:w-6 md:h-6" />, 
-      title: 'Certified', 
-      subtitle: 'Teachers',
-      bgColor: 'from-blue-500/20 to-blue-600/20'
-    },
-    { 
-      icon: <Users className="w-5 h-5 md:w-6 md:h-6" />, 
-      title: 'Small', 
-      subtitle: 'Class Sizes',
-      bgColor: 'from-green-500/20 to-green-600/20'
-    },
-    { 
-      icon: <BookOpen className="w-5 h-5 md:w-6 md:h-6" />, 
-      title: 'Modern', 
-      subtitle: 'Curriculum',
-      bgColor: 'from-purple-500/20 to-purple-600/20'
-    },
-    { 
-      icon: <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />, 
-      title: 'Progressive', 
-      subtitle: 'Learning',
-      bgColor: 'from-orange-500/20 to-orange-600/20'
-    }
-  ];
-
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + 3) % 3);
-  };
-
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % 3);
+  const handleDotClick = (i: number) => {
+    setTextVisible(false);
+    setTimeout(() => {
+      setCurrent(i);
+      setTextVisible(true);
+    }, 300);
   };
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
-      {/* Background Images Only - No Color Overlay */}
-      <div className="absolute inset-0 w-full h-full">
-        {backgroundImages.map((img, index) => (
+    <section className="relative h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] flex items-end overflow-hidden">
+
+      {/* Background Slides */}
+      <div className="absolute inset-0">
+        {slides.map((slide, i) => (
           <div
-            key={index}
-            className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${
-              currentSlide === index 
-                ? 'opacity-100 z-0' 
-                : 'opacity-0 z-[-1]'
-            }`}
-          >
-            {/* Clean Image without Gradient Overlay */}
-            <div 
-              className="absolute inset-0"
-              style={{ 
-                backgroundImage: `url(${img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
-              }}
-            />
-            {/* Very subtle dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/10"></div>
-          </div>
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${current === i ? 'opacity-100' : 'opacity-0'}`}
+            style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          />
         ))}
+        {/* Premium gradient overlay — dark at bottom, lighter at top */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
       </div>
 
-      {/* Navigation Arrows - Hide on mobile */}
-      <button
-        onClick={handlePrevSlide}
-        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/30 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/40 transition-all duration-300 group"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
-      </button>
-      
-      <button
-        onClick={handleNextSlide}
-        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/30 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white/40 transition-all duration-300 group"
-        aria-label="Next slide"
-      >
-        <ChevronRightIcon className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
-      </button>
-
-      {/* Slide Indicators */}
-      <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
-        {[0, 1, 2].map((index) => (
+      {/* Slide Dots — top right */}
+      <div className="absolute top-6 right-6 flex gap-1.5 z-20">
+        {slides.map((_, i) => (
           <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-6 h-1.5 md:w-8 md:h-1.5 rounded-full transition-all duration-300 ${
-              currentSlide === index 
-                ? 'bg-[#FCAB17] w-8 md:w-12' 
-                : 'bg-white/70 hover:bg-white'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
+            key={i}
+            onClick={() => handleDotClick(i)}
+            className={`rounded-full transition-all duration-500 ${current === i ? 'w-6 h-1.5 bg-[#FCAB17]' : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/70'}`}
           />
         ))}
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 w-full">
-        {/* Mobile: Content Order */}
-        <div className="block md:hidden mb-8">
-          {/* Mobile: Academy Tag */}
-          <div className="inline-block animate-fade-in mb-6">
-            <div className="flex items-center gap-2 bg-gradient-to-r from-[#08472C]/20 to-[#08472C]/10 backdrop-blur-sm px-3 py-2 rounded-full border border-[#08472C]/30">
-              <div className="w-2 h-2 rounded-full bg-[#08472C] animate-pulse"></div>
-              <span className="text-white font-semibold text-xs">Evernal Academy</span>
-            </div>
-          </div>
-
-          {/* Mobile: Main Heading */}
-          <div className="space-y-3 mb-6">
-            <h1 className="text-3xl font-bold text-white leading-tight">
-              Where Every Child's 
-              <span className="block text-[#08472C] mt-2 relative">
-                Journey Begins
-                <span className="absolute -bottom-1 left-0 w-20 h-0.5 bg-[#FCAB17] rounded-full"></span>
-              </span>
-            </h1>
-            
-            <p className="text-white/95 text-sm leading-relaxed max-w-xl font-light">
-              We provide a nurturing environment for early childhood education, focusing on holistic development through play-based learning and personalized care.
-            </p>
-          </div>
-
-          {/* Mobile: Features */}
-          <div className="grid grid-cols-2 gap-2 mb-6">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className={`flex items-center gap-2 bg-gradient-to-r ${feature.bgColor} backdrop-blur-sm rounded-lg p-2 border border-white/30`}
-              >
-                <div className={`w-6 h-6 bg-gradient-to-br ${feature.iconBg} rounded flex items-center justify-center flex-shrink-0`}>
-                  <div className="text-white text-xs">
-                    {feature.icon}
-                  </div>
-                </div>
-                <span className="text-white font-medium text-xs">{feature.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 xl:gap-16 items-center">
-          
-          {/* Left Content - Desktop Only */}
-          <div className="hidden md:block space-y-6 md:space-y-8">
-            {/* Academy Tag */}
-            <div className="inline-block animate-fade-in">
-              <div className="flex items-center gap-2 md:gap-3 bg-gradient-to-r from-[#08472C]/20 to-[#08472C]/10 backdrop-blur-sm px-3 md:px-4 py-2 md:py-2.5 rounded-full border border-[#08472C]/30">
-                <div className="w-2 h-2 rounded-full bg-[#08472C] animate-pulse"></div>
-                <span className="text-white font-semibold text-xs md:text-sm">Evernal Academy</span>
-              </div>
-            </div>
-
-            {/* Main Heading */}
-            <div className="space-y-4 md:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-snug md:leading-tight">
-                Where Every Child's 
-                <span className="block text-[#08472C] mt-1 md:mt-2 relative">
-                  Journey Begins
-                  <span className="absolute -bottom-1 md:-bottom-2 left-0 w-24 md:w-32 h-0.5 md:h-1 bg-[#FCAB17] rounded-full"></span>
-                </span>
-              </h1>
-              
-              <p className="text-white/95 text-base md:text-lg lg:text-xl leading-relaxed max-w-xl font-light">
-                We provide a nurturing environment for early childhood education, focusing on holistic development through play-based learning and personalized care.
-              </p>
-            </div>
-
-            {/* Features - Improved List with unique colors */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-              {features.map((feature, index) => (
-                <div 
-                  key={index}
-                  className={`flex items-center gap-2 md:gap-3 bg-gradient-to-r ${feature.bgColor} backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 hover:bg-opacity-40 transition-all duration-300 group hover:translate-x-0 md:hover:translate-x-1 border border-white/30`}
-                >
-                  <div className={`w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br ${feature.iconBg} rounded-lg flex items-center justify-center group-hover:scale-105 md:group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                    <div className="text-white scale-75 md:scale-100">
-                      {feature.icon}
-                    </div>
-                  </div>
-                  <span className="text-white font-medium text-sm md:text-base">{feature.text}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-2 md:pt-4">
-              <Link
-                href="/admissions"
-                className="inline-flex items-center justify-center gap-2 md:gap-3 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-bold hover:shadow-lg hover:shadow-[#FCAB17]/30 hover:scale-105 transition-all duration-300 group text-sm md:text-base"
-              >
-                <span>Admission Inquiry</span>
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
-              <Link
-                href="/virtual-tour"
-                className="inline-flex items-center justify-center gap-2 md:gap-3 bg-gradient-to-r from-blue-500/25 to-blue-600/25 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-bold hover:from-blue-500/35 hover:to-blue-600/35 transition-all duration-300 group border border-blue-400/40 text-sm md:text-base"
-              >
-                <Play className="w-4 h-4 md:w-5 md:h-5" />
-                <span>Virtual Tour</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Side - Stats Card - Mobile First */}
-          <div className="bg-gradient-to-br from-[#08472C]/95 to-[#0F5C3C]/90 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl border border-white/30 p-4 md:p-6 lg:p-8 transform hover:scale-[1.02] transition-all duration-500">
-  
-  {/* Academy Info */}
-  <div className="text-center mb-6 md:mb-8">
-    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-50 to-white flex items-center justify-center mb-3 md:mb-4 mx-auto shadow-lg">
-      <img
-        src="/logo_crop.png"
-        alt="Evernal Academy Logo"
-        className="w-14 h-14 md:w-16 md:h-16 object-contain"
-      />
-    </div>
-
-    <h3 className="text-xl md:text-2xl font-bold text-white">
-      Evernal Academy
-    </h3>
-    <p className="text-white/90 text-xs md:text-sm font-medium mt-1">
-      Nurturing Future Leaders
-    </p>
-
-    {/* Divider */}
-    <div className="w-12 md:w-16 h-0.5 md:h-1 bg-gradient-to-r from-[#FCAB17] to-transparent rounded-full mx-auto mt-2 md:mt-3"></div>
-  </div>
-
-  {/* Stats Grid */}
-  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
-    {stats.map((stat, index) => (
-      <div
-        key={index}
-        className={`bg-gradient-to-r ${stat.color} backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 text-center hover:shadow-md transition-all duration-300 border border-white/20`}
-      >
-        <div className="text-lg md:text-2xl font-bold text-white mb-0.5 md:mb-1">
-          {stat.value}
-        </div>
-        <div className="text-xs text-white/80 font-medium leading-tight">
-          {stat.label}
-        </div>
-      </div>
-    ))}
-  </div>
-
-  {/* Quick Links */}
-  <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-    <Link
-      href="/programmes/playgroup"
-      className="flex items-center justify-between p-2.5 md:p-3 bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm rounded-lg md:rounded-xl hover:from-blue-500/30 hover:to-blue-600/30 transition-all duration-300 group border border-blue-400/30"
-    >
-      <div className="flex items-center gap-2 md:gap-3">
-        <div className="w-2 h-2 rounded-full bg-[#FCAB17]"></div>
-        <span className="text-white font-medium text-sm md:text-base">
-          Playgroup (2–3 Years)
-        </span>
-      </div>
-      <ChevronRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
-    </Link>
-
-    <Link
-      href="/programmes/kindergarten"
-      className="flex items-center justify-between p-2.5 md:p-3 bg-gradient-to-r from-green-500/20 to-green-600/20 backdrop-blur-sm rounded-lg md:rounded-xl hover:from-green-500/30 hover:to-green-600/30 transition-all duration-300 group border border-green-400/30"
-    >
-      <div className="flex items-center gap-2 md:gap-3">
-        <div className="w-2 h-2 rounded-full bg-[#FCAB17]"></div>
-        <span className="text-white font-medium text-sm md:text-base">
-          Kindergarten (3–6 Years)
-        </span>
-      </div>
-      <ChevronRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
-    </Link>
-  </div>
-
-  {/* Rating & Trust */}
-  <div className="pt-4 md:pt-6 border-t border-white/30">
-    <div className="flex items-center justify-between">
-      <div>
-        <div className="flex items-center gap-2">
-          <div className="flex text-[#FCAB17]">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-current" />
-            ))}
-          </div>
-          <span className="text-white font-bold text-lg">4.9</span>
-        </div>
-        <span className="text-white/70 text-xs">500+ Parent Reviews</span>
+      {/* Progress bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/10 z-20">
+        <div
+          key={current}
+          className="h-full bg-[#FCAB17] origin-left"
+          style={{ animation: 'progress 5s linear forwards' }}
+        />
       </div>
 
-      <div className="flex items-center gap-2 bg-gradient-to-r from-blue-500/25 to-blue-600/25 px-3 py-1.5 rounded-full backdrop-blur-sm border border-blue-400/30">
-        <Shield className="w-4 h-4 text-white" />
-        <span className="text-white text-xs font-medium">ISO Certified</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-          {/* Mobile: CTA Buttons - Below Card */}
-          <div className="md:hidden mt-6">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/admissions"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FCAB17] to-[#FFD700] text-[#0F172A] px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-[#FCAB17]/30 hover:scale-105 transition-all duration-300 group text-sm"
-              >
-                <span>Admission Inquiry</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
-              <Link
-                href="/virtual-tour"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500/25 to-blue-600/25 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-bold hover:from-blue-500/35 hover:to-blue-600/35 transition-all duration-300 group border border-blue-400/40 text-sm mt-3 sm:mt-0"
-              >
-                <Play className="w-4 h-4" />
-                <span>Virtual Tour</span>
-              </Link>
-            </div>
+      {/* Content — bottom aligned for premium feel */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16 sm:pb-20">
+        <div
+          className="transition-all duration-500 ease-out"
+          style={{ opacity: textVisible ? 1 : 0, transform: textVisible ? 'translateY(0)' : 'translateY(16px)' }}
+        >
+          {/* Gold accent line */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-px bg-[#FCAB17]" />
+            <span className="text-[#FCAB17]/80 text-xs tracking-[0.2em] uppercase font-medium">Evernal Academy</span>
           </div>
-        </div>
 
-        {/* Trust Indicators at Bottom - Only show on Desktop */}
-        <div className="hidden md:grid mt-8 md:mt-12 lg:mt-16 grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {trustIndicators.map((item, index) => (
-            <div 
-              key={index}
-              className={`flex items-center gap-2 md:gap-3 bg-gradient-to-r ${item.bgColor} backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 border border-white/30 hover:shadow-md transition-all duration-300`}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-3">
+            {slides[current].heading}
+            <span className="block text-[#FCAB17] italic font-light mt-1">{slides[current].highlight}</span>
+          </h1>
+
+          <p className="text-white/55 text-sm sm:text-base max-w-md leading-relaxed mb-8 font-light">
+            {slides[current].sub}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              href="/admissions"
+              className="group inline-flex items-center gap-2.5 bg-[#FCAB17] hover:bg-[#e09a14] text-[#0F172A] px-7 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 shadow-xl shadow-[#FCAB17]/25"
             >
-              <div className="text-white">
-                {item.icon}
-              </div>
-              <div>
-                <div className="text-white font-semibold text-sm md:text-base">{item.title}</div>
-                <div className="text-white/80 text-xs md:text-sm">{item.subtitle}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile: Trust Indicators - Show at bottom in grid */}
-        <div className="md:hidden grid grid-cols-2 gap-2 mt-6">
-          {trustIndicators.map((item, index) => (
-            <div 
-              key={index}
-              className={`flex items-center gap-2 bg-gradient-to-r ${item.bgColor} backdrop-blur-sm rounded-lg p-2 border border-white/30`}
+              Admission Inquiry
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+            <Link
+              href="/programmes"
+              className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium transition-colors duration-200 border-b border-white/20 hover:border-white/60 pb-0.5"
             >
-              <div className="text-white">
-                {item.icon}
-              </div>
-              <div>
-                <div className="text-white font-semibold text-xs">{item.title}</div>
-                <div className="text-white/80 text-xs">{item.subtitle}</div>
-              </div>
-            </div>
-          ))}
+              Explore Programmes
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Animated Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-[#FCAB17]/10 rounded-full blur-2xl md:blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-[#08472C]/10 rounded-full blur-2xl md:blur-3xl"></div>
-      </div>
+      <style>{`
+        @keyframes progress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
     </section>
   );
 }

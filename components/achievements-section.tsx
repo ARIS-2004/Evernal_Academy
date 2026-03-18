@@ -1,257 +1,107 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Users, Award, Clock, TrendingUp, Star, Target, CheckCircle, BookOpen, GraduationCap, Heart, Shield } from 'lucide-react';
+import { Users, BookOpen, Clock, Handshake } from 'lucide-react';
 
 const achievements = [
-  {
-    icon: Users,
-    number: '10000',
-    label: 'Students Trained',
-    description: 'Successfully trained students',
-    color: 'from-[#08472C] to-[#0F172A]',
-    bgColor: 'bg-[#B2C6BD]/20',
-    delay: 100,
-    duration: 1500,
-    suffix: '+'
-  },
-  {
-    icon: Award,
-    number: '50',
-    label: 'Courses Offered',
-    description: 'Industry relevant courses',
-    color: 'from-[#FCAB17] to-[#FFD700]',
-    bgColor: 'bg-[#FCAB17]/10',
-    delay: 300,
-    duration: 1300,
-    suffix: '+'
-  },
-  {
-    icon: Clock,
-    number: '5',
-    label: 'Years Experience',
-    description: 'Teaching excellence',
-    color: 'from-[#08472C] to-[#B2C6BD]',
-    bgColor: 'bg-[#08472C]/10',
-    delay: 500,
-    duration: 1100,
-    suffix: '+'
-  },
-  {
-    icon: TrendingUp,
-    number: '95',
-    label: 'Success Rate',
-    description: 'Placement success',
-    color: 'from-[#0F172A] to-[#08472C]',
-    bgColor: 'bg-[#0F172A]/10',
-    delay: 700,
-    duration: 1600,
-    suffix: '%'
-  },
+  { icon: Users,     number: 10000, label: 'Students Trained',   suffix: '+' },
+  { icon: BookOpen,  number: 50,    label: 'Courses Offered',    suffix: '+' },
+  { icon: Clock,     number: 5,     label: 'Years Experience',   suffix: '+' },
+  { icon: Handshake, number: 120,   label: 'Placement Partners', suffix: '+' },
 ];
 
 export default function AchievementsSection() {
-  const [counts, setCounts] = useState(achievements.map(() => 0));
-  const [isVisible, setIsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const sectionRef = useRef(null);
-  const hasAnimated = useRef(false);
+  const [counts, setCounts]   = useState(achievements.map(() => 0));
+  const [visible, setVisible] = useState(false);
+  const sectionRef            = useRef<HTMLElement>(null);
+  const animated              = useRef(false);
 
   useEffect(() => {
-    setMounted(true);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !animated.current) {
+        animated.current = true;
+        setVisible(true);
+        achievements.forEach((a, i) => {
+          const steps = 60;
+          const ms    = 1600 / steps;
+          let step    = 0;
+          const t = setInterval(() => {
+            step++;
+            const p = 1 - Math.pow(1 - step / steps, 3);
+            setCounts(prev => { const n = [...prev]; n[i] = Math.floor(a.number * p); return n; });
+            if (step >= steps) { clearInterval(t); setCounts(prev => { const n = [...prev]; n[i] = a.number; return n; }); }
+          }, ms);
+        });
+      }
+    }, { threshold: 0.25 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!mounted) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated.current) {
-          setIsVisible(true);
-          hasAnimated.current = true;
-          
-          achievements.forEach((achievement, index) => {
-            const targetNumber = parseInt(achievement.number);
-            const duration = achievement.duration;
-            const steps = 40;
-            const stepDuration = duration / steps;
-            
-            let currentStep = 0;
-            const timer = setInterval(() => {
-              currentStep++;
-              const progress = currentStep / steps;
-              const easedProgress = 1 - Math.pow(1 - progress, 3);
-              
-              setCounts(prev => {
-                const newCounts = [...prev];
-                newCounts[index] = Math.floor(targetNumber * easedProgress);
-                return newCounts;
-              });
-              
-              if (currentStep >= steps) {
-                clearInterval(timer);
-                setCounts(prev => {
-                  const newCounts = [...prev];
-                  newCounts[index] = targetNumber;
-                  return newCounts;
-                });
-              }
-            }, stepDuration);
-          });
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, [mounted]);
-
-  // Fixed pattern colors - no random
-  const patternColors = ['#08472C', '#B2C6BD', '#FCAB17', '#0F172A'];
-
   return (
-    <section 
-      ref={sectionRef}
-      className="relative py-16 md:py-20 bg-gradient-to-b from-white to-[#B2C6BD]/20"
-    >
-      {/* Background Pattern - Fixed color, no random */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(#08472C 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}></div>
-      </div>
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {achievements.map((achievement, index) => {
-            const Icon = achievement.icon;
-            const displayNumber = isVisible 
-              ? counts[index].toLocaleString() + achievement.suffix
-              : '0' + achievement.suffix;
-            
+    <section ref={sectionRef} className="py-16" style={{ background: '#e8eeeb' }}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* label */}
+        <div className={`flex items-center justify-center gap-3 mb-10 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
+          <span className="h-px w-10 bg-[#FCAB17]" />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#08472C]/60 font-semibold">By the numbers</span>
+          <span className="h-px w-10 bg-[#FCAB17]" />
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {achievements.map((a, i) => {
+            const Icon = a.icon;
             return (
-              <div 
-                key={index}
-                className={`relative group bg-white rounded-2xl border-2 border-[#B2C6BD]/30 
-                  p-6 md:p-8 transition-all duration-500 hover:shadow-xl hover:border-[#08472C]/30 
-                  hover:-translate-y-2 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}
+              <div
+                key={i}
+                className={`group relative rounded-2xl px-6 py-8 text-center transition-all duration-500 cursor-default
+                  ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{
-                  transitionDelay: `${achievement.delay}ms`
+                  background: '#e8eeeb',
+                  boxShadow: '8px 8px 16px #c5cac7, -8px -8px 16px #ffffff',
+                  transitionDelay: `${i * 120}ms`,
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow =
+                    'inset 4px 4px 10px #c5cac7, inset -4px -4px 10px #ffffff';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow =
+                    '8px 8px 16px #c5cac7, -8px -8px 16px #ffffff';
                 }}
               >
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: achievement.color.replace('from-', '').replace('to-', '').split(' ').map(c => `var(--${c})`).join(', ')
-                  }}
-                ></div>
+                {/* animated gold top bar */}
+                <div
+                  className="absolute top-0 left-0 h-[3px] rounded-t-2xl bg-gradient-to-r from-[#FCAB17] to-[#f5c842] transition-all duration-700 ease-out"
+                  style={{ width: visible ? '100%' : '0%', transitionDelay: `${i * 120 + 300}ms` }}
+                />
 
-                <div className="relative z-10">
-                  {/* Icon Container */}
-                  <div className={`mb-6 ${achievement.bgColor} w-16 h-16 rounded-xl 
-                    flex items-center justify-center mx-auto transform group-hover:scale-110 
-                    transition-transform duration-300 group-hover:rotate-3`}>
-                    <div className={`p-3 rounded-lg bg-gradient-to-br ${achievement.color} 
-                      shadow-lg`}>
-                      <Icon className="w-7 h-7 text-white" />
-                    </div>
-                  </div>
+                {/* icon — neumorphic circle */}
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-300"
+                  style={{ background: '#e8eeeb', boxShadow: '4px 4px 8px #c5cac7, -4px -4px 8px #ffffff' }}
+                >
+                  <Icon className="w-5 h-5 text-[#08472C]" strokeWidth={1.8} />
+                </div>
 
-                  {/* Number */}
-                  <div className="text-center mb-4">
-                    <div className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-2 font-sans">
-                      {displayNumber}
-                    </div>
-                    
-                    {/* Progress Bar */}
-                    <div className="relative h-1.5 bg-[#B2C6BD]/30 rounded-full overflow-hidden mx-auto max-w-xs">
-                      <div 
-                        className={`absolute top-0 left-0 h-full rounded-full bg-gradient-to-r ${achievement.color}
-                        transition-all duration-800 ease-out`}
-                        style={{ 
-                          width: isVisible ? 
-                            (index === 0 ? '92%' : 
-                             index === 1 ? '88%' : 
-                             index === 2 ? '85%' : '95%') : '0%',
-                          transitionDelay: `${achievement.delay + 200}ms`
-                        }}
-                      />
-                    </div>
-                  </div>
+                {/* number */}
+                <div className="text-3xl sm:text-4xl font-black text-[#08472C] tabular-nums leading-none tracking-tight">
+                  {counts[i].toLocaleString()}{a.suffix}
+                </div>
 
-                  {/* Label and Description */}
-                  <div className="text-center space-y-2">
-                    <h3 className="text-lg font-semibold text-[#0F172A] group-hover:text-[#08472C] transition-colors duration-300">
-                      {achievement.label}
-                    </h3>
-                    <p className="text-[#0F172A]/70 text-sm">
-                      {achievement.description}
-                    </p>
-                  </div>
+                {/* divider */}
+                <div className="w-6 h-px bg-[#FCAB17] mx-auto my-2.5" />
 
-                  {/* Corner decoration */}
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-8 h-8 bg-[#FCAB17]/10 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-[#FCAB17]" />
-                    </div>
-                  </div>
+                {/* label */}
+                <div className="text-[11px] uppercase tracking-widest text-[#0F172A]/50 font-semibold">
+                  {a.label}
                 </div>
               </div>
             );
           })}
         </div>
-
-        {/* Additional Info Cards */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-r from-[#08472C]/5 to-[#B2C6BD]/10 p-6 rounded-2xl border border-[#B2C6BD]/30">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-[#08472C]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Heart className="w-6 h-6 text-[#08472C]" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#0F172A] mb-2">Our Philosophy</h3>
-                <p className="text-[#0F172A]/70">
-                  We believe in nurturing each child's unique potential through love, care, and personalized attention in a stimulating environment.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-[#FCAB17]/5 to-[#FFD700]/10 p-6 rounded-2xl border border-[#B2C6BD]/30">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-[#FCAB17]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <BookOpen className="w-6 h-6 text-[#FCAB17]" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#0F172A] mb-2">Learning Methodology</h3>
-                <p className="text-[#0F172A]/70">
-                  Play-based learning with structured activities that promote cognitive, social, emotional, and physical development.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-
-      {/* Style for color variables */}
-      <style jsx>{`
-        :root {
-          --08472C: #08472C;
-          --FCAB17: #FCAB17;
-          --B2C6BD: #B2C6BD;
-          --0F172A: #0F172A;
-        }
-      `}</style>
     </section>
   );
 }

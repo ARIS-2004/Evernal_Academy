@@ -1,111 +1,59 @@
 'use client';
 
-import { CheckCircle, Clock, Award, BookOpen, Users, Shield, Send, Loader2, Phone, Mail } from 'lucide-react';
+import Image from 'next/image';
+import { CheckCircle, Clock, Award, Users, Send, Loader2, Phone, Mail, ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
+
+const courses = {
+  playgroup: { name: 'Playgroup', duration: '3 hrs/day', age: '2 – 3 Years' },
+  nursery: { name: 'Nursery', duration: '3 hrs/day', age: '3 – 4 Years' },
+  kindergarten: { name: 'Kindergarten', duration: '4–5 hrs/day', age: '4 – 5 Years' },
+  training: { name: 'Teacher Training', duration: 'Varies', age: 'Professional' },
+  daycare: { name: 'Daycare', duration: 'Flexible', age: '6m – 5 Years' },
+};
+
+const inputCls = "w-full px-4 py-2.5 text-[12px] bg-white border border-[#e2e8e4] rounded-xl text-[#0F172A] placeholder:text-[#0F172A]/30 focus:outline-none focus:border-[#08472C]/40 transition-colors";
+const labelCls = "block text-[10px] uppercase tracking-[0.15em] font-semibold text-[#08472C]/60 mb-1.5";
 
 export default function EnrollPage() {
   const [selectedCourse, setSelectedCourse] = useState('playgroup');
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    childName: '',
-    childAge: '',
-    address: '',
-    city: '',
-    pin: '',
-    message: '',
-    learningMode: 'full-day',
-    experience: 'beginner',
-    terms: false,
+    firstName: '', lastName: '', email: '', phone: '',
+    childName: '', childAge: '', address: '', city: '', pin: '',
+    message: '', learningMode: 'full-day', terms: false,
   });
-
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
-  const courses = {
-    playgroup: { name: 'Playgroup', price: 299, duration: '3 hours/day', age: '1.5-2.5 years' },
-    nursery: { name: 'Nursery', price: 349, duration: '4 hours/day', age: '2.5-3.5 years' },
-    kindergarten: { name: 'Kindergarten', price: 399, duration: '5 hours/day', age: '3.5-5.5 years' },
-    training: { name: 'Teacher Training Programme', price: 599, duration: '6 months', age: '18+ years' },
-    daycare: { name: 'Daycare', price: 449, duration: '8 hours/day', age: '1-8 years' },
-  };
 
   const currentCourse = courses[selectedCourse as keyof typeof courses];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-    
     if (type === 'checkbox') {
-      const checkbox = e.target as HTMLInputElement;
-      setFormData(prev => ({
-        ...prev,
-        [name]: checkbox.checked,
-      }));
+      setFormData(prev => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }));
     } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value,
-      }));
+      setFormData(prev => ({ ...prev, [name]: value }));
     }
-    
     if (error) setError('');
   };
 
   const handleEnroll = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.terms) {
-      setError('Please agree to terms and conditions');
-      return;
-    }
-
-    setLoading(true);
-    setError('');
-
+    if (!formData.terms) { setError('Please agree to the terms and conditions'); return; }
+    setLoading(true); setError('');
     try {
-      const response = await fetch('/api/enroll', {
+      const res = await fetch('/api/enroll', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          selectedCourse: currentCourse.name,
-          coursePrice: currentCourse.price,
-          courseDuration: currentCourse.duration,
-          courseAge: currentCourse.age,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, selectedCourse: currentCourse.name }),
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to submit enrollment');
-      }
-
-      // Success
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Failed to submit');
       setFormSubmitted(true);
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        childName: '',
-        childAge: '',
-        address: '',
-        city: '',
-        pin: '',
-        message: '',
-        learningMode: 'full-day',
-        experience: 'beginner',
-        terms: false,
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setFormSubmitted(false), 5000);
+      setFormData({ firstName: '', lastName: '', email: '', phone: '', childName: '', childAge: '', address: '', city: '', pin: '', message: '', learningMode: 'full-day', terms: false });
+      setTimeout(() => setFormSubmitted(false), 6000);
     } catch (err: any) {
       setError(err.message || 'An error occurred. Please try again.');
     } finally {
@@ -114,682 +62,279 @@ export default function EnrollPage() {
   };
 
   return (
-    <main className="min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
+    <main className="min-h-screen bg-white">
 
-
-      {/* Hero Section */}
-      <section 
-        className="relative py-24 px-4 overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #08472C 0%, #0F172A 100%)',
-        }}
-      >
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#FCAB17]/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FCAB17]/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#FCAB17] mb-8">
-            <BookOpen className="w-10 h-10" style={{ color: '#0F172A' }} />
+      {/* ── HERO ── */}
+      <section className="relative h-[180px] sm:h-[200px] flex items-start overflow-hidden">
+        <Image src="/gallery/image_6.jpeg" alt="Enroll" fill className="object-cover" style={{ objectPosition: 'center 45%' }} priority sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#08472C]/85 via-[#08472C]/55 to-[#08472C]/80" />
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 w-full">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="h-px w-8 bg-[#FCAB17]" />
+            <span className="text-[10px] uppercase tracking-[0.24em] text-[#FCAB17] font-semibold">Admissions Open</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-            Enroll Your Child
+          <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+            Enroll Your <span className="text-[#FCAB17]">Child</span>
           </h1>
-          <p className="text-lg text-[#B2C6BD] max-w-2xl mx-auto">
-            Begin your child's educational journey with us. Secure their future with quality education and care.
-          </p>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#FCAB17]" />
       </section>
 
-      {/* Enroll Form */}
-      <section className="py-20 px-4" style={{ backgroundColor: '#F8FAFC' }}>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Left - Form */}
-          <div className="lg:col-span-2">
-            <div 
-              className="rounded-xl p-8 shadow-xl"
-              style={{
-                backgroundColor: '#FFFFFF',
-                border: '2px solid #B2C6BD'
-              }}
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <div 
-                  className="w-12 h-12 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: '#08472C' }}
-                >
-                  <Users className="w-6 h-6 text-white" />
-                </div>
-                <h2 className="text-2xl font-bold" style={{ color: '#08472C' }}>
-                  Student Information
-                </h2>
-              </div>
-
-              {formSubmitted ? (
-                <div 
-                  className="rounded-xl p-8 text-center"
-                  style={{
-                    backgroundColor: '#F0FDF4',
-                    border: '2px solid #16A34A'
-                  }}
-                >
-                  <div 
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4"
-                    style={{ backgroundColor: '#16A34A' }}
-                  >
-                    <CheckCircle className="w-10 h-10 text-white" />
-                  </div>
-                  <p className="text-xl font-bold mb-2" style={{ color: '#166534' }}>
-                    Enrollment Submitted Successfully!
-                  </p>
-                  <p className="mb-4" style={{ color: '#15803D' }}>
-                    Thank you for enrolling. We have sent a confirmation email to your inbox.
-                  </p>
-                  <p className="text-sm" style={{ color: '#166534' }}>
-                    Our admission team will contact you within 24 hours for further process.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {error && (
-                    <div 
-                      className="rounded-lg p-4 mb-6"
-                      style={{
-                        backgroundColor: '#FEF2F2',
-                        border: '1px solid #F87171'
-                      }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
-                          <span className="text-white text-sm">!</span>
-                        </div>
-                        <p className="font-medium" style={{ color: '#DC2626' }}>
-                          {error}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  <form onSubmit={handleEnroll} className="space-y-8">
-                    {/* Parent/Guardian Details */}
-                    <div className="space-y-6">
-                      <h3 className="font-bold text-lg" style={{ color: '#0F172A' }}>
-                        Parent/Guardian Details
-                      </h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            First Name *
-                          </label>
-                          <input
-                            type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="First name"
-                          />
-                        </div>
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            Last Name *
-                          </label>
-                          <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="Last name"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            Email Address *
-                          </label>
-                          <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="your@email.com"
-                          />
-                        </div>
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            Phone Number *
-                          </label>
-                          <input
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="+1 (555) 000-0000"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Child Details */}
-                    <div className="space-y-6 pt-8 border-t" style={{ borderColor: '#B2C6BD' }}>
-                      <h3 className="font-bold text-lg" style={{ color: '#0F172A' }}>
-                        Child Details
-                      </h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            Child's Name *
-                          </label>
-                          <input
-                            type="text"
-                            name="childName"
-                            value={formData.childName}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="Child's full name"
-                          />
-                        </div>
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            Child's Age *
-                          </label>
-                          <input
-                            type="text"
-                            name="childAge"
-                            value={formData.childAge}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="Age in years"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Course Selection */}
-                      <div>
-                        <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                          Select Program *
-                        </label>
-                        <select
-                          name="selectedCourse"
-                          value={selectedCourse}
-                          onChange={(e) => setSelectedCourse(e.target.value)}
-                          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                          style={{
-                            borderColor: '#B2C6BD',
-                            backgroundColor: '#FFFFFF'
-                          }}
-                        >
-                          <option value="playgroup">Playgroup - $299 (1.5-2.5 years)</option>
-                          <option value="nursery">Nursery - $349 (2.5-3.5 years)</option>
-                          <option value="kindergarten">Kindergarten - $399 (3.5-5.5 years)</option>
-                          <option value="training">Teacher Training Programme - $599 (6 months)</option>
-                          <option value="daycare">Daycare - $449 (1-8 years)</option>
-                        </select>
-                      </div>
-
-                      {/* Learning Mode */}
-                      <div>
-                        <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                          Program Timing *
-                        </label>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <label className="flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-all"
-                            style={{
-                              borderColor: formData.learningMode === 'full-day' ? '#FCAB17' : '#B2C6BD',
-                              backgroundColor: formData.learningMode === 'full-day' ? '#FFF7ED' : '#FFFFFF'
-                            }}
-                          >
-                            <input
-                              type="radio"
-                              name="learningMode"
-                              value="full-day"
-                              checked={formData.learningMode === 'full-day'}
-                              onChange={handleChange}
-                              className="hidden"
-                            />
-                            <div className="w-6 h-6 rounded-full border flex items-center justify-center"
-                              style={{ borderColor: '#FCAB17' }}
-                            >
-                              {formData.learningMode === 'full-day' && (
-                                <div className="w-3 h-3 rounded-full bg-[#FCAB17]"></div>
-                              )}
-                            </div>
-                            <div>
-                              <p className="font-semibold" style={{ color: '#0F172A' }}>Full Day</p>
-                              <p className="text-sm" style={{ color: '#64748B' }}>8:00 AM - 3:00 PM</p>
-                            </div>
-                          </label>
-                          
-                          <label className="flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-all"
-                            style={{
-                              borderColor: formData.learningMode === 'half-day' ? '#FCAB17' : '#B2C6BD',
-                              backgroundColor: formData.learningMode === 'half-day' ? '#FFF7ED' : '#FFFFFF'
-                            }}
-                          >
-                            <input
-                              type="radio"
-                              name="learningMode"
-                              value="half-day"
-                              checked={formData.learningMode === 'half-day'}
-                              onChange={handleChange}
-                              className="hidden"
-                            />
-                            <div className="w-6 h-6 rounded-full border flex items-center justify-center"
-                              style={{ borderColor: '#FCAB17' }}
-                            >
-                              {formData.learningMode === 'half-day' && (
-                                <div className="w-3 h-3 rounded-full bg-[#FCAB17]"></div>
-                              )}
-                            </div>
-                            <div>
-                              <p className="font-semibold" style={{ color: '#0F172A' }}>Half Day</p>
-                              <p className="text-sm" style={{ color: '#64748B' }}>8:00 AM - 12:00 PM</p>
-                            </div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Address Details */}
-                    <div className="space-y-6 pt-8 border-t" style={{ borderColor: '#B2C6BD' }}>
-                      <h3 className="font-bold text-lg" style={{ color: '#0F172A' }}>
-                        Address Details
-                      </h3>
-                      <div>
-                        <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                          Full Address *
-                        </label>
-                        <textarea
-                          name="address"
-                          value={formData.address}
-                          onChange={handleChange}
-                          required
-                          rows={3}
-                          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all resize-none"
-                          style={{
-                            borderColor: '#B2C6BD',
-                            backgroundColor: '#FFFFFF'
-                          }}
-                          placeholder="Street address"
-                        ></textarea>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            City *
-                          </label>
-                          <input
-                            type="text"
-                            name="city"
-                            value={formData.city}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="City"
-                          />
-                        </div>
-                        <div>
-                          <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                            PIN Code *
-                          </label>
-                          <input
-                            type="text"
-                            name="pin"
-                            value={formData.pin}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all"
-                            style={{
-                              borderColor: '#B2C6BD',
-                              backgroundColor: '#FFFFFF'
-                            }}
-                            placeholder="Postal/ZIP code"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Additional Information */}
-                    <div className="space-y-4 pt-8 border-t" style={{ borderColor: '#B2C6BD' }}>
-                      <h3 className="font-bold text-lg" style={{ color: '#0F172A' }}>
-                        Additional Information
-                      </h3>
-                      <div>
-                        <label className="block font-semibold mb-2" style={{ color: '#0F172A' }}>
-                          Special Requirements or Notes
-                        </label>
-                        <textarea
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          rows={4}
-                          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all resize-none"
-                          style={{
-                            borderColor: '#B2C6BD',
-                            backgroundColor: '#FFFFFF'
-                          }}
-                          placeholder="Any special requirements, allergies, or additional information..."
-                        ></textarea>
-                      </div>
-                    </div>
-
-                    {/* Terms and Conditions */}
-                    <div className="flex items-start gap-3 pt-8 border-t" style={{ borderColor: '#B2C6BD' }}>
-                      <input
-                        type="checkbox"
-                        name="terms"
-                        checked={formData.terms}
-                        onChange={handleChange}
-                        required
-                        className="mt-1 w-5 h-5 rounded"
-                        style={{ accentColor: '#08472C' }}
-                      />
-                      <label className="text-sm" style={{ color: '#64748B' }}>
-                        I agree to the terms and conditions and privacy policy. I understand that my child's 
-                        admission is subject to availability and final approval by the admission committee. *
-                      </label>
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg font-semibold disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 w-full hover:shadow-lg"
-                      style={{
-                        background: loading 
-                          ? '#B2C6BD' 
-                          : 'linear-gradient(135deg, #08472C 0%, #0F172A 100%)',
-                        color: '#FFFFFF'
-                      }}
-                    >
-                      {loading ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          Processing Enrollment...
-                        </>
-                      ) : (
-                        <>
-                          Complete Enrollment
-                          <Send className="w-5 h-5" />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                </>
-              )}
-            </div>
-          </div>
-
-          {/* Right - Summary */}
-          <div className="space-y-8">
-            {/* Enrollment Summary */}
-            <div 
-              className="rounded-xl p-8 shadow-xl h-fit sticky top-24"
-              style={{
-                backgroundColor: '#FFFFFF',
-                border: '2px solid #B2C6BD'
-              }}
-            >
-              <h3 className="text-xl font-bold mb-6" style={{ color: '#08472C' }}>
-                Enrollment Summary
-              </h3>
-
-              <div className="space-y-4 mb-6 pb-6 border-b" style={{ borderColor: '#B2C6BD' }}>
-                <div>
-                  <p className="text-sm mb-1" style={{ color: '#64748B' }}>Selected Program</p>
-                  <p className="font-bold text-lg" style={{ color: '#0F172A' }}>
-                    {currentCourse.name}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-sm mb-1 flex items-center gap-1" style={{ color: '#64748B' }}>
-                      <Clock className="w-4 h-4" /> Duration
-                    </p>
-                    <p className="font-semibold" style={{ color: '#0F172A' }}>
-                      {currentCourse.duration}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm mb-1 flex items-center gap-1" style={{ color: '#64748B' }}>
-                      <Award className="w-4 h-4" /> Age Group
-                    </p>
-                    <p className="font-semibold" style={{ color: '#0F172A' }}>
-                      {currentCourse.age}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* What's Included */}
-              <div className="space-y-3 mb-6 pb-6 border-b" style={{ borderColor: '#B2C6BD' }}>
-                <h4 className="font-bold" style={{ color: '#0F172A' }}>What's Included</h4>
-                {[
-                  'Qualified & Trained Teachers',
-                  'Safe & Secure Environment',
-                  'Daily Progress Reports',
-                  'Nutritious Meals Provided',
-                  'Educational Materials',
-                  'Outdoor Play Activities',
-                  'Regular Parent-Teacher Meetings',
-                  'Health & Safety Measures',
-                ].map((benefit, i) => (
-                  <div key={i} className="flex items-start gap-2 text-sm">
-                    <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FCAB17' }} />
-                    <span style={{ color: '#64748B' }}>{benefit}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Price */}
-              <div className="mb-6">
-                <p className="text-sm mb-2" style={{ color: '#64748B' }}>Total Fees (Monthly)</p>
-                <p className="text-4xl font-bold mb-2" style={{ color: '#FCAB17' }}>
-                  ${currentCourse.price}
-                </p>
-                <p className="text-sm" style={{ color: '#64748B' }}>
-                  One-time admission fee may apply • Sibling discount available
-                </p>
-              </div>
-
-              {/* Payment Info */}
-              <div 
-                className="rounded-lg p-4 text-sm"
-                style={{
-                  backgroundColor: '#F8FAFC',
-                  border: '1px solid #08472C'
-                }}
-              >
-                <p className="font-semibold mb-2" style={{ color: '#08472C' }}>
-                  Flexible Payment Options
-                </p>
-                <p style={{ color: '#64748B' }}>
-                  We accept cash, credit cards, bank transfers, and offer monthly installment plans.
-                </p>
-              </div>
-            </div>
-
-            {/* Franchise Inquiry Box */}
-            <div 
-              className="rounded-xl p-8 shadow-xl"
-              style={{
-                background: 'linear-gradient(135deg, #08472C 0%, #0F172A 100%)',
-                border: '2px solid #FCAB17'
-              }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-[#FCAB17] flex items-center justify-center">
-                  <Shield className="w-6 h-6" style={{ color: '#0F172A' }} />
-                </div>
-                <h3 className="text-xl font-bold text-white">Franchise Opportunity</h3>
-              </div>
-              
-              <p className="mb-6 text-[#B2C6BD]">
-                Interested in starting your own branch? Join our successful franchise network and bring quality education to your community.
-              </p>
-              
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105 w-full"
-                style={{
-                  backgroundColor: '#FCAB17',
-                  color: '#0F172A'
-                }}
-              >
-                <Send className="w-5 h-5" />
-                Inquire About Franchise
-              </a>
-              
-              <div className="mt-6 pt-6 border-t border-[#B2C6BD]/20">
-                <p className="text-sm text-[#B2C6BD]">
-                  📞 Call for franchise details: <span className="text-white font-semibold">+1 (555) 789-0123</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 px-4" style={{ backgroundColor: '#FFFFFF' }}>
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 
-              className="text-3xl font-bold mb-4"
-              style={{ color: '#08472C' }}
-            >
-              Enrollment FAQs
-            </h2>
-            <p className="text-lg" style={{ color: '#64748B' }}>
-              Common questions about our enrollment process
-            </p>
-          </div>
-          
-          <div className="space-y-6">
+      {/* ── DARK GREEN STRIP ── */}
+      <section className="bg-[#08472C] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              {
-                question: 'What is the admission process?',
-                answer: 'Submit enrollment form → Receive confirmation email → Schedule orientation visit → Complete documentation → Start classes.',
-              },
-              {
-                question: 'Are there any discounts available?',
-                answer: 'Yes! We offer sibling discounts (15% for second child) and early payment discounts. Contact us for more details.',
-              },
-              {
-                question: 'What documents are required?',
-                answer: 'Birth certificate, immunization records, 2 passport photos, and previous school records (if applicable).',
-              },
-              {
-                question: 'Can I visit the facility before enrolling?',
-                answer: 'Absolutely! We encourage parents to schedule a campus tour before making a decision.',
-              },
-              {
-                question: 'What is the teacher-to-student ratio?',
-                answer: 'We maintain a 1:8 ratio for Playgroup/Nursery and 1:10 for Kindergarten to ensure personalized attention.',
-              },
-              {
-                question: 'Is transportation available?',
-                answer: 'Yes, we provide safe and reliable transportation services with GPS tracking. Additional charges apply.',
-              },
-            ].map((faq, index) => (
-              <div 
-                key={index}
-                className="rounded-xl p-6 hover:shadow-xl transition-all duration-300 group cursor-pointer"
-                style={{
-                  backgroundColor: '#F8FAFC',
-                  border: '2px solid transparent',
-                  borderLeftColor: '#FCAB17'
-                }}
-              >
-                <h3 className="font-bold text-lg mb-3 group-hover:text-[#08472C] transition-colors">
-                  {faq.question}
-                </h3>
-                <p className="leading-relaxed" style={{ color: '#64748B' }}>
-                  {faq.answer}
-                </p>
+              { icon: Users, label: 'Teacher Ratio', value: '1:8 Students' },
+              { icon: Clock, label: 'Response Time', value: 'Within 24 hrs' },
+              { icon: Award, label: 'Certified', value: 'NEP Aligned' },
+              { icon: CheckCircle, label: 'Safe Campus', value: 'CCTV Monitored' },
+            ].map(({ icon: Icon, label, value }) => (
+              <div key={label} className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#FCAB17]/15 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-4 h-4 text-[#FCAB17]" />
+                </div>
+                <div>
+                  <p className="text-[9px] uppercase tracking-[0.18em] text-white/45 font-semibold">{label}</p>
+                  <p className="text-[12px] font-bold text-white">{value}</p>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Contact Support */}
-          <div 
-            className="mt-12 rounded-xl p-8 text-center"
-            style={{
-              background: 'linear-gradient(135deg, #08472C 0%, #0F172A 100%)',
-              border: '2px solid #FCAB17'
-            }}
-          >
-            <h3 className="text-xl font-bold mb-4 text-white">
-              Need Help with Enrollment?
-            </h3>
-            <p className="mb-6 text-[#B2C6BD]">
-              Our admission team is available to assist you with any questions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+15551234567"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
-                style={{
-                  backgroundColor: '#FCAB17',
-                  color: '#0F172A'
-                }}
-              >
-                <Phone className="w-5 h-5" />
-                Call Admission: +91 7003999531
-              </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold border-2 transition-all hover:scale-105"
-                style={{
-                  borderColor: '#FCAB17',
-                  color: '#FCAB17'
-                }}
-              >
-                <Mail className="w-5 h-5" />
-                Email Us
-              </a>
+      {/* ── FORM + SIDEBAR ── */}
+      <section className="py-14 bg-[#f7f8f6]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[1fr_320px] gap-8">
+
+            {/* ── FORM ── */}
+            <div className="rounded-2xl bg-white border border-[#f0f0f0] overflow-hidden">
+              {/* form header */}
+              <div className="bg-[#08472C] px-7 py-5 flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#FCAB17]/20 flex items-center justify-center flex-shrink-0">
+                  <Users className="w-4 h-4 text-[#FCAB17]" />
+                </div>
+                <div>
+                  <p className="text-[9px] uppercase tracking-[0.2em] text-[#FCAB17]/60 font-semibold">Step 1 of 1</p>
+                  <p className="text-[14px] font-bold text-white">Student Enrollment Form</p>
+                </div>
+              </div>
+
+              <div className="p-7">
+                {formSubmitted ? (
+                  <div className="rounded-2xl bg-[#f0fdf4] border border-green-200 p-8 text-center">
+                    <div className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-7 h-7 text-white" />
+                    </div>
+                    <p className="text-[14px] font-bold text-green-800 mb-1">Enrollment Submitted!</p>
+                    <p className="text-[11px] text-green-700">Our admission team will contact you within 24 hours.</p>
+                  </div>
+                ) : (
+                  <>
+                    {error && (
+                      <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 mb-6 flex items-center gap-2">
+                        <span className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">!</span>
+                        <p className="text-[11px] text-red-600 font-medium">{error}</p>
+                      </div>
+                    )}
+
+                    <form onSubmit={handleEnroll} className="space-y-8">
+
+                      {/* Parent Details */}
+                      <div>
+                        <div className="flex items-center gap-2 mb-5">
+                          <span className="h-px w-6 bg-[#FCAB17]" />
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-[#08472C]/50 font-semibold">Parent / Guardian Details</p>
+                        </div>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div><label className={labelCls}>First Name *</label><input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required className={inputCls} placeholder="First name" /></div>
+                          <div><label className={labelCls}>Last Name *</label><input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required className={inputCls} placeholder="Last name" /></div>
+                          <div><label className={labelCls}>Email Address *</label><input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputCls} placeholder="your@email.com" /></div>
+                          <div><label className={labelCls}>Phone Number *</label><input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className={inputCls} placeholder="+91 XXXXX XXXXX" /></div>
+                        </div>
+                      </div>
+
+                      {/* Child Details */}
+                      <div className="pt-6 border-t border-[#f0f0f0]">
+                        <div className="flex items-center gap-2 mb-5">
+                          <span className="h-px w-6 bg-[#FCAB17]" />
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-[#08472C]/50 font-semibold">Child Details</p>
+                        </div>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div><label className={labelCls}>Child's Name *</label><input type="text" name="childName" value={formData.childName} onChange={handleChange} required className={inputCls} placeholder="Child's full name" /></div>
+                          <div><label className={labelCls}>Child's Age *</label><input type="text" name="childAge" value={formData.childAge} onChange={handleChange} required className={inputCls} placeholder="e.g. 3 years" /></div>
+                        </div>
+                        <div className="mt-4">
+                          <label className={labelCls}>Select Programme *</label>
+                          <select name="selectedCourse" value={selectedCourse} onChange={(e) => setSelectedCourse(e.target.value)} className={inputCls}>
+                            <option value="playgroup">Playgroup — 2 to 3 Years</option>
+                            <option value="nursery">Nursery — 3 to 4 Years</option>
+                            <option value="kindergarten">Kindergarten — 4 to 5 Years</option>
+                            <option value="training">Teacher Training Programme</option>
+                            <option value="daycare">Daycare — 6 Months to 5 Years</option>
+                          </select>
+                        </div>
+                        <div className="mt-4">
+                          <label className={labelCls}>Programme Timing *</label>
+                          <div className="grid sm:grid-cols-2 gap-3 mt-1">
+                            {[{ val: 'full-day', label: 'Full Day', sub: '8:00 AM – 3:00 PM' }, { val: 'half-day', label: 'Half Day', sub: '8:00 AM – 12:00 PM' }].map(opt => (
+                              <label key={opt.val} className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${formData.learningMode === opt.val ? 'border-[#08472C]/40 bg-[#08472C]/4' : 'border-[#e2e8e4] bg-white'}`}>
+                                <input type="radio" name="learningMode" value={opt.val} checked={formData.learningMode === opt.val} onChange={handleChange} className="hidden" />
+                                <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${formData.learningMode === opt.val ? 'border-[#08472C]' : 'border-[#c5cac7]'}`}>
+                                  {formData.learningMode === opt.val && <div className="w-2 h-2 rounded-full bg-[#08472C]" />}
+                                </div>
+                                <div>
+                                  <p className="text-[12px] font-bold text-[#08472C]">{opt.label}</p>
+                                  <p className="text-[10px] text-[#0F172A]/40">{opt.sub}</p>
+                                </div>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Address */}
+                      <div className="pt-6 border-t border-[#f0f0f0]">
+                        <div className="flex items-center gap-2 mb-5">
+                          <span className="h-px w-6 bg-[#FCAB17]" />
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-[#08472C]/50 font-semibold">Address Details</p>
+                        </div>
+                        <div className="space-y-4">
+                          <div><label className={labelCls}>Full Address *</label><textarea name="address" value={formData.address} onChange={handleChange} required rows={2} className={`${inputCls} resize-none`} placeholder="Street address" /></div>
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            <div><label className={labelCls}>City *</label><input type="text" name="city" value={formData.city} onChange={handleChange} required className={inputCls} placeholder="City" /></div>
+                            <div><label className={labelCls}>PIN Code *</label><input type="text" name="pin" value={formData.pin} onChange={handleChange} required className={inputCls} placeholder="Postal code" /></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Notes */}
+                      <div className="pt-6 border-t border-[#f0f0f0]">
+                        <div className="flex items-center gap-2 mb-5">
+                          <span className="h-px w-6 bg-[#FCAB17]" />
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-[#08472C]/50 font-semibold">Additional Information</p>
+                        </div>
+                        <textarea name="message" value={formData.message} onChange={handleChange} rows={3} className={`${inputCls} resize-none`} placeholder="Any special requirements, allergies, or additional notes…" />
+                      </div>
+
+                      {/* Terms */}
+                      <div className="pt-6 border-t border-[#f0f0f0] flex items-start gap-3">
+                        <input type="checkbox" name="terms" checked={formData.terms} onChange={handleChange} required className="mt-0.5 w-4 h-4 rounded accent-[#08472C] flex-shrink-0" />
+                        <p className="text-[11px] text-[#0F172A]/50 leading-relaxed">
+                          I agree to the terms and conditions and privacy policy. I understand that admission is subject to availability and final approval by the admission committee. *
+                        </p>
+                      </div>
+
+                      {/* Submit */}
+                      <button type="submit" disabled={loading} className="w-full inline-flex items-center justify-center gap-2 bg-[#08472C] text-white text-[12px] font-bold px-6 py-3.5 rounded-xl hover:bg-[#063d26] disabled:opacity-60 disabled:cursor-not-allowed transition-colors">
+                        {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing…</> : <><Send className="w-4 h-4" /> Complete Enrollment</>}
+                      </button>
+                    </form>
+                  </>
+                )}
+              </div>
             </div>
+
+            {/* ── SIDEBAR ── */}
+            <div className="space-y-5">
+
+              {/* Enrollment Summary */}
+              <div className="rounded-2xl bg-white border border-[#f0f0f0] overflow-hidden sticky top-24">
+                <div className="bg-[#08472C] px-5 py-4">
+                  <p className="text-[9px] uppercase tracking-[0.2em] text-[#FCAB17]/60 font-semibold mb-0.5">Selected</p>
+                  <p className="text-[14px] font-bold text-white">{currentCourse.name}</p>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-4 mb-5 text-[11px] text-[#0F172A]/50">
+                    <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" />{currentCourse.duration}</span>
+                    <span className="flex items-center gap-1.5"><Users className="w-3 h-3" />{currentCourse.age}</span>
+                  </div>
+                  <div className="space-y-2 mb-5 pb-5 border-b border-[#f0f0f0]">
+                    <p className="text-[10px] uppercase tracking-[0.15em] font-semibold text-[#08472C]/50 mb-3">What's Included</p>
+                    {['Qualified & Trained Teachers', 'Safe & Secure Environment', 'Daily Progress Reports', 'Educational Materials', 'Outdoor Play Activities', 'Parent-Teacher Meetings'].map(b => (
+                      <div key={b} className="flex items-center gap-2">
+                        <CheckCircle className="w-3 h-3 text-[#FCAB17] flex-shrink-0" />
+                        <span className="text-[11px] text-[#0F172A]/55">{b}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="rounded-xl bg-[#f7f8f6] border border-[#08472C]/08 p-4">
+                    <p className="text-[10px] font-bold text-[#08472C] mb-1">Flexible Payment Options</p>
+                    <p className="text-[10px] text-[#0F172A]/50 leading-relaxed">Cash, cards, bank transfers & monthly installment plans available.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact box */}
+              <div className="rounded-2xl bg-[#08472C] p-5 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                <div className="relative z-10">
+                  <p className="text-[9px] uppercase tracking-[0.2em] text-[#FCAB17]/60 font-semibold mb-1">Need Help?</p>
+                  <p className="text-[13px] font-bold text-white mb-4">Talk to Our Admission Team</p>
+                  <a href="tel:+917003999531" className="flex items-center gap-2 text-[11px] font-bold text-white mb-2 hover:text-[#FCAB17] transition-colors">
+                    <Phone className="w-3.5 h-3.5 text-[#FCAB17]" /> +91 7003999531
+                  </a>
+                  <a href="mailto:evernalacademy@gmail.com" className="flex items-center gap-2 text-[11px] font-bold text-white hover:text-[#FCAB17] transition-colors">
+                    <Mail className="w-3.5 h-3.5 text-[#FCAB17]" /> evernalacademy@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="h-px w-8 bg-[#FCAB17]" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#08472C]/50 font-semibold">Enrollment FAQs</span>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              { q: 'What is the admission process?', a: 'Submit form → Receive confirmation → Schedule orientation → Complete documentation → Start classes.' },
+              { q: 'Are there any discounts available?', a: 'Yes! We offer sibling discounts (15% for second child) and early payment discounts.' },
+              { q: 'What documents are required?', a: 'Birth certificate, immunization records, 2 passport photos, and previous school records if applicable.' },
+              { q: 'Can I visit before enrolling?', a: 'Absolutely! We encourage parents to schedule a campus tour before making a decision.' },
+              { q: 'What is the teacher-to-student ratio?', a: 'We maintain a 1:8 ratio for Playgroup/Nursery and 1:10 for Kindergarten.' },
+              { q: 'Is transportation available?', a: 'Yes, we provide safe transportation with GPS tracking. Additional charges apply.' },
+            ].map((faq, i) => (
+              <div key={i} className="rounded-2xl border border-[#f0f0f0] bg-white p-5 hover:border-[#08472C]/20 hover:shadow-md transition-all duration-300">
+                <div className="flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-lg bg-[#08472C] flex items-center justify-center text-[#FCAB17] text-[10px] font-bold flex-shrink-0 mt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <p className="text-[12px] font-bold text-[#08472C] mb-1.5">{faq.q}</p>
+                    <p className="text-[11px] text-[#0F172A]/55 leading-relaxed">{faq.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA BAND ── */}
+      <section className="bg-[#08472C] py-10 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+        <div className="h-px bg-[#FCAB17]/40 absolute top-0 left-0 right-0" />
+        <div className="h-px bg-[#FCAB17]/40 absolute bottom-0 left-0 right-0" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-[#FCAB17]/60 font-semibold mb-1">Explore More</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Browse All Programmes</h2>
+          </div>
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <Link href="/programmes" className="inline-flex items-center gap-2 bg-[#FCAB17] text-[#08472C] text-[11px] font-bold px-5 py-2.5 rounded-xl hover:bg-[#ffc13d] transition-colors">
+              View Programmes <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-white/20 text-white text-[11px] font-bold px-5 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>

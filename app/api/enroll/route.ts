@@ -6,6 +6,7 @@ function makeTransporter() {
   return nodemailer.createTransport({
     service: 'gmail',
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASSWORD },
+    tls: { rejectUnauthorized: false },
   });
 }
 
@@ -19,19 +20,24 @@ export async function POST(request: NextRequest) {
 
     const transporter = makeTransporter();
 
-    await transporter.sendMail({
-      from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      subject: `New Enrolment: ${childName} — ${selectedCourse}`,
-      html: enrollAdminEmail({ firstName, lastName, email, phone, childName, childAge, selectedCourse, learningMode, address, city, pin, message }),
-    });
+    const [adminResult, clientResult] = await Promise.allSettled([
+      transporter.sendMail({
+        from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
+        to: process.env.EMAIL_USER,
+        subject: `New Enrolment: ${childName} — ${selectedCourse}`,
+        html: enrollAdminEmail({ firstName, lastName, email, phone, childName, childAge, selectedCourse, learningMode, address, city, pin, message }),
+      }),
+      transporter.sendMail({
+        from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: `Enrolment Confirmed — Evernal Academy`,
+        text: `Dear ${firstName} ${lastName},\n\nThank you for enrolling ${childName} at Evernal Academy. We are delighted to welcome your family. Our admissions team will contact you within 24 hours.\n\nFor urgent matters, call us at +91 7003999531.\n\nWarm regards,\nEvernal Academy Admissions Team`,
+        html: enrollParentEmail({ firstName, lastName, childName, childAge, selectedCourse, learningMode }),
+      }),
+    ]);
 
-    await transporter.sendMail({
-      from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: `Enrolment Confirmed — Evernal Academy`,
-      html: enrollParentEmail({ firstName, lastName, childName, childAge, selectedCourse, learningMode }),
-    });
+    if (clientResult.status === 'rejected') console.error('Client email failed:', clientResult.reason);
+    if (adminResult.status === 'rejected') console.error('Admin email failed:', adminResult.reason);
 
     return NextResponse.json({ success: true, message: 'Enrolment submitted successfully.' });
 

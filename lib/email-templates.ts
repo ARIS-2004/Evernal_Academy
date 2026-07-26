@@ -128,7 +128,7 @@ export function contactUserEmail(data: { name: string; message: string }): strin
       { title: 'Team Review', desc: 'A member of our team will review your message carefully.' },
       { title: 'Personal Response', desc: 'We will reply to your email within 24 hours.' },
     ])}
-    <p class="notice">This is an automated confirmation. Please do not reply to this email.<br>For urgent matters, visit us directly at the academy.</p>
+    <p class="notice">For urgent matters, call us at <strong>+91 7003999531</strong> or visit us at the academy.</p>
   `;
   return shell('We Received Your Message', 'Thank you for contacting Evernal Academy', body);
 }
@@ -162,7 +162,6 @@ export function admissionsAdminEmail(data: {
     ${card('Submission Info', [
       ['Reference', refId()],
       ['Date', new Date().toLocaleString('en-IN', { dateStyle: 'long', timeStyle: 'short' })],
-      ['Priority', 'High — Follow up within 24 hours'],
     ], true)}
   `;
   return shell('New Admission Enquiry', `${childName} — ${programName}`, body);
@@ -193,7 +192,7 @@ export function admissionsParentEmail(data: {
       { title: 'Documentation', desc: 'Submit required documents — birth certificate, immunisation records, and passport-size photos.' },
       { title: 'Admission Confirmation', desc: 'Complete the fee payment to secure your child\'s place in the programme.' },
     ])}
-    <p class="notice">This is an automated confirmation. Please do not reply to this email.<br>Keep your reference number <strong>${ref}</strong> for future correspondence.</p>
+    <p class="notice">For any queries, call us at <strong>+91 7003999531</strong>. Keep your reference number <strong>${ref}</strong> for future correspondence.</p>
   `;
   return shell('Admission Enquiry Received', `Evernal Academy — ${programName}`, body);
 }
@@ -227,7 +226,6 @@ export function enrollAdminEmail(data: {
     ${card('Submission Info', [
       ['Reference', refId()],
       ['Date', new Date().toLocaleString('en-IN', { dateStyle: 'long', timeStyle: 'short' })],
-      ['Priority', 'High — Follow up within 24 hours'],
     ], true)}
   `;
   return shell('New Enrolment Application', `${childName} — ${selectedCourse}`, body);
@@ -258,7 +256,7 @@ export function enrollParentEmail(data: {
       { title: 'Document Submission', desc: 'Provide birth certificate, immunisation records, and two passport-size photographs.' },
       { title: 'Fee Payment & Welcome Kit', desc: 'Complete the fee payment to secure your child\'s seat and receive the welcome kit.' },
     ])}
-    <p class="notice">This is an automated confirmation. Please do not reply to this email.<br>Keep your reference number <strong>${ref}</strong> for future correspondence.</p>
+    <p class="notice">For any queries, call us at <strong>+91 7003999531</strong>. Keep your reference number <strong>${ref}</strong> for future correspondence.</p>
   `;
   return shell('Enrolment Confirmed', `Evernal Academy — ${selectedCourse}`, body);
 }
@@ -287,7 +285,6 @@ export function eurokidsAdminEmail(data: {
     ${card('Submission Info', [
       ['Reference', refId()],
       ['Date', new Date().toLocaleString('en-IN', { dateStyle: 'long', timeStyle: 'short' })],
-      ['Priority', 'Urgent — Follow up within 2 hours'],
     ], true)}
   `;
   return shell('New Enrolment Application', `${childName} — ${programName}`, body);
@@ -317,7 +314,7 @@ export function eurokidsParentEmail(data: {
       { title: 'Documentation', desc: 'Submit birth certificate, immunisation records, and passport-size photos.' },
       { title: 'Admission Confirmation', desc: 'Complete the formalities to secure your child\'s place.' },
     ])}
-    <p class="notice">This is an automated confirmation. Please do not reply to this email.<br>Keep your reference number <strong>${ref}</strong> for future correspondence.</p>
+    <p class="notice">For any queries, call us at <strong>+91 7003999531</strong>. Keep your reference number <strong>${ref}</strong> for future correspondence.</p>
   `;
   return shell('Application Received', `Evernal Academy — ${programName}`, body);
 }

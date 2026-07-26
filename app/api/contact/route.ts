@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
       from: `"Evernal Academy" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: `We received your message — Evernal Academy`,
+      text: `Dear ${name},\n\nThank you for contacting Evernal Academy. We have received your message and will get back to you within 24 hours.\n\nFor urgent matters, call us at +91 7003999531.\n\nWarm regards,\nEvernal Academy Team`,
       html: contactUserEmail({ name, message }),
     });
 

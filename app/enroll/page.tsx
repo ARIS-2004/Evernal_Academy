@@ -243,7 +243,7 @@ export default function EnrollPage() {
             <div className="space-y-5">
 
               {/* Enrollment Summary */}
-              <div className="rounded-2xl bg-white border border-[#f0f0f0] overflow-hidden sticky top-24">
+              <div className="rounded-2xl bg-white border border-[#f0f0f0] overflow-hidden">
                 <div className="bg-[#08472C] px-5 py-4">
                   <p className="text-[9px] uppercase tracking-[0.2em] text-[#FCAB17]/60 font-semibold mb-0.5">Selected</p>
                   <p className="text-[14px] font-bold text-white">{currentCourse.name}</p>

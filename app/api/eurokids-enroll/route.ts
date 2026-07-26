@@ -6,6 +6,7 @@ function makeTransporter() {
   return nodemailer.createTransport({
     service: 'gmail',
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASSWORD },
+    tls: { rejectUnauthorized: false },
   });
 }
 
@@ -22,19 +23,24 @@ export async function POST(request: NextRequest) {
 
     const transporter = makeTransporter();
 
-    await transporter.sendMail({
-      from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      subject: `New Enrolment: ${childName} — ${programName}`,
-      html: eurokidsAdminEmail({ childName, parentName, email, mobile, pincode, centre, programName, programAge, programDescription }),
-    });
+    const [adminResult, clientResult] = await Promise.allSettled([
+      transporter.sendMail({
+        from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
+        to: process.env.EMAIL_USER,
+        subject: `New Enrolment: ${childName} — ${programName}`,
+        html: eurokidsAdminEmail({ childName, parentName, email, mobile, pincode, centre, programName, programAge, programDescription }),
+      }),
+      transporter.sendMail({
+        from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: `Application Received — Evernal Academy`,
+        text: `Dear ${parentName},\n\nThank you for enrolling ${childName} at Evernal Academy. We have received your application and our team will contact you within 2 hours.\n\nFor urgent matters, call us at +91 7003999531.\n\nWarm regards,\nEvernal Academy Admissions Team`,
+        html: eurokidsParentEmail({ parentName, childName, programName, programAge, centre }),
+      }),
+    ]);
 
-    await transporter.sendMail({
-      from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: `Application Received — Evernal Academy`,
-      html: eurokidsParentEmail({ parentName, childName, programName, programAge, centre }),
-    });
+    if (clientResult.status === 'rejected') console.error('Client email failed:', clientResult.reason);
+    if (adminResult.status === 'rejected') console.error('Admin email failed:', adminResult.reason);
 
     return NextResponse.json({
       success: true,

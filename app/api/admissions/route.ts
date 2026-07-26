@@ -6,6 +6,7 @@ function makeTransporter() {
   return nodemailer.createTransport({
     service: 'gmail',
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASSWORD },
+    tls: { rejectUnauthorized: false },
   });
 }
 
@@ -19,19 +20,24 @@ export async function POST(request: NextRequest) {
 
     const transporter = makeTransporter();
 
-    await transporter.sendMail({
-      from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      subject: `Admission Enquiry: ${childName} — ${programName}`,
-      html: admissionsAdminEmail({ firstName, lastName, email, mobile, childName, childAge, programName, programAge, city, pinCode, message }),
-    });
+    const [adminResult, clientResult] = await Promise.allSettled([
+      transporter.sendMail({
+        from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
+        to: process.env.EMAIL_USER,
+        subject: `Admission Enquiry: ${childName} — ${programName}`,
+        html: admissionsAdminEmail({ firstName, lastName, email, mobile, childName, childAge, programName, programAge, city, pinCode, message }),
+      }),
+      transporter.sendMail({
+        from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: `Admission Enquiry Received — Evernal Academy`,
+        text: `Dear ${firstName} ${lastName},\n\nThank you for your interest in Evernal Academy. We have received your admission enquiry for ${childName} and our team will be in touch within 24 hours.\n\nFor urgent matters, call us at +91 7003999531.\n\nWarm regards,\nEvernal Academy Admissions Team`,
+        html: admissionsParentEmail({ firstName, lastName, childName, childAge, programName, programAge, city, pinCode }),
+      }),
+    ]);
 
-    await transporter.sendMail({
-      from: `"Evernal Academy Admissions" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: `Admission Enquiry Received — Evernal Academy`,
-      html: admissionsParentEmail({ firstName, lastName, childName, childAge, programName, programAge, city, pinCode }),
-    });
+    if (clientResult.status === 'rejected') console.error('Client email failed:', clientResult.reason);
+    if (adminResult.status === 'rejected') console.error('Admin email failed:', adminResult.reason);
 
     return NextResponse.json({ success: true, message: 'Admission enquiry submitted successfully.' });
 
